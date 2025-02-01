@@ -1,0 +1,4 @@
+<div>
+@assets
+@endassets
+</div>
