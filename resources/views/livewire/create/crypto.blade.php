@@ -1,7 +1,7 @@
 <div class="p-3">
     <div class="flex justify-between items-center mb-2">
         <div>
-            <h1 class="text-2xl font-semibold">Konto hinzufügen</h1>
+            <h1 class="text-2xl font-semibold">Cryptos hinzufügen</h1>
         </div>
 
     </div>
@@ -20,7 +20,7 @@
     </div>
     <div class="w-96">
         <label class="label label-text" for="amount">Betrag</label>
-        <input type="number" placeholder="100" class="input" id="balance" wire:model="balance" step="0.01" />
+        <input type="number" placeholder="100" class="input" id="balance" wire:model="balance" step="0.00000000000000001" />
         <span class="label">
             <span class="label-text-alt">Please enter the amount</span>
         </span>

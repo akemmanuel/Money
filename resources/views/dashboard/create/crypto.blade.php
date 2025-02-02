@@ -1,5 +1,5 @@
 <x-app-layout>
     <div>
-        @livewire('create-crypto')
+        <livewire:create.crypto />
     </div>
 </x-app-layout>

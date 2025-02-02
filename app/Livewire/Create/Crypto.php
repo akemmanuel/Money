@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Create;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class CreateBankAccount extends Component
+class Crypto extends Component
 {
+
     public $name;
     public $balance;
     public $currency;
 
     public function render()
     {
-        return view('livewire.create-bank-account');
+        return view('livewire.create.crypto');
     }
 
     public function create()
@@ -35,3 +36,4 @@ class CreateBankAccount extends Component
         $this->reset(['name', 'balance', 'currency']);
     }
 }
+

@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('crypto_addresses', function (Blueprint $table) {
+        Schema::create('crypto_transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('address');
-            $table->string('currency');
-            $table->decimal('balance', 15, 8)->default(0);
+            $table->unsignedBigInteger('account_id');
+            $table->enum('type', ['credit', 'debit']);
+            $table->decimal('amount', 15, 2);
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('crypto_addresses');
+        Schema::dropIfExists('crypto_transactions');
     }
 };
