@@ -14,6 +14,11 @@ class BankAccount extends Component
         $this->accounts = ModelsBankAccount::all();
     }
 
+    public function placeholder(array $params = [])
+    {
+        return view('placeholder.skeleton', $params);
+
+    }
     public function render()
     {
         return view('livewire.bank-account');

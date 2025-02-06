@@ -23,7 +23,7 @@ class CryptoPrices extends Model
     public function getPriceUsd($currency)
     {
         $price = $this->currency($currency)->latest()->first();
-        if ($price && $price->updated_at > now()->subMinutes(30)) {
+        if ($price && $price->updated_at > now()->subMinutes(2)) {
             return $price->price_usd;
         }
         try {
@@ -42,10 +42,11 @@ class CryptoPrices extends Model
         return "Error getting current price";
         // TODO: Error handling
     }
+
     public function getPriceEur($currency)
     {
         $price = $this->currency($currency)->latest()->first();
-        if ($price && $price->updated_at > now()->subMinutes(30)) {
+        if ($price && $price->updated_at > now()->subMinutes(2)) {
             return $price->price_eur;
         }
         try {

@@ -9,7 +9,7 @@
     @if($cryptos->isNotEmpty())
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach($cryptos as $asset)
-                            <div class="bg-white shadow-md rounded-lg p-4">
+                            <div class="bg-base-300 shadow-md rounded-lg p-4">
                                     <div class="text-lg font-semibold">{{ $asset->name }}</div>
                                     <div class="text-2xl mb-1 {{ $asset->balance > 0 ? 'text-green-500' : 'text-red-500' }}">
                                             <span class="currency-usd ">{{ round($asset->balance * $prices_usd[$asset["currency"]], 2) }} $</span>
@@ -28,7 +28,7 @@
             <h2 class="text-2xl">Preise in USD</h2>
             <div class="flex flex-wrap gap-2 justify-center">
                 @foreach ($prices_usd as $currency => $price)
-                    <div class="bg-white shadow-md rounded-lg p-4 flex-grow">
+                    <div class="bg-base-300 shadow-md rounded-lg p-4 flex-grow">
                         <div class="text-lg font-semibold">1 {{ $currency }} USD</div>
                         <div class="text-2xl mb-1">{{ $price }}</div>
                     </div>
@@ -39,7 +39,7 @@
             <h2 class="text-2xl">Preise in EUR</h2>
             <div class="flex flex-wrap gap-2 justify-center">
                 @foreach ($prices_eur as $currency => $price)
-                    <div class="bg-white shadow-md rounded-lg p-4 flex-grow">
+                    <div class="bg-base-300 shadow-md rounded-lg p-4 flex-grow">
                         <div class="text-lg font-semibold">1 {{ $currency }} EUR</div>
                         <div class="text-2xl mb-1">{{ $price }}</div>
                     </div>

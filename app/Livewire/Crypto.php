@@ -25,18 +25,10 @@ class Crypto extends Component
             $this->prices_eur[$crypto->currency] = $cryptoPrices->getPriceEur($crypto->currency);
         }
     }
-    public function placeholder()
+    public function placeholder(array $params = [])
     {
-        return <<<'HTML'
-        <div>
-            <div class="flex w-52 flex-col gap-4">
-                <div class="skeleton skeleton-animated h-32 w-full"></div>
-                <div class="skeleton skeleton-animated h-4 w-28"></div>
-                <div class="skeleton skeleton-animated h-4 w-full"></div>
-                <div class="skeleton skeleton-animated h-4 w-full"></div>
-            </div>
-        </div>
-        HTML;
+        return view('placeholder.skeleton', $params);
+
     }
     public function render()
     {

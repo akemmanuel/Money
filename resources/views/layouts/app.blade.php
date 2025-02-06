@@ -16,7 +16,7 @@
         @livewireStyles
     </head> 
     
-            <body class="font-sans antialiased dark:bg-black dark:text-white/50">
+            <body class="font-sans antialiased dark:bg-black dark:text-white/50 select-none">
                   <nav class="navbar justify-between gap-4 shadow">
                     <div class="navbar-start">
                       <div class="dropdown relative inline-flex [--auto-close:inside] [--offset:9]">
@@ -123,6 +123,11 @@
                         <span class="swap-off icon-[tabler--sun] size-7"></span>
                         <span class="swap-on icon-[tabler--moon] size-7"></span>
                       </label>
+                      <label class="swap swap-rotate btn btn-sm btn-text btn-circle size-[2.125rem]">
+                        <input type="checkbox" />
+                        <span class="swap-off icon-[tabler--currency-euro] size-7"></span>
+                        <span class="swap-on icon-[tabler--currency-dollar] size-7"></span>
+                      </label>
                       <div class="dropdown relative inline-flex [--auto-close:inside] [--offset:8] [--placement:bottom-end]">
                         <button id="dropdown-scrollable" type="button" class="dropdown-toggle flex items-center" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
                           <div class="avatar">
@@ -139,38 +144,38 @@
                               </div>
                             </div>
                             <div>
-                              <h6 class="text-base-content text-base font-semibold">John Doe</h6>
-                              <small class="text-base-content/50">Writer</small>
+                                <h6 class="text-base-content text-base font-semibold">{{ Auth::user()->name }}</h6>
+                              <small class="text-base-content/50">Free plan</small>
                             </div>
                           </li>
                           <li>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item bg-primary text-white hover:bg-primary hover:text-white" href="/asd">
+                              <span class="icon-[tabler--sparkles]"></span>
+                              Upgrade
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="{{ route('profile.show') }}">
                               <span class="icon-[tabler--user]"></span>
-                              My Profile
+                              Mein Profil
                             </a>
                           </li>
                           <li>
                             <a class="dropdown-item" href="#">
                               <span class="icon-[tabler--settings]"></span>
-                              Settings
+                              Einstellungen
                             </a>
                           </li>
                           <li>
                             <a class="dropdown-item" href="#">
                               <span class="icon-[tabler--receipt-rupee]"></span>
-                              Billing
-                            </a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item" href="#">
-                              <span class="icon-[tabler--help-triangle]"></span>
-                              FAQs
+                              Zahlungen
                             </a>
                           </li>
                           <li class="dropdown-footer gap-2">
                             <a class="btn btn-error btn-soft btn-block" href="#">
                               <span class="icon-[tabler--logout]"></span>
-                              Sign out
+                              Abmelden
                             </a>
                           </li>
                         </ul>
@@ -265,26 +270,6 @@
                           </a>
                         </li>
                         
-                        <div class="divider text-base-content/50 py-6 after:border-0">Account</div>
-                        <li>
-                          <a href="#">
-                            <span class="icon-[tabler--login] size-5"></span>
-                            Sign In
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <span class="icon-[tabler--logout-2] size-5"></span>
-                            Sign Out
-                          </a>
-                        </li>
-                        <div class="divider text-base-content/50 py-6 after:border-0">Miscellaneous</div>
-                        <li>
-                          <a href="#">
-                            <span class="icon-[tabler--users-group] size-5"></span>
-                            Support
-                          </a>
-                        </li>
                       </ul>
                       <div class="bg-base-200/30 border-base-content/10 mt-4 rounded-md border p-3">
                         <div class="avatar placeholder">
