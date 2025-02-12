@@ -137,11 +137,9 @@
                           </div>
                         </button>
                         <ul class="dropdown-menu dropdown-open:opacity-100 hidden min-w-60" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-avatar">
-                          <li class="dropdown-header gap-2">
-                            <div class="avatar">
-                              <div class="w-10 rounded-full">
-                                <img src="https://cdn.flyonui.com/fy-assets/avatar/avatar-1.png" alt="avatar" />
-                              </div>
+                          <li class="dropdown-header gap-2 flex justify-center">
+                          <div class=" w-10 h-10 bg-base-300 flex justify-center items-center rounded-full">
+                                <span>{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</span>
                             </div>
                             <div>
                                 <h6 class="text-base-content text-base font-semibold">{{ Auth::user()->name }}</h6>
