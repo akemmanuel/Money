@@ -45,25 +45,30 @@
                               </div>
                               <div class="vertical-scrollbar horizontal-scrollbar rounded-scrollbar text-base-content/80 max-h-56 overflow-auto max-md:max-w-60">
                                 <div class="dropdown-item">
-                                  <div class="avatar away-bottom">
-                                    <div class="w-10 rounded-full">
-                                      <img src="https://cdn.flyonui.com/fy-assets/avatar/avatar-1.png" alt="avatar 1" />
-                                    </div>
+                                  <div class="flex items-center w-10 h-10 rounded-full bg-base-300 justify-center">
+                                  <span class="icon-[tabler--caret-down] size-5"></span>
                                   </div>
                                   <div class="w-60">
-                                    <h6 class="truncate text-base">Charles Franklin</h6>
-                                    <small class="text-base-content/50 truncate">Accepted your connection</small>
+                                    <h6 class="truncate text-base">Bitcoin ist jetzt niedrig</h6>
+                                  <small class="text-base-content/50 truncate">Kaufe jetzt</small>
                                   </div>
                                 </div>
                                 <div class="dropdown-item">
-                                  <div class="avatar">
-                                    <div class="w-10 rounded-full">
-                                      <img src="https://cdn.flyonui.com/fy-assets/avatar/avatar-2.png" alt="avatar 2" />
-                                    </div>
+                                  <div class="flex items-center w-10 h-10 rounded-full bg-base-300 justify-center">
+                                  <span class="icon-[tabler--confetti] size-5"></span>
                                   </div>
                                   <div class="w-60">
-                                    <h6 class="truncate text-base">Martian added moved Charts & Maps task to the done board.</h6>
-                                    <small class="text-base-content/50 truncate">Today 10:00 AM</small>
+                                  <h6 class="truncate text-base">Deine Investitionen haben die 100.000$ Marke durchbrochen! </h6>
+                                  <small class="text-base-content/50 truncate">Super</small>
+                                  </div>
+                                </div>
+                                <div class="dropdown-item">
+                                  <div class="flex items-center w-10 h-10 rounded-full bg-base-300 justify-center">
+                                  <span class="icon-[tabler--mood-confuzed] size-5"></span>
+                                  </div>
+                                  <div class="w-60">
+                                  <h6 class="truncate text-base">Dieser Monat war nicht so toll </h6>
+                                  <small class="text-base-content/50 truncate">Deine Investitionen sind um 20% gefallen</small>
                                   </div>
                                 </div>
                                 <div class="dropdown-item">
