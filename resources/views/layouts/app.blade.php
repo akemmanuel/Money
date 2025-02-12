@@ -172,12 +172,13 @@
                               Zahlungen
                             </a>
                           </li>
-                          <li class="dropdown-footer gap-2">
-                            <a class="btn btn-error btn-soft btn-block" href="#">
-                              <span class="icon-[tabler--logout]"></span>
-                              Abmelden
-                            </a>
-                          </li>
+                        <form method="POST" action="{{ route('logout') }}">
+                          @csrf
+                          <button type="submit" class="btn btn-error btn-soft btn-block">
+                            <span class="icon-[tabler--logout]"></span>
+                            Abmelden
+                          </button>
+                        </form>
                         </ul>
                       </div>
                     </div>
