@@ -39,36 +39,103 @@
                                 <span class="icon-[tabler--bell] text-base-content size-[1.375rem]"></span>
                               </div>
                             </button>
-                            <div class="dropdown-menu dropdown-open:opacity-100 hidden" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-scrollable">
-                              <div class="dropdown-header justify-center">
-                                <h6 class="text-base-content text-base">Notifications</h6>
+                            <div class="dropdown-menu dropdown-open:opacity-100 hidden p-0" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-scrollable">
+                              <div class="flex justify-center border-b-2 border-base-content/10 p-2">
+                                <h6 class="text-base-content text-xl">Notifications</h6>
                               </div>
-                              <div class="vertical-scrollbar horizontal-scrollbar rounded-scrollbar text-base-content/80 max-h-56 overflow-auto max-md:max-w-60">
-                                <div class="dropdown-item">
-                                  <div class="flex items-center w-10 h-10 rounded-full bg-base-300 justify-center">
-                                  <span class="icon-[tabler--caret-down] size-5"></span>
+                              <div class="vertical-scrollbar horizontal-scrollbar rounded-scrollbar text-base-content/80 max-h-56 p-0 overflow-auto ">
+                                @php
+$notifications = [
+    [
+        'icon' => 'icon-[tabler--caret-down-filled]',
+        'title' => 'Bitcoin ist jetzt niedrig',
+        'message' => 'Kaufe jetzt'
+    ],
+    [
+      'icon' => 'icon-[tabler--confetti]',
+      'title' => 'Deine Investitionen haben die 100.000$ Marke durchbrochen!',
+      'message' => 'Super'
+    ],
+    [
+      'icon' => 'icon-[tabler--mood-confuzed]',
+      'title' => 'Dieser Monat war nicht so toll',
+      'message' => 'Deine Investitionen sind um 20% gefallen'
+    ],
+    [
+      'icon' => 'icon-[tabler--trending-up]',
+      'title' => 'Aktien steigen',
+      'message' => 'Deine Aktien sind um 15% gestiegen'
+    ],
+    [
+      'icon' => 'icon-[tabler--alert-triangle]',
+      'title' => 'Marktvolatilität',
+      'message' => 'Der Markt ist heute sehr volatil'
+    ],
+    [
+      'icon' => 'icon-[tabler--cash]',
+      'title' => 'Dividende erhalten',
+      'message' => 'Du hast eine Dividende von $500 erhalten'
+    ],
+    [
+      'icon' => 'icon-[tabler--news]',
+      'title' => 'Wichtige Nachrichten',
+      'message' => 'Neue Finanznachrichten verfügbar'
+    ],
+    [
+      'icon' => 'icon-[tabler--star]',
+      'title' => 'Top Performer',
+      'message' => 'Dein Portfolio gehört zu den Top 10%'
+    ],
+    [
+      'icon' => 'icon-[tabler--trending-down]',
+      'title' => 'Aktien fallen',
+      'message' => 'Deine Aktien sind um 10% gefallen'
+    ],
+    [
+      'icon' => 'icon-[tabler--chart-pie]',
+      'title' => 'Portfolio Update',
+      'message' => 'Dein Portfolio wurde aktualisiert'
+    ],
+    [
+      'icon' => 'icon-[tabler--trophy]',
+      'title' => 'Neuer Meilenstein',
+      'message' => 'Du hast einen neuen Meilenstein erreicht'
+    ],
+];
+@endphp
+                                @foreach ($notifications as $notification)
+                                  <a class="flex items-center gap-2 p-2 justify-center hover:bg-base-content/10 active:bg-base-content/20" href="#">
+                                      <div class="avatar">
+                                          <div class="bg-neutral text-neutral-content w-10 rounded-full p-2">
+                                              <span class="{{ $notification['icon'] }} size-full"></span>
+                                          </div>
+                                      </div>
+                                      <div class="w-60">
+                                          <h6 class="truncate text-base">{{ $notification['title'] }}</h6>
+                                          <small class="text-base-content/50 text-wrap">{{ $notification['message'] }}</small>
+                                      </div>
+                                  </a>
+                                @endforeach
+                                {{-- <div class="dropdown-item">
+                                  <div class="avatar">
+                                  <div class="bg-neutral text-neutral-content w-10 rounded-full p-2">
+                                    <span class="icon-[tabler--confetti] size-full"></span>
+                                  </div>
                                   </div>
                                   <div class="w-60">
-                                    <h6 class="truncate text-base">Bitcoin ist jetzt niedrig</h6>
-                                  <small class="text-base-content/50 truncate">Kaufe jetzt</small>
+                                  <h6 class="truncate text-base">Deine Investitionen haben die 100.000$ Marke durchbrochen!</h6>
+                                  <small class="text-base-content/50 text-wrap">Super</small>
                                   </div>
                                 </div>
                                 <div class="dropdown-item">
-                                  <div class="flex items-center w-10 h-10 rounded-full bg-base-300 justify-center">
-                                  <span class="icon-[tabler--confetti] size-5"></span>
+                                  <div class="avatar">
+                                  <div class="bg-neutral text-neutral-content w-10 rounded-full p-2">
+                                    <span class="icon-[tabler--mood-confuzed] size-full"></span>
+                                  </div>
                                   </div>
                                   <div class="w-60">
-                                  <h6 class="truncate text-base">Deine Investitionen haben die 100.000$ Marke durchbrochen! </h6>
-                                  <small class="text-base-content/50 truncate">Super</small>
-                                  </div>
-                                </div>
-                                <div class="dropdown-item">
-                                  <div class="flex items-center w-10 h-10 rounded-full bg-base-300 justify-center">
-                                  <span class="icon-[tabler--mood-confuzed] size-5"></span>
-                                  </div>
-                                  <div class="w-60">
-                                  <h6 class="truncate text-base">Dieser Monat war nicht so toll </h6>
-                                  <small class="text-base-content/50 truncate">Deine Investitionen sind um 20% gefallen</small>
+                                  <h6 class="truncate text-base">Dieser Monat war nicht so toll</h6>
+                                  <small class="text-base-content/50 text-wrap">Deine Investitionen sind um 20% gefallen</small>
                                   </div>
                                 </div>
                                 <div class="dropdown-item">
@@ -83,9 +150,20 @@
                                   </div>
                                 </div>
                                 <div class="dropdown-item">
-                                  <div class="avatar placeholder">
+                                  <div class="avatar">
                                     <div class="bg-neutral text-neutral-content w-10 rounded-full p-2">
                                       <span class="icon-[tabler--user] size-full"></span>
+                                    </div>
+                                  </div>
+                                  <div class="w-60">
+                                    <h6 class="truncate text-base">Application has been approved 🚀</h6>
+                                    <small class="text-base-content/50 text-wrap">Your ABC project application has been approved.</small>
+                                  </div>
+                                </div>
+                                <div class="dropdown-item">
+                                  <div class="avatar">
+                                    <div class="bg-neutral text-neutral-content w-10 rounded-full p-2">
+                                      <span class="icon-[tabler--mood-confuzed] size-full"></span>
                                     </div>
                                   </div>
                                   <div class="w-60">
@@ -106,7 +184,7 @@
                                 </div>
                                 <div class="dropdown-item">
                                   <div class="avatar">
-                                    <div class="w-10 rounded-full">
+                                    <div class="w-10 rounded-full">und
                                       <img src="https://cdn.flyonui.com/fy-assets/avatar/avatar-3.png" alt="avatar 3" />
                                     </div>
                                   </div>
@@ -114,9 +192,9 @@
                                     <h6 class="truncate text-base">Barry Commented on App review task.</h6>
                                     <small class="text-base-content/50 truncate">Today 8:32 AM</small>
                                   </div>
-                                </div>
+                                </div>  --}}
                               </div>
-                              <a href="#" class="dropdown-footer justify-center gap-1">
+                              <a href="#" class="flex justify-center border-t-2 border-base-content/10 p-2">
                                 <span class="icon-[tabler--eye] size-4"></span>
                                 View all
                               </a>
