@@ -213,11 +213,9 @@ $notifications = [
                       </label>
                       <div class="dropdown relative inline-flex [--auto-close:inside] [--offset:8] [--placement:bottom-end]">
                         <button id="dropdown-scrollable" type="button" class="dropdown-toggle flex items-center" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
-                          <div class="avatar">
-                            <div class="size-9.5 rounded-full">
-                              <img src="https://cdn.flyonui.com/fy-assets/avatar/avatar-1.png" alt="avatar 1" />
-                            </div>
-                          </div>
+                          <div class=" w-10 h-10 bg-base-300 flex justify-center items-center rounded-full">
+                            <span>{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</span>
+                        </div>
                         </button>
                         <ul class="dropdown-menu dropdown-open:opacity-100 hidden min-w-60" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-avatar">
                           <li class="dropdown-header gap-2 flex justify-center">
