@@ -194,7 +194,7 @@ $notifications = [
                                   </div>
                                 </div>  --}}
                               </div>
-                              <a href="#" class="flex justify-center border-t-2 border-base-content/10 p-2">
+                              <a href="#" class="flex justify-center items-center border-t-2 border-base-content/10 p-2">
                                 <span class="icon-[tabler--eye] size-4"></span>
                                 View all
                               </a>
