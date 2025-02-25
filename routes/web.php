@@ -19,9 +19,13 @@ Route::middleware([
         return view('dashboard.bank');
     })->name('bank');
     
-    Route::get('/dashboard/stats', function () {
+    Route::get('/dashboard/analisis', function () {
         return view('dashboard.bank');
-    })->name('bank');
+    })->name('analysis');
+
+    Route::get('/dashboard/forecasts', function () {
+        return view('dashboard.bank');
+    })->name('forecasts');
     
 
     Route::prefix('dashboard/investments')->group(function () {
