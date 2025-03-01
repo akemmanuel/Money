@@ -11,10 +11,12 @@ Schedule::call(function () {
     $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true');
     $data = json_decode($response->getBody(), true);
     $change = $data['bitcoin']['usd_24h_change'];
-
     Notification::create([
-        'title' => "Bitcoin ist um " . $change . " " , ]);
-. ($change > 0 ? 'gestiegen' : 'gefallen')
+        'title' => "Bitcoin ist um " . round($change, 3) . ($change >= 0 ? ' gestiegen' : ' gefallen'),
+        'message' => "Test try",
+        'type' => "mood-empty",
+        'status' => "read"
+    ]);
 })->everyMinute();
 
 Artisan::command('inspire', function () {
