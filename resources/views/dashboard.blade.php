@@ -143,81 +143,74 @@
           </div>
   </div>
   <h1 class="text-2xl font-semibold">Holdings</h1>
-  <div class="border-base-content/25 w-full rounded-lg border">
-    <div class="overflow-x-auto">
-      <table class="table rounded">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Anzahl</th>
-            <th>Gesamtwert</th>
-            <th>Änderung</th>
-            <th>Allokation</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            {{-- Here nothing like border-none --}}
-            <td class="text-nowrap">
-              Bitcoin
-            </td>
-            <td>9</td>
-            <td>900.000€</td>
-            <td>
-                                <p class="text-base font-semibold"><span>+1.55€ <span class="badge badge-soft badge-success ">+12% <span class="icon-[tabler--caret-up-filled] size-6"></span></span></span></p>
+  <div class="overflow-x-auto rounded-lg border border-base-content/25">
+    <table class="min-w-full divide-y-2 divide-base-content/25 bg-white">
+      <thead class="text-left">
+        <tr>
+          <th class="whitespace-nowrap px-4 py-2 font-medium">Name</th>
+          <th class="whitespace-nowrap px-4 py-2 font-medium">Anzahl</th>
+          <th class="whitespace-nowrap px-4 py-2 font-medium">Gesamtwert</th>
+          <th class="whitespace-nowrap px-4 py-2 font-medium">Änderung</th>
+          <th class="whitespace-nowrap px-4 py-2 font-medium">Allokation</th>
+        </tr>
+      </thead>
 
-            </td>
-            <td>2,56%</td>
-          </tr>
-          <tr class="border-none">
-            {{-- Here border-none, to prevent double border --}}
-            {{-- Or, only put border-none if there is only one item --}}
-            <td class="text-nowrap">
-              Bitcoin
-            </td>
-            <td>9</td>
-            <td>900.000€</td>
-            <td>
-                                <p class="text-base font-semibold"><span>+1.55€ <span class="badge badge-soft badge-success ">+12% <span class="icon-[tabler--caret-up-filled] size-6"></span></span></span></p>
-
-            </td>
-            <td>2,56%</td>
-          </tr>
-        
-        </tbody>
-      </table>
-    </div>
-  </div><h1 class="text-2xl font-semibold mt-2">Cash</h1>
-  <div class="border-base-content/25 w-full rounded-lg border">
-    <div class="overflow-x-auto">
-      <table class="table rounded">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Anzahl</th>
-            <th>Gesamtwert</th>
-            <th>Änderung</th>
-            <th>Allokation</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="border-none">
-            <td class="text-nowrap">
-              Bitcoin
-            </td>
-            <td>9</td>
-            <td>900.000€</td>
-            <td>
-                                <p class="text-base font-semibold"><span>+1.55€ <span class="badge badge-soft badge-success ">+12% <span class="icon-[tabler--caret-up-filled] size-6"></span></span></span></p>
-
-            </td>
-            <td>2,56%</td>
-          </tr>
-        
-        </tbody>
-      </table>
-    </div>
+      <tbody class="divide-y divide-base-content/25">
+        <tr>
+          <td class="whitespace-nowrap px-4 py-2 font-medium">Bitcoin</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">0.5</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">50.000$</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+            <p class="text-base font-semibold"><span>+1.55€ <span class="badge badge-soft badge-success ">+12% <span class="icon-[tabler--caret-up-filled] size-6"></span></span></span></p>
+          </td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">2,56%</td>
+        </tr>
+        <tr>
+          <td class="whitespace-nowrap px-4 py-2 font-medium">Bitcoin</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">0.5</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">50.000$</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+            <p class="text-base font-semibold"><span>+1.55€ <span class="badge badge-soft badge-success ">+12% <span class="icon-[tabler--caret-up-filled] size-6"></span></span></span></p>
+          </td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">2,56%</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  
+  <h1 class="text-2xl font-semibold mt-2">Cash</h1>
+  <div class="overflow-x-auto rounded-lg border border-base-content/25">
+    <table class="min-w-full divide-y-2 divide-base-content/25 bg-white">
+      <thead class="text-left">
+        <tr>
+          <th class="whitespace-nowrap px-4 py-2 font-medium">Name</th>
+          <th class="whitespace-nowrap px-4 py-2 font-medium">Anzahl</th>
+          <th class="whitespace-nowrap px-4 py-2 font-medium">Gesamtwert</th>
+          <th class="whitespace-nowrap px-4 py-2 font-medium">Änderung</th>
+          <th class="whitespace-nowrap px-4 py-2 font-medium">Allokation</th>
+        </tr>
+      </thead>
+
+      <tbody class="divide-y divide-base-content/25">
+        <tr>
+          <td class="whitespace-nowrap px-4 py-2 font-medium">Bitcoin</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">0.5</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">50.000$</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+            <p class="text-base font-semibold"><span>+1.55€ <span class="inline-flex items-center justify-center rounded-full bg-emerald-100 px-2.5 py-0.5 text-emerald-700 dark:bg-emerald-700 dark:text-emerald-100">+12% <span class="icon-[tabler--caret-up-filled] size-6"></span></span></span></p>
+          </td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">2,56%</td>
+        </tr>
+        <tr>
+          <td class="whitespace-nowrap px-4 py-2 font-medium">Bitcoin</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">0.5</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">50.000$</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+            <p class="text-base font-semibold"><span>+1.55€ <span class="badge badge-soft badge-success ">+12% <span class="icon-[tabler--caret-up-filled] size-6"></span></span></span></p>
+          </td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">2,56%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 </x-app-layout>

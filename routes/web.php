@@ -11,16 +11,14 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::view('/dashboard', 'dashboard')->name('dashboard');
     
     Route::get('/dashboard/bank', function () {
         return view('dashboard.bank');
     })->name('bank');
     
-    Route::get('/dashboard/analisis', function () {
-        return view('dashboard.bank');
+    Route::get('/dashboard/analysis', function () {
+        return view('dashboard.analysis');
     })->name('analysis');
 
     Route::get('/dashboard/forecasts', function () {

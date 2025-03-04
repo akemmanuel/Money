@@ -18,7 +18,7 @@
 </head>
 
 <body class="font-sans antialiased dark:text-white/50 select-none">
-    <nav class="navbar justify-between gap-4 shadow">
+    <nav class="flex p-2 justify-between gap-4">
         <div class="navbar-start">
             <div class="dropdown relative inline-flex [--auto-close:inside] [--offset:9]">
                 <button id="dropdown-name" type="button"
@@ -208,92 +208,92 @@
     </nav>
 
     <aside id="overlay-navigation-example"
-        class="overlay overlay-open:translate-x-0 drawer drawer-start hidden max-w-72" tabindex="-1">
-        <div class="drawer-header">
-            <h3 class="drawer-title">Menu</h3>
-            <button type="button" class="btn btn-text btn-circle btn-sm absolute end-3 top-3" aria-label="Close"
-                data-overlay="#overlay-navigation-example">
-                <span class="icon-[tabler--x] size-4"></span>
+        class="overlay overlay-open:translate-x-0 drawer drawer-start hidden" tabindex="-1">
+        <div class="border-b-2 border-base-content/10 p-4 flex items-center justify-between">
+            <h1 class="font-semibold text-2xl">Menu</h1>
+            <button type="button" class="btn btn-text btn-circle btn-sm" aria-label="Close"
+            data-overlay="#overlay-navigation-example">
+            <span class="icon-[tabler--x] size-4"></span>
             </button>
         </div>
-        <div class="drawer-body justify-start pb-6">
-            <ul class="menu space-y-0.5 p-0 [&_.nested-collapse-wrapper]:space-y-0.5 [&_ul]:space-y-0.5">
+        <div class="flex-grow justify-start pb-6">
+            <ul class="space-y-1">
                 <li>
-                    <a href="{{ route('dashboard') }}" wire:navigate>
+                    <a href="{{ route('dashboard') }}" wire:navigate class="menu-item">
                         <span class="icon-[tabler--home] size-5"></span>
                         Dashboard
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{ route('bank') }}" wire:navigate>
+                    <a href="{{ route('bank') }}" wire:navigate class="menu-item">
                         <span class="icon-[tabler--credit-card] size-5"></span>
                         Konten
                     </a>
                 </li>
                 <li class="nested-collapse-wrapper">
-                    <a class="collapse-toggle nested-collapse" id="front-page-collapse"
+                    <a class="collapse-toggle nested-collapse menu-item" id="front-page-collapse"
                         data-collapse="#front-page-collapse-menu">
                         <span class="icon-[tabler--trending-up] size-5"></span>
                         Investitionen
                         <span class="icon-[tabler--chevron-down] collapse-icon size-4"></span>
                     </a>
-                    <ul id="front-page-collapse-menu"
-                        class="collapse hidden w-auto overflow-hidden transition-[height] duration-300"
+                    <div id="front-page-collapse-menu"
+                        class="collapse hidden w-auto overflow-hidden transition-[height] duration-300 border-s-2 ms-2 border-base-content/20 space-y-1 mt-1"
                         aria-labelledby="front-page-collapse">
-                        <li>
-                            <a href="{{ route('stocks') }}" wire:navigate>
+                        <div>
+                            <a href="{{ route('stocks') }}" wire:navigate class="menu-item">
                                 <span class="icon-[tabler--chart-line] size-5"></span>
                                 Aktien
                             </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('bonds') }}" wire:navigate>
+                        </div>
+                        <div>
+                            <a href="{{ route('bonds') }}" wire:navigate class="menu-item">
                                 <span class="icon-[tabler--coin] size-5"></span>
                                 Anleihen
                             </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('real-estate') }}" wire:navigate>
+                        </div>
+                        <div>
+                            <a href="{{ route('real-estate') }}" wire:navigate class="menu-item">
                                 <span class="icon-[tabler--building] size-5"></span>
                                 Immobilien
                             </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('mutual-funds') }}" wire:navigate>
+                        </div>
+                        <div>
+                            <a href="{{ route('mutual-funds') }}" wire:navigate class="menu-item">
                                 <span class="icon-[tabler--chart-pie] size-5"></span>
                                 Investmentfonds
                             </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('etfs') }}" wire:navigate>
+                        </div>
+                        <div>
+                            <a href="{{ route('etfs') }}" wire:navigate class="menu-item">
                                 <span class="icon-[tabler--chart-bar] size-5"></span>
                                 ETFs
                             </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('commodities') }}" wire:navigate>
+                        </div>
+                        <div>
+                            <a href="{{ route('commodities') }}" wire:navigate class="menu-item">
                                 <span class="icon-[tabler--barrel] size-5"></span>
                                 Rohstoffe
                             </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('crypto') }}" wire:navigate>
+                        </div>
+                        <div>
+                            <a href="{{ route('crypto') }}" wire:navigate class="menu-item">
                                 <span class="icon-[tabler--currency-bitcoin] size-5"></span>
                                 Cryptowährungen
                             </a>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </li>
                 <div class="divider text-base-content/50 py-6 after:border-0">Insides</div>
                 <li>
-                    <a href="{{ route('forecasts') }}">
+                    <a href="{{ route('forecasts') }}" class="menu-item">
                         <span class="icon-[tabler--cpu] size-5"></span>
                         Prognosen
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('analysis') }}">
+                    <a href="{{ route('analysis') }}" class="menu-item">
                       <span class="icon-[tabler--chart-donut] size-5"></span>
                       Analysis
                     </a>

@@ -8,17 +8,17 @@ use App\Models\Notification;
 use Illuminate\Support\Facades\Http;
 
 Schedule::call(function () {
-    $client = Http::get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true');
-    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true');
-    $data = json_decode($response->getBody(), true);
-    $change = $data['bitcoin']['usd_24h_change'];
+    $response = Http::get('https://api.alternative.me/fng/?limit=2');
+    $data = $response->json();
+    $change = $data['data'][0]['value'] - $data['data'][1]['value'];
+    $current = $data['data'][0]['value'];
     Notification::create([
-        'title' => "Bitcoin ist um " . round($change, 3) . ($change >= 0 ? ' gestiegen' : ' gefallen'),
-        'message' => "Test try",
-        'type' => "mood-empty",
+        'title' => "Bitcoin Sentiment ist um " . $change . ($change >= 0 ? ' gestiegen' : ' gefallen'),
+        'message' => "Der Bitcoin Sentiment Index ist gerade auf " . $current . ".",
+        'icon' => "mood-empty",
         'status' => "read"
     ]);
-})->everyMinute();
+})->daily(); //At("16:33");
 
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
