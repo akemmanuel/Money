@@ -2,17 +2,17 @@
     @if($accounts->isNotEmpty())
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             @foreach($accounts as $account)
-            <div class="flex items-end justify-between rounded-lg border border-gray-100 bg-white p-6">
+            <div class="flex items-end justify-between rounded-lg bg-base-content/20 p-6">
                 <div class="flex items-center gap-4">
                     <div class="relative inline-flex">
-                        <div class="bg-neutral text-neutral-content w-10 rounded-full p-2">
+                        <div class="bg-neutral text-white w-10 rounded-full p-2">
                             <span class="icon-[tabler--cash-banknote] size-full"></span>
                         </div>
                     </div>
 
                 <div>
-                    <p class="text-sm text-gray-500">{{ $account->name }}</p>
-                    <p class="text-2xl font-medium text-gray-900">{{ $account->balance }}</p>
+                    <p class="text-sm">{{ $account->name }}</p>
+                    <p class="text-2xl font-medium">{{ $account->balance }}</p>
                 </div>
                 </div>
 

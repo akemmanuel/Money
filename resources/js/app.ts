@@ -1,16 +1,20 @@
 import './bootstrap';
 import "flyonui/flyonui"
 
-import  ApexCharts from 'apexcharts';
-import { buildChart, buildTooltip } from "flyonui/dist/js/helper-apexcharts";
-import 'lodash/lodash.js';
-import 'apexcharts/dist/apexcharts.js';
-import 'apexcharts/dist/apexcharts.css';
 declare global {
   interface Window {
     ApexCharts: typeof ApexCharts;
   }
 }
+
+
+
+import  ApexCharts from 'apexcharts';
+import { buildChart, buildTooltip } from "flyonui/dist/js/helper-apexcharts";
+import 'lodash/lodash.js';
+import 'apexcharts/dist/apexcharts.js';
+import 'apexcharts/dist/apexcharts.css';
+
 
   window.addEventListener("livewire:navigated", () => {
     ;(function () {

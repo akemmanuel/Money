@@ -165,7 +165,7 @@
                     </div>
                     <div
                         class="vertical-scrollbar horizontal-scrollbar rounded-scrollbar text-base-content/80 max-h-56 p-0 overflow-auto w-60">
-                        <a class="flex gap-1 p-2 hover:bg-primary hover:text-white active:bg-base-content/20"
+                        <a class="flex gap-1 p-2 hover:bg-primary hover:text-white active:bg-primary"
                             href="#">
                             <span class="icon-[tabler--sparkles] size-5"></span>
                             <div>
@@ -194,7 +194,7 @@
                         <form method="POST" class="w-full" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit"
-                                class="flex gap-1 p-2 hover:bg-red-600 active:bg-base-content/20 w-full hover:text-white rounded-b-lg">
+                                class="flex gap-1 p-2 hover:bg-red-600 active:bg-red-500 w-full hover:text-white rounded-b-lg">
                                 <span class="icon-[tabler--logout] size-5"></span>
                                 <div>
                                     <h6 class="truncate text-base font-semibold">Abmelden</h6>
@@ -300,7 +300,7 @@
                 </li>
 
             </ul>
-            <div class="bg-base-200/30 border-base-content/10 mt-4 rounded-md border p-3">
+            <div class="bg-base-200/30 border-base-content/10 mt-4 rounded-md border p-3 m-3">
                 <div class="avatar placeholder">
                     <div class="bg-neutral text-neutral-content w-10 rounded-full">
                         <span class="icon-[tabler--crown] size-6 shrink-0"></span>
