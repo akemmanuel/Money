@@ -12,7 +12,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
-    
+    Route::view('/dashboard/bitcoin','dashboard.bitcoin')->name('bitcoin');
     Route::get('/dashboard/bank', function () {
         return view('dashboard.bank');
     })->name('bank');
@@ -20,10 +20,14 @@ Route::middleware([
     Route::get('/dashboard/analysis', function () {
         return view('dashboard.analysis');
     })->name('analysis');
-
+    
     Route::get('/dashboard/forecasts', function () {
         return view('dashboard.bank');
     })->name('forecasts');
+    
+    Route::get('/dashboard/learn', function () {
+        return view('dashboard.learn');
+    })->name('learn');
     
 
     Route::prefix('dashboard/investments')->group(function () {

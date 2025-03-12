@@ -2,7 +2,7 @@
     <div class="p-3">
         <div class="flex justify-between items-center mb-2">
             <div>
-                <h1 class="text-2xl font-semibold">Investmentfonds</h1>
+                <h1 class="text-2xl font-semibold text-base-content">Investmentfonds</h1>
             </div>
             <div>
                 <button class="btn btn-primary">Investmentfond hinzufügen</button>

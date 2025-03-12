@@ -146,7 +146,7 @@
             <div class="dropdown relative inline-flex [--auto-close:inside] [--offset:8] [--placement:bottom-end]">
                 <button id="dropdown-scrollable" type="button" class="dropdown-toggle flex items-center"
                     aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
-                    <div class=" w-10 h-10 bg-base-300 flex justify-center items-center rounded-full">
+                    <div class="text-base-content w-10 h-10 bg-base-300 flex justify-center items-center rounded-full">
                         <span>{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</span>
                     </div>
                 </button>
@@ -154,7 +154,7 @@
                     aria-orientation="vertical" aria-labelledby="dropdown-scrollable">
                     <div class="flex justify-center border-b-2 border-base-content/10 p-2">
                         <li class="flex gap-2">
-                            <div class=" w-10 h-10 bg-base-300 flex justify-center items-center rounded-full">
+                            <div class="text-base-content w-10 h-10 bg-base-300 flex justify-center items-center rounded-full">
                                 <span>{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</span>
                             </div>
                             <div>
@@ -209,9 +209,9 @@
 
     <aside id="overlay-navigation-example"
         class="overlay overlay-open:translate-x-0 drawer drawer-start hidden" tabindex="-1">
-        <div class="border-b-2 border-base-content/10 p-4 flex items-center justify-between">
-            <h1 class="font-semibold text-2xl">Menu</h1>
-            <button type="button" class="btn btn-text btn-circle btn-sm" aria-label="Close"
+        <div class="border-b-2 border-base-content/10 p-2 flex items-center justify-between">
+            <h1 class="font-semibold text-2xl text-base-content">Money</h1>
+            <button type="button" class="btn btn-text btn-circle" aria-label="Close"
             data-overlay="#overlay-navigation-example">
             <span class="icon-[tabler--x] size-4"></span>
             </button>
@@ -224,18 +224,31 @@
                         Dashboard
                     </a>
                 </li>
-
+                <li>
+                    <a href="{{ route('bitcoin') }}" wire:navigate class="menu-item font-semibold hover:bg-warning hover:text-black">
+                        <span class="icon-[tabler--currency-bitcoin] size-5"></span>
+                        Bitcoin
+                        {{-- <span class="badge badge-neutral p-0 pe-1 !gap-0"><span class="icon-[tabler--flame] size-4"></span>New</span> --}}
+                    </a>
+                </li>
                 <li>
                     <a href="{{ route('bank') }}" wire:navigate class="menu-item">
                         <span class="icon-[tabler--credit-card] size-5"></span>
-                        Konten
+                        Bank Accounts
                     </a>
                 </li>
+                {{-- <li>
+                    <a href="{{ route('bank') }}" wire:navigate class="menu-item">
+                        <span class="icon-[tabler--currency-ethereum] size-5"></span>
+                        Cryptocurrencies
+                        {{-- <span class="badge badge-neutral p-0 pe-1 !gap-0"><span class="icon-[tabler--flame] size-4"></span>New</span>
+                    </a>
+                </li> --}}
                 <li class="nested-collapse-wrapper">
                     <a class="collapse-toggle nested-collapse menu-item" id="front-page-collapse"
                         data-collapse="#front-page-collapse-menu">
                         <span class="icon-[tabler--trending-up] size-5"></span>
-                        Investitionen
+                        Investments
                         <span class="icon-[tabler--chevron-down] collapse-icon size-4"></span>
                     </a>
                     <div id="front-page-collapse-menu"
@@ -244,25 +257,25 @@
                         <div>
                             <a href="{{ route('stocks') }}" wire:navigate class="menu-item">
                                 <span class="icon-[tabler--chart-line] size-5"></span>
-                                Aktien
+                                Stocks
                             </a>
                         </div>
                         <div>
                             <a href="{{ route('bonds') }}" wire:navigate class="menu-item">
                                 <span class="icon-[tabler--coin] size-5"></span>
-                                Anleihen
+                                Bonds
                             </a>
                         </div>
                         <div>
                             <a href="{{ route('real-estate') }}" wire:navigate class="menu-item">
                                 <span class="icon-[tabler--building] size-5"></span>
-                                Immobilien
+                                Real Estate
                             </a>
                         </div>
                         <div>
                             <a href="{{ route('mutual-funds') }}" wire:navigate class="menu-item">
                                 <span class="icon-[tabler--chart-pie] size-5"></span>
-                                Investmentfonds
+                                Mutual Funds
                             </a>
                         </div>
                         <div>
@@ -274,13 +287,13 @@
                         <div>
                             <a href="{{ route('commodities') }}" wire:navigate class="menu-item">
                                 <span class="icon-[tabler--barrel] size-5"></span>
-                                Rohstoffe
+                                Commodities
                             </a>
                         </div>
                         <div>
                             <a href="{{ route('crypto') }}" wire:navigate class="menu-item">
-                                <span class="icon-[tabler--currency-bitcoin] size-5"></span>
-                                Cryptowährungen
+                                <span class="icon-[tabler--currency-ethereum] size-5"></span>
+                                Cryptocurrencies
                             </a>
                         </div>
                     </div>
@@ -289,16 +302,22 @@
                 <li>
                     <a href="{{ route('forecasts') }}" class="menu-item">
                         <span class="icon-[tabler--cpu] size-5"></span>
-                        Prognosen
+                        Forecasts
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('analysis') }}" class="menu-item">
                       <span class="icon-[tabler--chart-donut] size-5"></span>
-                      Analysis
+                        Analysis
                     </a>
                 </li>
-
+                <div class="divider text-base-content/50 py-6 after:border-0">More</div>
+                <li>
+                    <a href="{{ route('learn') }}" class="menu-item">
+                      <span class="icon-[tabler--book] size-5"></span>
+                      Learn <span class="badge badge-soft badge-error">New</span>
+                    </a>
+                </li>
             </ul>
             <div class="bg-base-200/30 border-base-content/10 mt-4 rounded-md border p-3 m-3">
                 <div class="avatar placeholder">

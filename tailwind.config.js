@@ -11,10 +11,11 @@ export default {
         './node_modules/flyonui/dist/js/helper-apexcharts.js', // Include helper JS file with tooltip functions and initialization code
     ],
     plugins: [
-        require('flyonui'), 
+        require('flyonui'),
         require('flyonui/plugin')
     ],
     flyonui: {
-        vendors: true // Enable vendor-specific CSS generation
-      }
+        vendors: true,// Enable vendor-specific CSS gener
+        themes: ['light'] // Generate CSS for dark and light themes
+    }
 };
