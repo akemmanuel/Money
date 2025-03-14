@@ -19,7 +19,7 @@
         <p class="text-2xl mb-4">Bitcoin bietet zahlreiche Vorteile gegenüber traditionellen Fiat-Währungen wie dem Euro. Als dezentrale Währung ermöglicht Bitcoin den direkten Austausch von Werten ohne Zwischenhändler, was Transaktionen schneller und kostengünstiger macht. Die begrenzte Gesamtmenge von 21 Millionen Bitcoins schützt vor Inflation, ein Problem, das viele Fiat-Währungen plagt. Zudem sorgt die transparente Blockchain-Technologie für Sicherheit und Vertrauen in Transaktionen. Bitcoin ist nicht nur eine Lösung für finanzielle Inklusion, sondern auch ein stabiler Wertspeicher, der in wirtschaftlich unsicheren Zeiten an Bedeutung gewinnt. Während Fiat-Währungen oft von politischen Entscheidungen beeinflusst werden, bleibt Bitcoin unabhängig und immun gegen solche Instabilitäten. Mit der wachsenden globalen Akzeptanz wird Bitcoin zunehmend zu einer relevanten Währung im internationalen Handel und bietet innovative Möglichkeiten durch Smart Contracts. In einer Welt, die sich schnell verändert, stellt Bitcoin eine zukunftsorientierte Alternative zu traditionellen Währungen dar.</p>
 
 
-        <div class="alert alert-success flex items-center gap-4" role="alert">
+        <div class="alert alert-warning flex items-center gap-4" role="alert">
             <span class="icon-[tabler--circle-check] size-6"></span>
             <p><span class="text-lg font-semibold">Yuhu!</span> Buy your first Bitcoin now!</p>
             </p>

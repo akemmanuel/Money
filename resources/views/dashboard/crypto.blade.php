@@ -5,7 +5,7 @@
                 <h1 class="text-2xl font-semibold text-base-content">Kryptowährungen</h1>
             </div>
             <div>
-                <a class="btn btn-primary" href="{{ route("create_crypto") }}">Cryptoasset hinzufügen</a>
+                <a class="btn btn-warning" href="{{ route("create_crypto") }}">Cryptoasset hinzufügen</a>
             </div>
         </div>
         <livewire:crypto lazy />

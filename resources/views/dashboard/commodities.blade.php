@@ -5,7 +5,7 @@
                 <h1 class="text-2xl font-semibold text-base-content">Rohstoffe</h1>
             </div>
             <div>
-                <button class="btn btn-primary">Rohstoff hinzufügen</button>
+                <button class="btn btn-warning">Rohstoff hinzufügen</button>
             </div>
         </div>
         <p class="mb-3">Noch keine Rohstoffe hinterlegt</p>

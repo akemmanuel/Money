@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="navbar-center flex items-center">
-            <a class="link text-base-content link-neutral text-xl font-semibold no-underline" href="#">
+            <a class="link text-base-content link-warning text-xl font-semibold no-underline" href="#">
                 <span>Money</span>
             </a>
         </div>
@@ -41,7 +41,7 @@
                     class="dropdown-toggle btn btn-text btn-circle dropdown-open:bg-base-content/10 size-10"
                     aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
                     <div class="indicator">
-                        <span class="indicator-item bg-error size-2 rounded-full"></span>
+                        <span class="indicator-item bg-warning size-2 rounded-full"></span>
                         <span class="icon-[tabler--bell] text-base-content size-[1.375rem]"></span>
                     </div>
                 </button>
@@ -132,12 +132,12 @@
                     </a>
                 </div>
             </div>
-
+{{-- 
             <label class="swap swap-rotate btn btn-sm btn-text btn-circle size-[2.125rem]">
                 <input type="checkbox" value="dark" class="theme-controller" />
                 <span class="swap-off icon-[tabler--sun] size-7"></span>
                 <span class="swap-on icon-[tabler--moon] size-7"></span>
-            </label>
+            </label> --}}
             <label class="swap swap-rotate btn btn-sm btn-text btn-circle size-[2.125rem]">
                 <input type="checkbox" />
                 <span class="swap-off icon-[tabler--currency-euro] size-7"></span>
@@ -165,7 +165,7 @@
                     </div>
                     <div
                         class="vertical-scrollbar horizontal-scrollbar rounded-scrollbar text-base-content/80 max-h-56 p-0 overflow-auto w-60">
-                        <a class="flex gap-1 p-2 hover:bg-primary hover:text-white active:bg-primary"
+                        <a class="flex gap-1 p-2 hover:bg-warning hover:text-white active:bg-warning"
                             href="#">
                             <span class="icon-[tabler--sparkles] size-5"></span>
                             <div>
@@ -315,7 +315,7 @@
                 <li>
                     <a href="{{ route('learn') }}" class="menu-item">
                       <span class="icon-[tabler--book] size-5"></span>
-                      Learn <span class="badge badge-soft badge-error">New</span>
+                      Learn <span class="badge badge-soft badge-warning">New</span>
                     </a>
                 </li>
             </ul>
@@ -327,7 +327,7 @@
                 </div>
                 <h5 class="text-base-content mt-4 text-lg font-semibold">Upgrade to Pro</h5>
                 <p class="text-base-content/80 text-xs">Reminder, extra prjects, advanced search and more</p>
-                <button class="btn btn-primary btn-block mt-2">Upgrade Now</button>
+                <button class="btn btn-warning btn-block mt-2">Upgrade Now</button>
             </div>
         </div>
     </aside>

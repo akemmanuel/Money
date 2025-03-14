@@ -9,3 +9,7 @@
 .menu-item {
     @apply flex items-center p-2 gap-2 hover:bg-base-content/10 active:bg-base-content/20 text-base-content;
 }
+
+.btn {
+    @apply shadow-none;
+}
