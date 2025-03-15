@@ -206,7 +206,7 @@ document.addEventListener('livewire:navigated', () => {
             mode,
             valuePrefix: '',
             hasTextLabel: true,
-            markerExtClasses: 'bg-warning',
+            markerExtClasses: 'bg-primary',
             wrapperExtClasses: ''
           })
         }

@@ -5,7 +5,7 @@
                 <h1 class="text-2xl font-semibold text-base-content">Bitcoin</h1>
             </div>
             <div>
-                <a class="btn btn-warning" href="{{ route("create_crypto") }}">Add bitcoin</a>
+                <a class="btn btn-primary" href="{{ route("create_crypto") }}">Add bitcoin</a>
             </div>
         </div>
         <livewire:bitcoin lazy />

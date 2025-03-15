@@ -27,7 +27,7 @@
         @error('balance') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
     </div>
     <div class="flex justify-end">
-        <button type="submit" class="btn btn-warning">Konto erstellen</button>
+        <button type="submit" class="btn btn-primary">Konto erstellen</button>
     </div>
 </form>
 </div>

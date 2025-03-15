@@ -85,13 +85,13 @@
             </div>
         </div>
     @else
-        <div class="alert alert-soft alert-warning" role="alert">
+        <div class="alert alert-soft alert-primary" role="alert">
             <div class="flex items-center gap-2">
                 <span class="icon-[tabler--alert-triangle] size-6"></span>
                 <span class="text-lg font-semibold">Noch keine Cryptoassets hinterlegt</span>
             </div>
             <div class="mt-4 flex gap-2">
-                <a href="{{ route("create_crypto") }}" class="btn btn-warning">Jetzt Cryptoassets hinterlegen</a>
+                <a href="{{ route("create_crypto") }}" class="btn btn-primary">Jetzt Cryptoassets hinterlegen</a>
             </div>
         </div>
     @endif

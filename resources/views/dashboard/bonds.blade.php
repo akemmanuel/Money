@@ -5,7 +5,7 @@
                 <h1 class="text-2xl font-semibold text-base-content">Anleihen</h1>
             </div>
             <div>
-                <button class="btn btn-warning">Anleihe hinzufügen</button>
+                <button class="btn btn-primary">Anleihe hinzufügen</button>
             </div>
         </div>
         <p class="mb-3">Noch keine Anleihen</p>

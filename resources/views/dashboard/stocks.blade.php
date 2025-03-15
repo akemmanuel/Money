@@ -5,7 +5,7 @@
                 <h1 class="text-2xl font-semibold text-base-content">Aktien</h1>
             </div>
             <div>
-                <button class="btn btn-warning">Aktie hinzufügen</button>
+                <button class="btn btn-primary">Aktie hinzufügen</button>
             </div>
         </div>
         <p class="mb-3">Noch keine Aktien</p>

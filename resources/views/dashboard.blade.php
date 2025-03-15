@@ -11,69 +11,69 @@
                 <h1 class="text-2xl font-semibold mb-2 text-base-content">Dashboard</h1>
             </div>
             <div class="flex items-center gap-3 flex-wrap">
-                <button class="btn btn-warning btn-soft btn-lg">
+                <button class="btn btn-primary btn-soft btn-lg">
                     <span class="icon-[tabler--share] size-5"></span> Teilen
                 </button>
-                <button class="btn btn-warning btn-soft btn-lg">
+                <button class="btn btn-primary btn-soft btn-lg">
                     <span class="icon-[tabler--circle-plus] size-5"></span> Hinzufügen
                 </button>
-                <nav class="tabs bg-base-200 rounded-btn w-fit space-x-1 overflow-x-auto p-1 rtl:space-x-reverse"
+                <nav class="tabs bg-base-200 rounded-btn w-fit space-x-1 overflow-x-auto p-1 rtl:space-x-reverse flex-wrap"
                     aria-label="Tabs" role="tablist" aria-orientation="horizontal">
                     <button type="button"
-                        class="btn btn-text active-tab:bg-warning active-tab:text-white hover:text-warning active hover:bg-transparent"
+                        class="btn btn-text active-tab:bg-primary active-tab:text-white hover:text-primary active hover:bg-transparent"
                         id="tabs-segment-item-1" data-tab="#tabs-segment-1" aria-controls="tabs-segment-1"
                         role="tab" aria-selected="true">
                         1W
                     </button>
                     <button type="button"
-                        class="btn btn-text active-tab:bg-warning active-tab:text-white hover:text-warning hover:bg-transparent"
+                        class="btn btn-text active-tab:bg-primary active-tab:text-white hover:text-primary hover:bg-transparent"
                         id="tabs-segment-item-2" data-tab="#tabs-segment-2" aria-controls="tabs-segment-2"
                         role="tab" aria-selected="false">
                         1M
                     </button>
                     <button type="button"
-                        class="btn btn-text active-tab:bg-warning active-tab:text-white hover:text-warning hover:bg-transparent"
+                        class="btn btn-text active-tab:bg-primary active-tab:text-white hover:text-primary hover:bg-transparent"
                         id="tabs-segment-item-3" data-tab="#tabs-segment-3" aria-controls="tabs-segment-3"
                         role="tab" aria-selected="false">
                         YTD
                     </button>
                     <button type="button"
-                        class="btn btn-text active-tab:bg-warning active-tab:text-white hover:text-warning hover:bg-transparent"
+                        class="btn btn-text active-tab:bg-primary active-tab:text-white hover:text-primary hover:bg-transparent"
                         id="tabs-segment-item-4" data-tab="#tabs-segment-4" aria-controls="tabs-segment-4"
                         role="tab" aria-selected="false">
                         1J
                     </button>
                     <div class="tooltip">
                         <button type="button"
-                            class="btn blur-sm btn-text active-tab:bg-warning active-tab:text-white hover:text-warning hover:bg-transparent"
+                            class="btn blur-sm btn-text active-tab:bg-primary active-tab:text-white hover:text-primary hover:bg-transparent"
                             id="tabs-segment-item-5" data-tab="#tabs-segment-5" aria-controls="tabs-segment-5"
                             role="tab" aria-selected="false" disabled>
                             3J
                         </button>
                         <span class="tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible" role="tooltip">
-                            <span class="tooltip-body bg-warning">PLUS</span>
+                            <span class="tooltip-body bg-primary">PLUS</span>
                         </span>
                     </div>
                     <div class="tooltip">
                         <button type="button"
-                            class="btn blur-sm btn-text active-tab:bg-warning active-tab:text-white hover:text-warning hover:bg-transparent"
+                            class="btn blur-sm btn-text active-tab:bg-primary active-tab:text-white hover:text-primary hover:bg-transparent"
                             id="tabs-segment-item-6" data-tab="#tabs-segment-6" aria-controls="tabs-segment-6"
                             role="tab" aria-selected="false" disabled>
                             5J
                         </button>
                         <span class="tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible" role="tooltip">
-                            <span class="tooltip-body bg-warning">PLUS</span>
+                            <span class="tooltip-body bg-primary">PLUS</span>
                         </span>
                     </div>
                     <div class="tooltip">
                         <button type="button"
-                            class="btn blur-sm btn-text active-tab:bg-warning active-tab:text-white hover:text-warning hover:bg-transparent"
+                            class="btn blur-sm btn-text active-tab:bg-primary active-tab:text-white hover:text-primary hover:bg-transparent"
                             id="tabs-segment-item-7" data-tab="#tabs-segment-7" aria-controls="tabs-segment-7"
                             role="tab" aria-selected="false" disabled>
                             MAX
                         </button>
                         <span class="tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible" role="tooltip">
-                            <span class="tooltip-body bg-warning">PLUS</span>
+                            <span class="tooltip-body bg-primary">PLUS</span>
                         </span>
                     </div>
                 </nav>

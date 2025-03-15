@@ -18,7 +18,7 @@
 
         @error('name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
     </div>
-    <div class="w-96">
+    <div>
         <label class="label label-text" for="amount">Betrag</label>
         <input type="number" placeholder="100" class="input" id="balance" wire:model="balance" step="0.00000000000000001" />
         <span class="label">
@@ -26,7 +26,7 @@
         </span>
         @error('balance') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
     </div>
-    <div class="w-96">
+    <div>
         <label class="label label-text" for="amount">Währung</label>
         <input type="text" placeholder="BTC" class="input" id="currency" wire:model="currency" />
         <span class="label">
@@ -35,7 +35,7 @@
         @error('balance') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
     </div>
     <div class="flex justify-end">
-        <button type="submit" class="btn btn-warning">Konto erstellen</button>
+        <button type="submit" class="btn btn-primary">Konto erstellen</button>
     </div>
 </form>
 </div>

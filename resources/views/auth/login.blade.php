@@ -36,7 +36,7 @@
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
-                <button class="btn btn-warning">Login</button>
+                <button class="btn btn-primary">Login</button>
 
             </div>
         </form>

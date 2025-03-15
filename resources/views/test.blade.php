@@ -3271,7 +3271,7 @@
           <td class="px-6 py-3 whitespace-nowrap first:pl-0">
             <div class="flex items-center col-span-2">
               <p
-                class="bg-warning-50 text-theme-xs text-warning-600 dark:bg-warning-500/15 rounded-full px-2 py-0.5 font-medium dark:text-orange-400"
+                class="bg-primary-50 text-theme-xs text-primary-600 dark:bg-primary-500/15 rounded-full px-2 py-0.5 font-medium dark:text-orange-400"
               >
                 Pending
               </p>

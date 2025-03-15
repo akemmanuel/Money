@@ -11,5 +11,5 @@
 }
 
 .btn {
-    @apply shadow-none;
+    @apply !shadow-none;
 }
