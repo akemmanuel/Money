@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Livewire\Bitcoin;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -87,5 +88,10 @@ class User extends Authenticatable
     public function cryptoAccounts(): HasMany
     {
         return $this->hasMany(CryptoAccount::class);
+    }
+
+    public function bitcoinAccounts(): HasMany
+    {
+        return $this->hasMany(BitcoinAccount::class);
     }
 }

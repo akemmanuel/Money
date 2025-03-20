@@ -55,6 +55,9 @@ Route::middleware([
     });
 
     Route::prefix('dashboard/create')->group(function () {
+        Route::get('/bitcoin', function () {
+            return view('dashboard.create.bitcoin-account');
+        })->name('create_bitcoin_account');
         Route::get('/bank', function () {
             return view('dashboard.create.bank-account');
         })->name('create_bank_account');

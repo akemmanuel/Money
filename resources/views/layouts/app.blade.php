@@ -22,7 +22,7 @@
         <div class="navbar-start">
             <div class="dropdown relative inline-flex [--auto-close:inside] [--offset:9]">
                 <button id="dropdown-name" type="button"
-                    class="dropdown-toggle btn btn-text btn-circle dropdown-open:bg-base-content/10 dropdown-open:text-base-content"
+                    class="dropdown-toggle btn btn-text dropdown-open:bg-base-content/10 dropdown-open:text-base-content"
                     aria-haspopup="dialog" aria-expanded="false" aria-controls="overlay-navigation-example"
                     data-overlay="#overlay-navigation-example">
                     <span class="icon-[tabler--menu-2] size-5"></span>
@@ -31,14 +31,14 @@
             </div>
         </div>
         <div class="navbar-center flex items-center">
-            <a class="link text-base-content link-primary text-xl font-semibold no-underline" href="#">
+            <a class="link text-base-content text-xl font-semibold no-underline" href="#">
                 <span>Money</span>
             </a>
         </div>
         <div class="navbar-end items-center gap-4">
             <div class="dropdown relative inline-flex [--auto-close:inside] [--offset:8] [--placement:bottom-end]">
                 <button id="dropdown-scrollable" type="button"
-                    class="dropdown-toggle btn btn-text btn-circle dropdown-open:bg-base-content/10 size-10"
+                    class="dropdown-toggle btn btn-text dropdown-open:bg-base-content/10 size-10"
                     aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
                     <div class="indicator">
                         <span class="indicator-item bg-primary size-2 rounded-full"></span>
@@ -133,12 +133,12 @@
                 </div>
             </div>
 {{-- 
-            <label class="swap swap-rotate btn btn-sm btn-text btn-circle size-[2.125rem]">
+            <label class="swap swap-rotate btn btn-sm btn-text size-[2.125rem]">
                 <input type="checkbox" value="dark" class="theme-controller" />
                 <span class="swap-off icon-[tabler--sun] size-7"></span>
                 <span class="swap-on icon-[tabler--moon] size-7"></span>
             </label> --}}
-            <label class="swap swap-rotate btn btn-sm btn-text btn-circle size-10">
+            <label class="swap swap-rotate btn btn-sm btn-text size-10">
                 <input type="checkbox" />
                 <span class="swap-off icon-[tabler--currency-euro] size-7"></span>
                 <span class="swap-on icon-[tabler--currency-dollar] size-7"></span>
@@ -211,7 +211,7 @@
         class="overlay overlay-open:translate-x-0 drawer drawer-start hidden overflow-y-auto" tabindex="-1">
         <div class="border-b-2 border-base-content/10 p-2 flex items-center justify-between">
             <h1 class="font-semibold text-2xl text-base-content">Money</h1>
-            <button type="button" class="btn btn-text btn-circle" aria-label="Close"
+            <button type="button" class="btn btn-text" aria-label="Close"
             data-overlay="#overlay-navigation-example">
             <span class="icon-[tabler--x] size-4"></span>
             </button>
