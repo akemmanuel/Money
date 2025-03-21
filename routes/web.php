@@ -11,6 +11,12 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
+    Route::get('/dashboard/settings', function () {
+        return view('dashboard.settings');
+    })->name('settings');
+    Route::get('/dashboard/wallet', function () {
+        return view('dashboard.bitcoin');
+    })->name('wallet');
     Route::view('/dashboard', 'dashboard')->name('dashboard');
     Route::view('/dashboard/bitcoin','dashboard.bitcoin')->name('bitcoin');
     Route::get('/dashboard/bank', function () {

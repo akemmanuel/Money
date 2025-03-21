@@ -179,7 +179,7 @@
                                 <h6 class="truncate text-base font-semibold">Mein Profil</h6>
                             </div>
                         </a>
-                        <a class="flex gap-1 p-2 hover:bg-base-content/10 active:bg-base-content/20" href="#">
+                        <a class="flex gap-1 p-2 hover:bg-base-content/10 active:bg-base-content/20" href="{{ route("settings") }}">
                             <span class="icon-[tabler--settings] size-5"></span>
                             <div>
                                 <h6 class="truncate text-base font-semibold">Einstellungen</h6>
@@ -222,6 +222,13 @@
                     <a href="{{ route('dashboard') }}" wire:navigate class="menu-item">
                         <span class="icon-[tabler--home] size-5"></span>
                         Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('wallet') }}" wire:navigate class="menu-item font-semibold hover:bg-primary hover:text-black">
+                        <span class="icon-[tabler--wallet] size-5"></span>
+                        Wallet
+                        {{-- <span class="badge badge-neutral p-0 pe-1 !gap-0"><span class="icon-[tabler--flame] size-4"></span>New</span> --}}
                     </a>
                 </li>
                 <li>

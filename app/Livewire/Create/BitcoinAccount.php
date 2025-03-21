@@ -2,13 +2,14 @@
 
 namespace App\Livewire\Create;
 
-use App\Models\CryptoPrices;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class BitcoinAccount extends Component
 {
     public $name;
+    public $description;
+    public $currency;
     public $balance;
 
     public function render()
@@ -19,15 +20,12 @@ class BitcoinAccount extends Component
     public function create() {
         $validated = $this->validate([
             'name' => 'required|string|max:255',
+            'description'=> 'nullable|string|max:255',
             'balance' => 'required|numeric',
+            'currency'=> 'required|string|max:100',
         ]);
-        $cryptoPrices = new CryptoPrices();
 
-        $bitcoin_usd = $cryptoPrices->getPriceUsd("BTC");
-        $bitcoin_eur = $cryptoPrices->getPriceEur("BTC");
-        // Konto für den authentifizierten Benutzer erstellen
-        Auth::user()->bitcoinAccounts()->create($validated);
-        // Transaktion erstellen, um den Anfangswert festzulegen
+        Auth::user()->accounts()->create($validated);
         Auth::user()->bitcoinAccounts()->latest()->first()->transactions()->create([
             'amount' => $this->balance,
             'type' => 'increase',

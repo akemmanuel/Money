@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('description')->nullable();
             $table->float('balance');
             $table->string('currency');
+            $table->enum('type_of_currency', ['fiats', 'crypto', 'stocks', 'commodities', 'etfs']);
             $table->timestamps();
         });
     }

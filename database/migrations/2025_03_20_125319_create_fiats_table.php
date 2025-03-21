@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('crypto_transactions', function (Blueprint $table) {
+        Schema::create('fiats', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('account_id');
-            $table->enum('type', ['credit', 'debit']);
-            $table->decimal('amount', 15, 2);
-            $table->text('description')->nullable();
+            $table->string('currency'); # one usd dollar in this currency
+            $table->float('amount'); # one usd dollar in this currency
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('crypto_transactions');
+        Schema::dropIfExists('fiats');
     }
 };

@@ -79,19 +79,8 @@ class User extends Authenticatable
             ? Attribute::get(fn () => $this->profile_photo_path)
             : $this->getPhotoUrl();
     }
-
-    public function bankAccounts(): HasMany
+    public function accounts(): HasMany
     {
-        return $this->hasMany(BankAccount::class);
-    }
-
-    public function cryptoAccounts(): HasMany
-    {
-        return $this->hasMany(CryptoAccount::class);
-    }
-
-    public function bitcoinAccounts(): HasMany
-    {
-        return $this->hasMany(BitcoinAccount::class);
+        return $this->hasMany(Account::class);
     }
 }

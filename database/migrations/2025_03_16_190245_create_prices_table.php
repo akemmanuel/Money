@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('prices', function (Blueprint $table) {
             $table->id();
             $table->string('currency');
+            $table->enum('type', ['fiats', 'crypto', 'stocks', 'commodities', 'etfs'])->default('');
             $table->float('usd');
             $table->timestamps();
         });

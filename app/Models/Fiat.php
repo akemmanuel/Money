@@ -3,24 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use \Exception;
 
-class CryptoPrices extends Model
+class Fiat extends Model
 {
-    protected $table = 'crypto_prices';
-
     protected $fillable = [
         'currency',
-        'price_usd',
-        'price_eur',
+        'amount',
     ];
 
-    public function scopeCurrency($query, $currency)
-    {
-        return $query->where('currency', $currency);
-    }
-
-    public function getPriceUsd($currency)
+    public function getPrice($currency)
     {
         $price = $this->currency($currency)->latest()->first();
         if ($price && $price->updated_at > now()->subMinutes(2)) {

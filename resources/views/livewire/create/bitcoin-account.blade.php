@@ -1,7 +1,7 @@
 <div class="p-3">
     <div class="flex justify-between items-center mb-2">
         <div>
-            <h1 class="text-2xl font-semibold text-base-content">Add bitcoin account</h1>
+            <h1 class="text-2xl font-semibold text-base-content">Add account</h1>
         </div>
     </div>
     @if (session()->has('message'))
@@ -11,33 +11,66 @@
     @endif
     <div class="" data-theme="mytheme">
         <form wire:submit.prevent="create">
-            <div class="flex flex-col sm:flex-row gap-4 mb-6">
+            <div>
                 <div class="flex-grow">
-                    <label class="label label-text font-medium" for="name">Name</label>
+                    <label class="label label-text font-medium" for="name">Name <span class="text-red-600">*</span></label>
                     <input
                         type="text"
-                        placeholder="Name eingeben"
-                        class="input input-bordered w-full focus:input-primary"
+                        placeholder="Enter name"
+                        class="input"
                         id="name"
                         wire:model="name"
+                        maxlength="255"
+                        required
                     />
                     @error('name')
                         <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="flex-grow">
+                    <label class="label label-text font-medium" for="name">Description</label>
+                    <textarea
+                        placeholder="Enter a description"
+                        class="textarea input-bordered w-full focus:input-primary"
+                        id="name"
+                        wire:model="description"
+                        maxlength="255"
+                    ></textarea>
+                    @error('name')
+                        <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="flex-grow">
                     <label class="label label-text font-medium" for="balance">Current Balance</label>
-                    <div class="input-group">
+                    <div class="join">
                         <input
                             type="number"
                             placeholder="0.000000000"
-                            class="input grow input-bordered w-full focus:input-primary"
+                            class="input join-item"
                             id="balance"
                             wire:model="balance"
                             step="0.000000001"
+                            required
                         />
-                        <label class="sr-only" for="balance">Enter amount</label>
-                        <span class="input-group-text">BTC</span>
+                        <select
+                            class="select join-item"
+                            wire:model="currency"
+                            required
+                        >
+                            <option disabled>Select type of currency</option>
+                            <option value="fiat">Fiat</option>
+                            <option value="crypto">Cryptocurrency</option>
+                            <option value="stocks">Stocks</option>
+                            <option value="commodities">Commodities</option>
+                            <option value="etfs">ETFs</option>
+                        </select>
+                        <input
+                            type="text"
+                            placeholder="Currency: e. g. BTC"
+                            class="input join-item"
+                            wire:model="currency"
+                            required
+                        />
                     </div>
                     @error('balance')
                         <span class="text-red-500 text-sm mt-1">{{ $message }}</span>

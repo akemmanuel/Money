@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('crypto_prices', function (Blueprint $table) {
-            $table->id();
-            $table->string('currency');
-            
-            $table->decimal('price_usd', 15, 8);
-            $table->decimal('price_eur', 15, 8);
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('display_currency')->default('USD');
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('crypto_prices');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('display_currency');
+        });
     }
 };
