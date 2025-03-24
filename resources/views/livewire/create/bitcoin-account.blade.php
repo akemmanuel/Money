@@ -54,11 +54,11 @@
                         />
                         <select
                             class="select join-item"
-                            wire:model="currency"
+                            wire:model="type_of_currency"
                             required
                         >
-                            <option disabled>Select type of currency</option>
-                            <option value="fiat">Fiat</option>
+                            <option value="" disabled>Select type of currency</option>
+                            <option value="fiats">Fiats</option>
                             <option value="crypto">Cryptocurrency</option>
                             <option value="stocks">Stocks</option>
                             <option value="commodities">Commodities</option>

@@ -4,12 +4,14 @@ namespace App\Livewire\Create;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use App\Models\Price;
 
 class BitcoinAccount extends Component
 {
     public $name;
     public $description;
     public $currency;
+    public $type_of_currency;
     public $balance;
 
     public function render()
@@ -23,20 +25,22 @@ class BitcoinAccount extends Component
             'description'=> 'nullable|string|max:255',
             'balance' => 'required|numeric',
             'currency'=> 'required|string|max:100',
+            'type_of_currency'=> 'required',
         ]);
+
 
         Auth::user()->accounts()->create($validated);
-        Auth::user()->bitcoinAccounts()->latest()->first()->transactions()->create([
+        Auth::user()->accounts()->latest()->first()->transactions()->create([
             'amount' => $this->balance,
             'type' => 'increase',
-            'usd' => $this->balance * $bitcoin_usd,
-            'eur' => $this->balance * $bitcoin_eur,
+            'title' => 'Initial deposit',
+            'description' => 'Initial balance deposit for account ' . $this->name,
         ]);
+        $priceModel = new Price();
+        $priceUsd = $priceModel->getPriceUsd($this->currency, $this->type_of_currency);
+        dd($priceUsd);
+        session()->flash('message', 'Bitcoin account created. Current price in USD: ' . $priceUsd);
 
-        // Erfolgsmeldung
-        session()->flash('message', 'Bitcoin account created.');
-
-        // Eingabefelder zurücksetzen
-        $this->reset(['name', 'balance']);
+        $this->reset(['name', 'description', 'balance', 'currency']);
     }
 }
