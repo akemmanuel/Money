@@ -17,6 +17,9 @@ Route::middleware([
     Route::get('/dashboard/wallet', function () {
         return view('dashboard.bitcoin');
     })->name('wallet');
+    Route::get('/dashboard/wallet/edit/{id}', function ($id) {
+        return view('dashboard.wallet.edit', ['id' => $id]);
+    })->name('account.edit');
     Route::view('/dashboard', 'dashboard')->name('dashboard');
     Route::view('/dashboard/bitcoin','dashboard.bitcoin')->name('bitcoin');
     Route::get('/dashboard/bank', function () {
