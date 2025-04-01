@@ -63,6 +63,8 @@
                             <option value="stocks">Stocks</option>
                             <option value="commodities">Commodities</option>
                             <option value="etfs">ETFs</option>
+                            <option value="fiats">Fiats</option>
+
                         </select>
                         <input
                             type="text"

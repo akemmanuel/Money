@@ -231,19 +231,6 @@
                         {{-- <span class="badge badge-neutral p-0 pe-1 !gap-0"><span class="icon-[tabler--flame] size-4"></span>New</span> --}}
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('bitcoin') }}" wire:navigate class="menu-item font-semibold hover:bg-primary hover:text-black">
-                        <span class="icon-[tabler--currency-bitcoin] size-5"></span>
-                        Bitcoin
-                        {{-- <span class="badge badge-neutral p-0 pe-1 !gap-0"><span class="icon-[tabler--flame] size-4"></span>New</span> --}}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('bank') }}" wire:navigate class="menu-item">
-                        <span class="icon-[tabler--credit-card] size-5"></span>
-                        Bank Accounts
-                    </a>
-                </li>
                 {{-- <li>
                     <a href="{{ route('bank') }}" wire:navigate class="menu-item">
                         <span class="icon-[tabler--currency-ethereum] size-5"></span>
@@ -262,12 +249,6 @@
                         class="collapse hidden w-auto overflow-hidden transition-[height] duration-300 border-s-2 ms-2 border-base-content/20 space-y-1 mt-1"
                         aria-labelledby="front-page-collapse">
                         <div>
-                            <a href="{{ route('stocks') }}" wire:navigate class="menu-item">
-                                <span class="icon-[tabler--chart-line] size-5"></span>
-                                Stocks
-                            </a>
-                        </div>
-                        <div>
                             <a href="{{ route('bonds') }}" wire:navigate class="menu-item">
                                 <span class="icon-[tabler--coin] size-5"></span>
                                 Bonds
@@ -283,24 +264,6 @@
                             <a href="{{ route('mutual-funds') }}" wire:navigate class="menu-item">
                                 <span class="icon-[tabler--chart-pie] size-5"></span>
                                 Mutual Funds
-                            </a>
-                        </div>
-                        <div>
-                            <a href="{{ route('etfs') }}" wire:navigate class="menu-item">
-                                <span class="icon-[tabler--chart-bar] size-5"></span>
-                                ETFs
-                            </a>
-                        </div>
-                        <div>
-                            <a href="{{ route('commodities') }}" wire:navigate class="menu-item">
-                                <span class="icon-[tabler--barrel] size-5"></span>
-                                Commodities
-                            </a>
-                        </div>
-                        <div>
-                            <a href="{{ route('crypto') }}" wire:navigate class="menu-item">
-                                <span class="icon-[tabler--currency-ethereum] size-5"></span>
-                                Cryptocurrencies
                             </a>
                         </div>
                     </div>

@@ -3,6 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Exceptions\Renderer\Exception;
+use Illuminate\Support\Facades\Log;
 
 class Price extends Model
 {
@@ -39,22 +40,27 @@ class Price extends Model
         $currencylower = strtolower($currency);
         $price = self::where('currency', $currency)->latest()->first();
         if ($price && $price->updated_at > now()->subDay()) {
+            Log::info("Returning cached fiat price for {$currency}: {$price->usd}");
             return $price->usd;
         }
         try {
             $response = file_get_contents("https://latest.currency-api.pages.dev/v1/currencies/" . $currencylower . ".json");
         } catch (Exception $e) {
+            Log::error("Error fetching fiat price for {$currency}: " . $e->getMessage());
             return "Error";
         }
         $data = json_decode($response, true);
         if (isset($data[$currencylower]["usd"])) {
             $this->create(
-                ['currency' => $currency, 'usd' => $data[$currencylower]["usd"], 'type' => 'fiats']
+            ['currency' => $currency, 'usd' => $data[$currencylower]["usd"], 'type' => 'fiats']
             );
+            Log::info("Fetched and stored fiat price for {$currency}: {$data[$currencylower]["usd"]}");
             return $data[$currencylower]["usd"];
         }
+        Log::warning("Fiat price for {$currency} not found in API response.");
         // return "Error getting current price";
         // TODO: Error handling    
+        return "Error";
     }
 
     public function getCryptosUsd($currency)
@@ -107,7 +113,7 @@ class Price extends Model
     {
         $price = self::where('currency', $currency)->latest()->first();
         if ($price && $price->updated_at > now()->subHour()) {
-            return $price->price_usd;
+            return $price->usd;
         }
         if (in_array($currency, ['XAU', 'XAG', 'HG', 'XPD'])) { 
             try {

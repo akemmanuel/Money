@@ -6,6 +6,7 @@ use App\Models\CryptoPrices;
 use App\Models\Fiat;
 use App\Models\Price;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class Bitcoin extends Component
