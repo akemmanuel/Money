@@ -11,7 +11,7 @@ class EditAccount extends Component
 {
     public $account;
     public $transactions;
-
+    public $transactionType;
     public $transactionName;
     public $transactionAmount;
     public $transactionDescription;
@@ -26,32 +26,28 @@ class EditAccount extends Component
         return view('livewire.edit-account');
     }
 
-    public function increase()
+    public function submitTransaction()
     {
+        $this->validate([
+            'transactionType' => 'required|in:increase,decrease',
+            'transactionAmount' => 'required|numeric|min:0',
+            'transactionName' => 'required|string|max:255',
+            'transactionDescription' => 'nullable|string|max:255',
+        ]);
         $this->account->transactions()->create([
             'amount' => $this->transactionAmount,
-            'type' => 'increase',
+            'type' => $this->transactionType,
             'title' => $this->transactionName,
             'description' => $this->transactionDescription,
         ]);
-        $this->account->balance = $this->account->balance + $this->transactionAmount;
+        $this->account->balance = $this->transactionType === 'increase'
+            ? $this->account->balance + $this->transactionAmount
+            : $this->account->balance - $this->transactionAmount;
         $this->account->save();
         session()->flash('message', 'Transaction created successfully.');
         $this->reset(['transactionName', 'transactionAmount', 'transactionDescription']);
     }
-    public function decrease()
-    {
-        $this->account->transactions()->create([
-            'amount' => $this->transactionAmount,
-            'type' => 'decrease',
-            'title' => $this->transactionName,
-            'description' => $this->transactionDescription,
-        ]);
-        $this->account->balance = $this->account->balance - $this->transactionAmount;
-        $this->account->save();
-        session()->flash('message', 'Transaction created successfully.');
-        $this->reset(['transactionName', 'transactionAmount', 'transactionDescription']);
-    }
+
     public function deleteTransaction($transactionId)
     {
         $transaction = $this->account->transactions()->find($transactionId);
