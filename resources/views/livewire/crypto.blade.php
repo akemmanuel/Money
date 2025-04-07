@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div
-                        class="inline-flex gap-2 rounded-sm {{ $asset->balance > 0 ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600' }} p-1">
+                        class="inline-flex gap-2 rounded-xs {{ $asset->balance > 0 ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600' }} p-1">
                         <span class="icon-[tabler--trending-up]"></span>
                         <span class="text-xs font-medium"> 21% </span>
                     </div>
@@ -41,7 +41,7 @@
             @endforeach
         </div>
         <div class="flex gap-2">
-            <div class="flex-grow">
+            <div class="grow">
                 <h2 class="text-xl font-semibold mt-6">Aktuelle Kurse USD</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
                     @foreach ($prices_usd as $currency => $price)
@@ -61,7 +61,7 @@
                     @endforeach
                 </div>
             </div>
-            <div class="flex-grow">
+            <div class="grow">
                 <h2 class="text-xl font-semibold mt-6">Aktuelle Kurse EUR</h2>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">

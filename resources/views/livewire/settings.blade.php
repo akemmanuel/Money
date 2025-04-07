@@ -1,5 +1,5 @@
 <div>
-    <h2 class="text-xl text-base-content font-bold">Currency</h2>
+    <h2 class="text-xl font-bold">Currency</h2>
     <div class="flex gap-2">
     <select class="select max-w-sm" wire:model="currency" wire:change="updateCurrency">
         <option value="EUR">Euro</option>

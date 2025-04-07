@@ -2,7 +2,7 @@
     <div class="p-3">
         <div class="flex justify-between items-center mb-2">
             <div>
-                <h1 class="text-2xl font-semibold text-base-content">Learn</h1>
+                <h1 class="text-2xl font-semibold">Learn</h1>
             </div>
         </div>
         <p class="mb-3 font-semibold">"Bitcoin ist die erste dezentrale Währung, die es ermöglicht, Werte ohne Zwischenhändler zu übertragen."</p>

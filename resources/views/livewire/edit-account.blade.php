@@ -1,4 +1,4 @@
-<div class="text-base-content">
+<div class="">
     @if (session()->has('message'))
         <div class="alert alert-success shadow-lg mb-4">
             <div>
@@ -8,7 +8,7 @@
     @endif
     <div class="flex justify-between items-center mb-2">
         <div>
-            <h1 class="text-2xl font-semibold text-base-content">{{$account->name}}</h1>
+            <h1 class="text-2xl font-semibold">{{$account->name}}</h1>
         </div>
     </div>
         <p class="text-sm text-gray-600 mb-2">{{$account->description}}</p>

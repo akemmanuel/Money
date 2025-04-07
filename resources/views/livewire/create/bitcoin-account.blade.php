@@ -1,7 +1,7 @@
 <div class="p-3">
     <div class="flex justify-between items-center mb-2">
         <div>
-            <h1 class="text-2xl font-semibold text-base-content">Add account</h1>
+            <h1 class="text-2xl font-semibold">Add account</h1>
         </div>
     </div>
     @if (session()->has('message'))
@@ -12,7 +12,7 @@
     <div class="" data-theme="mytheme">
         <form wire:submit.prevent="create">
             <div>
-                <div class="flex-grow">
+                <div class="grow">
                     <label class="label label-text font-medium" for="name">Name <span class="text-red-600">*</span></label>
                     <input
                         type="text"
@@ -27,7 +27,7 @@
                         <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="flex-grow">
+                <div class="grow">
                     <label class="label label-text font-medium" for="name">Description</label>
                     <textarea
                         placeholder="Enter a description"
@@ -40,7 +40,7 @@
                         <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="flex-grow">
+                <div class="grow">
                     <label class="label label-text font-medium" for="balance">Current Balance</label>
                     <div class="join">
                         <input

@@ -1,15 +1,44 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "flyonui/variants.css";
+@import "flyonui/src/vendor/apexcharts.css";
+
+@import "tailwindcss";
+
+@plugin "flyonui" {
+  themes: light --prefersdark, dark ;
+}
+@source "./node_modules/flyonui/dist/index.js";
+
+
+@source '../../node_modules/apexcharts/**/*.js';
+
+@plugin "@iconify/tailwind4";
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 [x-cloak] {
     display: none;
 }
 
 .menu-item {
-    @apply flex items-center p-2 gap-2 hover:bg-base-content/10 active:bg-base-content/20 text-base-content;
+    @apply flex items-center p-2 gap-2 hover:bg-base-content/10 active:bg-base-content/20;
 }
 
 .btn {
-    @apply !shadow-none;
+    @apply shadow-none!;
 }

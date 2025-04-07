@@ -16,7 +16,7 @@
                 </div>
                 </div>
 
-                <div class="inline-flex gap-2 rounded-sm {{ $account->balance > 0 ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600' }} p-1">
+                <div class="inline-flex gap-2 rounded-xs {{ $account->balance > 0 ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600' }} p-1">
                 <span class="icon-[tabler--trending-up]"></span>
 
                 <span class="text-xs font-medium"> 21% </span>

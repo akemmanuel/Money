@@ -17,12 +17,12 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased dark:text-white/50 select-none">
+<body class="font-sans antialiased select-none">
     <nav class="flex p-2 justify-between gap-4">
         <div class="navbar-start">
             <div class="dropdown relative inline-flex [--auto-close:inside] [--offset:9]">
                 <button id="dropdown-name" type="button"
-                    class="dropdown-toggle btn btn-text dropdown-open:bg-base-content/10 dropdown-open:text-base-content"
+                    class="dropdown-toggle btn btn-text dropdown-open:bg-base-content/10 dropdown-open:"
                     aria-haspopup="dialog" aria-expanded="false" aria-controls="overlay-navigation-example"
                     data-overlay="#overlay-navigation-example">
                     <span class="icon-[tabler--menu-2] size-5"></span>
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="navbar-center flex items-center">
-            <a class="link text-base-content text-xl font-semibold no-underline" href="#">
+            <a class="link text-xl font-semibold no-underline" href="#">
                 <span>Money</span>
             </a>
         </div>
@@ -42,16 +42,16 @@
                     aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
                     <div class="indicator">
                         <span class="indicator-item bg-primary size-2 rounded-full"></span>
-                        <span class="icon-[tabler--bell] text-base-content size-[1.375rem]"></span>
+                        <span class="icon-[tabler--bell] size-[1.375rem]"></span>
                     </div>
                 </button>
                 <div class="dropdown-menu dropdown-open:opacity-100 hidden p-0" role="menu"
                     aria-orientation="vertical" aria-labelledby="dropdown-scrollable">
                     <div class="flex justify-center border-b-2 border-base-content/10 p-2">
-                        <h6 class="text-base-content text-xl">Notifications</h6>
+                        <h6 class="text-xl">Notifications</h6>
                     </div>
                     <div
-                        class="vertical-scrollbar horizontal-scrollbar rounded-scrollbar text-base-content/80 max-h-56 p-0 overflow-auto ">
+                        class="vertical-scrollbar horizontal-scrollbar rounded-scrollbar/80 max-h-56 p-0 overflow-auto ">
                         @php
                             $notifications = [
                                 [
@@ -115,38 +115,33 @@
                             <a class="flex items-center gap-2 p-2 justify-center hover:bg-base-content/10 active:bg-base-content/20"
                                 href="#">
                                 <div class="avatar">
-                                    <div class="bg-neutral text-neutral-content w-10 rounded-full p-2">
+                                    <div class="bg-neutral text-white w-10 rounded-full p-2">
                                         <span class="{{ $notification['icon'] }} size-full"></span>
                                     </div>
                                 </div>
                                 <div class="w-60">
                                     <h6 class="truncate text-base">{{ $notification['title'] }}</h6>
-                                    <small class="text-base-content/50 text-wrap">{{ $notification['message'] }}</small>
+                                    <small class="/50 text-wrap">{{ $notification['message'] }}</small>
                                 </div>
                             </a>
                         @endforeach
                     </div>
-                    <a href="#" class="flex justify-center items-center border-t-2 border-base-content/10 text-base-content p-2">
+                    <a href="#" class="flex justify-center items-center border-t-2 border-base-content/10 p-2">
                         <span class="icon-[tabler--eye] size-4"></span>
                         View all
                     </a>
                 </div>
             </div>
-{{-- 
-            <label class="swap swap-rotate btn btn-sm btn-text size-[2.125rem]">
+
+            <label class="swap swap-rotate btn btn-sm btn-text size-10">
                 <input type="checkbox" value="dark" class="theme-controller" />
                 <span class="swap-off icon-[tabler--sun] size-7"></span>
                 <span class="swap-on icon-[tabler--moon] size-7"></span>
-            </label> --}}
-            <label class="swap swap-rotate btn btn-sm btn-text size-10">
-                <input type="checkbox" />
-                <span class="swap-off icon-[tabler--currency-euro] size-7"></span>
-                <span class="swap-on icon-[tabler--currency-dollar] size-7"></span>
-            </label>
+              </label>
             <div class="dropdown relative inline-flex [--auto-close:inside] [--offset:8] [--placement:bottom-end]">
                 <button id="dropdown-scrollable" type="button" class="dropdown-toggle flex items-center"
                     aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
-                    <div class="text-base-content w-10 h-10 bg-base-300 flex justify-center items-center rounded-full">
+                    <div class="w-10 h-10 bg-base-300 flex justify-center items-center rounded-full text-white">
                         <span>{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</span>
                     </div>
                 </button>
@@ -154,17 +149,17 @@
                     aria-orientation="vertical" aria-labelledby="dropdown-scrollable">
                     <div class="flex justify-center border-b-2 border-base-content/10 p-2">
                         <li class="flex gap-2">
-                            <div class="text-base-content w-10 h-10 bg-base-300 flex justify-center items-center rounded-full">
+                            <div class="w-10 h-10 bg-base-300 flex justify-center items-center rounded-full text-white">
                                 <span>{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</span>
                             </div>
                             <div>
-                                <h6 class="text-base-content text-base font-semibold">{{ Auth::user()->name }}</h6>
-                                <small class="text-base-content/50">Free plan</small>
+                                <h6 class="text-base font-semibold">{{ Auth::user()->name }}</h6>
+                                <small class="/50">Free plan</small>
                             </div>
                         </li>
                     </div>
                     <div
-                        class="vertical-scrollbar horizontal-scrollbar rounded-scrollbar text-base-content/80 max-h-56 p-0 overflow-auto w-60">
+                        class="vertical-scrollbar horizontal-scrollbar rounded-scrollbar/80 max-h-56 p-0 overflow-auto w-60">
                         <a class="flex gap-1 p-2 hover:bg-primary hover:text-white active:bg-primary"
                             href="#">
                             <span class="icon-[tabler--sparkles] size-5"></span>
@@ -210,13 +205,13 @@
     <aside id="overlay-navigation-example"
         class="overlay overlay-open:translate-x-0 drawer drawer-start hidden overflow-y-auto" tabindex="-1">
         <div class="border-b-2 border-base-content/10 p-2 flex items-center justify-between">
-            <h1 class="font-semibold text-2xl text-base-content">Money</h1>
+            <h1 class="font-semibold text-2xl">Money</h1>
             <button type="button" class="btn btn-text" aria-label="Close"
             data-overlay="#overlay-navigation-example">
             <span class="icon-[tabler--x] size-4"></span>
             </button>
         </div>
-        <div class="flex-grow justify-start pb-6">
+        <div class="grow justify-start pb-6">
             <ul class="space-y-1">
                 <li>
                     <a href="{{ route('dashboard') }}" wire:navigate class="menu-item">
@@ -225,17 +220,17 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('wallet') }}" wire:navigate class="menu-item font-semibold hover:bg-primary hover:text-black">
+                    <a href="{{ route('wallet') }}" wire:navigate class="menu-item font-semibold hover:bg-primary">
                         <span class="icon-[tabler--wallet] size-5"></span>
                         Wallet
-                        {{-- <span class="badge badge-neutral p-0 pe-1 !gap-0"><span class="icon-[tabler--flame] size-4"></span>New</span> --}}
+                        {{-- <span class="badge badge-neutral p-0 pe-1 gap-0!"><span class="icon-[tabler--flame] size-4"></span>New</span> --}}
                     </a>
                 </li>
                 {{-- <li>
                     <a href="{{ route('bank') }}" wire:navigate class="menu-item">
                         <span class="icon-[tabler--currency-ethereum] size-5"></span>
                         Cryptocurrencies
-                        {{-- <span class="badge badge-neutral p-0 pe-1 !gap-0"><span class="icon-[tabler--flame] size-4"></span>New</span>
+                        {{-- <span class="badge badge-neutral p-0 pe-1 gap-0!"><span class="icon-[tabler--flame] size-4"></span>New</span>
                     </a>
                 </li> --}}
                 <li class="nested-collapse-wrapper">
@@ -269,6 +264,7 @@
                     </div>
                 </li>
                 <div class="divider text-base-content/50 py-6 after:border-0">Insides</div>
+
                 <li>
                     <a href="{{ route('forecasts') }}" class="menu-item">
                         <span class="icon-[tabler--cpu] size-5"></span>
@@ -281,7 +277,6 @@
                         Analysis
                     </a>
                 </li>
-                <div class="divider text-base-content/50 py-6 after:border-0">More</div>
                 <li>
                     <a href="{{ route('learn') }}" class="menu-item">
                       <span class="icon-[tabler--book] size-5"></span>
@@ -289,16 +284,16 @@
                     </a>
                 </li>
             </ul>
-            <div class="bg-base-200/30 border-base-content/10 mt-4 rounded-md border p-3 m-3">
+            {{-- <div class="bg-base-200/30 border-base-content/10 mt-4 rounded-md border p-3 m-3">
                 <div class="avatar placeholder">
                     <div class="bg-neutral text-neutral-content w-10 rounded-full">
                         <span class="icon-[tabler--crown] size-6 shrink-0"></span>
                     </div>
                 </div>
-                <h5 class="text-base-content mt-4 text-lg font-semibold">Upgrade to Pro</h5>
-                <p class="text-base-content/80 text-xs">Reminder, extra prjects, advanced search and more</p>
+                <h5 class="mt-4 text-lg font-semibold">Upgrade to Pro</h5>
+                <p class="/80 text-xs">Reminder, extra prjects, advanced search and more</p>
                 <button class="btn btn-primary btn-block mt-2">Upgrade Now</button>
-            </div>
+            </div> --}}
         </div>
     </aside>
     <main>

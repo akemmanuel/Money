@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
-class Bitcoin extends Component
+class Wallet extends Component
 {
     public $accounts = [];
 
@@ -20,7 +20,7 @@ class Bitcoin extends Component
 
     public function render()
     {
-        return view('livewire.bitcoin');
+        return view('livewire.wallet');
     }
 
     public function convert($balance, $currency, $type)

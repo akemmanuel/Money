@@ -7,8 +7,8 @@
     <div class="p-4">
         <div class="flex justify-between items-center mb-2 flex-wrap">
             <div>
-                <p class="font-semibold text-base-content/80">Guten Tag, Akemsoft</p>
-                <h1 class="text-2xl font-semibold mb-2 text-base-content">Dashboard</h1>
+                <p class="font-semibold/80">Guten Tag, Akemsoft</p>
+                <h1 class="text-2xl font-semibold mb-2">Dashboard</h1>
             </div>
             <div class="flex items-center gap-3 flex-wrap">
                 <button class="btn btn-primary btn-soft btn-lg">
@@ -17,7 +17,7 @@
                 <button class="btn btn-primary btn-soft btn-lg">
                     <span class="icon-[tabler--circle-plus] size-5"></span> Hinzufügen
                 </button>
-                <nav class="tabs bg-base-200 rounded-btn w-fit space-x-1 overflow-x-auto p-1 rtl:space-x-reverse flex-wrap"
+                <nav class="tabs bg-base-200 rounded-field space-x-1 overflow-x-auto p-1 rtl:space-x-reverse flex-wrap"
                     aria-label="Tabs" role="tablist" aria-orientation="horizontal">
                     <button type="button"
                         class="btn btn-text active-tab:bg-primary active-tab:text-white hover:text-primary active hover:bg-transparent"
@@ -45,35 +45,35 @@
                     </button>
                     <div class="tooltip">
                         <button type="button"
-                            class="btn blur-sm btn-text active-tab:bg-primary active-tab:text-white hover:text-primary hover:bg-transparent"
+                            class="btn blur-xs btn-text active-tab:bg-primary active-tab:text-white hover:text-primary hover:bg-transparent"
                             id="tabs-segment-item-5" data-tab="#tabs-segment-5" aria-controls="tabs-segment-5"
                             role="tab" aria-selected="false" disabled>
                             3J
                         </button>
                         <span class="tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible" role="tooltip">
-                            <span class="tooltip-body bg-primary">PLUS</span>
+                            <span class="tooltip-body tooltip-primary">PLUS</span>
                         </span>
                     </div>
                     <div class="tooltip">
                         <button type="button"
-                            class="btn blur-sm btn-text active-tab:bg-primary active-tab:text-white hover:text-primary hover:bg-transparent"
+                            class="btn blur-xs btn-text active-tab:bg-primary active-tab:text-white hover:text-primary hover:bg-transparent"
                             id="tabs-segment-item-6" data-tab="#tabs-segment-6" aria-controls="tabs-segment-6"
                             role="tab" aria-selected="false" disabled>
                             5J
                         </button>
                         <span class="tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible" role="tooltip">
-                            <span class="tooltip-body bg-primary">PLUS</span>
+                            <span class="tooltip-body tooltip-primary">PLUS</span>
                         </span>
                     </div>
                     <div class="tooltip">
                         <button type="button"
-                            class="btn blur-sm btn-text active-tab:bg-primary active-tab:text-white hover:text-primary hover:bg-transparent"
+                            class="btn blur-xs btn-text active-tab:bg-primary active-tab:text-white hover:text-primary hover:bg-transparent"
                             id="tabs-segment-item-7" data-tab="#tabs-segment-7" aria-controls="tabs-segment-7"
                             role="tab" aria-selected="false" disabled>
                             MAX
                         </button>
                         <span class="tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible" role="tooltip">
-                            <span class="tooltip-body bg-primary">PLUS</span>
+                            <span class="tooltip-body tooltip-primary">PLUS</span>
                         </span>
                     </div>
                 </nav>
@@ -82,26 +82,26 @@
 
         <div class="mt-3">
             <div id="tabs-segment-1" role="tabpanel" aria-labelledby="tabs-segment-item-1">
-                <p class="text-base-content/80">
-                    Welcome to the <span class="text-base-content font-semibold">Home tab!</span> Explore the latest
+                <p class="/80">
+                    Welcome to the <span class="font-semibold">Home tab!</span> Explore the latest
                     updates and news here.
                 </p>
             </div>
             <div id="tabs-segment-2" class="hidden" role="tabpanel" aria-labelledby="tabs-segment-item-2">
-                <p class="text-base-content/80">
-                    This is your <span class="text-base-content font-semibold">Profile</span> tab, where you can update
+                <p class="/80">
+                    This is your <span class="font-semibold">Profile</span> tab, where you can update
                     your personal information and manage your account details.
                 </p>
             </div>
             <div id="tabs-segment-3" class="hidden" role="tabpanel" aria-labelledby="tabs-segment-item-3">
-                <p class="text-base-content/80">
-                    <span class="text-base-content font-semibold">Messages:</span> View your recent messages, chat with
+                <p class="/80">
+                    <span class="font-semibold">Messages:</span> View your recent messages, chat with
                     friends, and manage your conversations.
                 </p>
             </div>
             <div id="tabs-segment-4" class="hidden" role="tabpanel" aria-labelledby="tabs-segment-item-4">
-                <p class="text-base-content/80">
-                    <span class="text-base-content font-semibold">sd:</span> View your recent messages, chat with
+                <p class="/80">
+                    <span class="font-semibold">sd:</span> View your recent messages, chat with
                     friends, and manage your conversations.
                 </p>
             </div>
@@ -112,12 +112,12 @@
             <div class="flex gap-3 items-center">
 
                 <div id="apex-doughnut-chart"></div>
-                <div class="flex-grow">
-                    <div id="apex-multiple-line-charts" class="w-full"></div>
+                <div class="grow">
+                    <div id="apex-curved-area-charts" class="w-full"></div>
 
                 </div>
             </div>
-            <div class="flex gap-3 items-center justify-between text-base-content">
+            <div class="flex gap-3 items-center justify-between">
                 <div class="text-center">
                     <p class="text-sm font-normal">Aktuelles Vermögen</p>
                     <div class="mt-1">
@@ -163,14 +163,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex-grow">
+                <div class="grow">
                     <div id="apex-column-bar-chart" class="w-full"></div>
 
                 </div>
             </div>
         </div>
         <h1 class="text-2xl font-semibold">Holdings</h1>
-        <div class="overflow-x-auto rounded-lg border border-base-content/25 text-base-content">
+        <div class="overflow-x-auto rounded-lg border border-base-content/25">
             <table class="min-w-full divide-y-2 divide-base-content/25">
                 <thead class="text-left">
                     <tr>
@@ -209,7 +209,7 @@
             </table>
         </div>
         <h1 class="text-2xl font-semibold mt-2">Cash</h1>
-        <div class="overflow-x-auto rounded-lg border border-base-content/25 text-base-content">
+        <div class="overflow-x-auto rounded-lg border border-base-content/25">
             <table class="min-w-full divide-y-2 divide-base-content/25">
                 <thead class="text-left">
                     <tr>
