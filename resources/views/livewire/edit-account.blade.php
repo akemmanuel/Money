@@ -11,6 +11,9 @@
         <div>
             <h1 class="text-2xl font-semibold">{{ $account->name }}</h1>
         </div>
+        <button class="btn btn-error btn-soft" wire:click="deleteAccount">
+            <span class="icon-[tabler--trash] size-5"></span> Delete Account
+        </button>
     </div>
 
     <p class="text-sm text-gray-600 mb-2">{{ $account->description }}</p>

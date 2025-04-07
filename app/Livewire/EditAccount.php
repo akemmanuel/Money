@@ -60,6 +60,12 @@ class EditAccount extends Component
             session()->flash('error', 'Transaction not found.');
         }
     }
+    public function deleteAccount()
+    {
+        $this->account->delete();
+        session()->flash('message', 'Account deleted successfully.');
+        return redirect()->route('wallet');
+    }
     public function convert($balance, $currency, $type)
     {
         $currency_user =  Auth::user()->display_currency;
