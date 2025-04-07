@@ -29,9 +29,9 @@
 <input class="input input-bordered w-full mb-4" type="text" placeholder="Transaction Description" wire:model="transactionDescription">
 <input class="input input-bordered w-full mb-4" type="number" step="0.000000000000000000001" placeholder="Transaction Amount in {{$account->currency}}" wire:model="transactionAmount">
 
-<button class="btn btn-success" wire:click="increase">Increase</button>
+<button class="btn btn-soft btn-success" wire:click="increase">Increase</button>
 
-<button class="btn btn-danger" wire:click="decrease">Decrease</button>
+<button class="btn btn-soft btn-error" wire:click="decrease">Decrease</button>
 </div>
 <div class="overflow-x-auto mt-6">
     <table class="table w-full">
