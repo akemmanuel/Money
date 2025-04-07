@@ -50,15 +50,6 @@
 
         <p>
             <span class="font-semibold">Type of Currency:</span> {{ $account->type_of_currency }}
-            @if ($account->type_of_currency === 'fiats')
-                <span class="icon-[tabler--cash-banknote] size-7"></span>
-            @elseif ($account->type_of_currency === 'crypto')
-                <span class="icon-[tabler--currency-bitcoin] size-7"></span>
-            @elseif ($account->type_of_currency === 'stocks')
-                <span class="icon-[tabler--currency-dollar] size-7"></span>
-            @elseif ($account->type_of_currency === 'commodities')
-                <span class="icon-[tabler--drop-circle] size-7"></span>
-            @endif
         </p>
     </div>
 
