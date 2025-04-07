@@ -97,7 +97,6 @@
                 type="text"
                 placeholder="Transaction Description"
                 wire:model="transactionDescription"
-                required
             />
             @error('transactionDescription')
                 <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -128,9 +127,7 @@
                 <span class="text-red-500 text-sm">{{ $message }}</span>
             @enderror
             </div>
-            <div class="flex justify-end">
-            <button type="submit" class="btn btn-success">Submit</button>
-            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 
