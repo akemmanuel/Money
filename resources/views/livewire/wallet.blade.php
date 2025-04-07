@@ -17,7 +17,7 @@
                                 @elseif ($account->type_of_currency === 'crypto')
                                     <span class="icon-[tabler--currency-bitcoin] size-full"></span>
                                 @elseif ($account->type_of_currency === 'stocks')
-                                    <span class="icon-[tabler--currency-dollar] size-full"></span>
+                                    <span class="icon-[tabler--trending-up] size-full"></span>
                                 @elseif ($account->type_of_currency === 'commodities')
                                     <span class="icon-[tabler--drop-circle] size-full"></span>
                                 @endif
