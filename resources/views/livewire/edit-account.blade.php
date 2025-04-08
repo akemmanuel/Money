@@ -67,7 +67,7 @@
                     required
                 />
                 <input
-                    class="join-item btn checked:!bg-success btn-soft"
+                    class="join-item btn checked:!bg-green-800 btn-soft"
                     type="radio"
                     name="transactionType"
                     value="increase"
