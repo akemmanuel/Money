@@ -10,7 +10,7 @@
     <div class="flex justify-between items-center mb-2">
         <div class="flex items-center gap-3">
             <div class="avatar">
-                <div class="bg-neutral text-white w-10 rounded-full p-2">
+                <div class="bg-neutral text-neutral-content w-10 rounded-full p-2">
                     @if ($account->type_of_currency === 'fiats')
                         <span class="icon-[tabler--cash-banknote] size-full"></span>
                     @elseif ($account->type_of_currency === 'crypto')
