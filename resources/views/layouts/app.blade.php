@@ -18,7 +18,7 @@
 </head>
 
 <body class="font-sans antialiased select-none h-screen max-h-screen flex flex-col">
-    <nav class="fixed top-0 left-0 right-0 flex p-2 justify-between gap-4 border border-base-content/10 bg-base-100">
+    <nav class="top-0 left-0 right-0 flex p-2 justify-between gap-4 border border-base-content/10 bg-base-100">
         <div class="navbar-start">
             <div class="dropdown relative inline-flex [--auto-close:inside] [--offset:9]">
                 <button id="dropdown-name" type="button"
@@ -169,19 +169,19 @@
                             href="{{ route('profile.show') }}">
                             <span class="icon-[tabler--user] size-5"></span>
                             <div>
-                                <h6 class="truncate text-base font-semibold">Mein Profil</h6>
+                                <h6 class="truncate text-base font-semibold">My Profile</h6>
                             </div>
                         </a>
                         <a class="flex gap-1 p-2 hover:bg-base-content/10 active:bg-base-content/20" href="{{ route("settings") }}">
                             <span class="icon-[tabler--settings] size-5"></span>
                             <div>
-                                <h6 class="truncate text-base font-semibold">Einstellungen</h6>
+                                <h6 class="truncate text-base font-semibold">Settings</h6>
                             </div>
                         </a>
                         <a class="flex gap-1 p-2 hover:bg-base-content/10 active:bg-base-content/20" href="#">
                             <span class="icon-[tabler--receipt-rupee] size-5"></span>
                             <div>
-                                <h6 class="truncate text-base font-semibold">Zahlungen</h6>
+                                <h6 class="truncate text-base font-semibold">Payments</h6>
                             </div>
                         </a>
                         <form method="POST" class="w-full" action="{{ route('logout') }}">
@@ -190,7 +190,7 @@
                                 class="flex gap-1 p-2 hover:bg-red-600 active:bg-red-500 w-full hover:text-white rounded-b-lg">
                                 <span class="icon-[tabler--logout] size-5"></span>
                                 <div>
-                                    <h6 class="truncate text-base font-semibold">Abmelden</h6>
+                                    <h6 class="truncate text-base font-semibold">Logout</h6>
                                 </div>
                             </button>
                         </form>
@@ -200,7 +200,7 @@
         </div>
     </nav>
 
-    <div class="flex flex-1 overflow-hidden mt-14">
+    <div class="flex flex-1 overflow-hidden">
         <aside id="default-sidebar"
             class="overlay [--auto-close:sm] sm:shadow-none overlay-open:translate-x-0 drawer drawer-start hidden max-w-64 sm:absolute sm:z-0 sm:flex sm:translate-x-0 border border-base-content/10 overflow-y-auto" role="dialog" tabindex="-1">
             <div class="border-b border-base-content/10 p-3 flex items-center justify-between">
