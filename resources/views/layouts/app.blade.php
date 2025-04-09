@@ -112,10 +112,11 @@
                         @foreach ($notifications as $notification)
                             <a class="flex items-center gap-2 p-2 justify-center hover:bg-base-content/10 active:bg-base-content/20"
                                 href="#">
-<div class="relative inline-flex">
-                                <div class="bg-neutral text-neutral-content w-10 rounded-full p-2">
-                                    <span class="{{ $notification['icon'] }} size-full"></span>
-                                </div></div>
+                                <div class="relative inline-flex">
+                                    <div class="bg-neutral text-neutral-content w-10 rounded-full p-2">
+                                        <span class="{{ $notification['icon'] }} size-full"></span>
+                                    </div>
+                                </div>
                                 <div class="w-60">
                                     <h6 class="truncate text-base">{{ $notification['title'] }}</h6>
                                     <small class="/50 text-wrap">{{ $notification['message'] }}</small>
