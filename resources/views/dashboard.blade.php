@@ -7,15 +7,15 @@
     <div class="p-4">
         <div class="flex justify-between items-center mb-2 flex-wrap">
             <div>
-                <p class="font-semibold/80">Guten Tag, Akemsoft</p>
+                <p class="font-semibold/80">Good day, {{ Auth::user()->name }}</p>
                 <h1 class="text-2xl font-semibold mb-2">Dashboard</h1>
             </div>
             <div class="flex items-center gap-3 flex-wrap">
                 <button class="btn btn-primary btn-soft btn-lg">
-                    <span class="icon-[tabler--share] size-5"></span> Teilen
+                    <span class="icon-[tabler--share] size-5"></span> Share
                 </button>
                 <button class="btn btn-primary btn-soft btn-lg">
-                    <span class="icon-[tabler--circle-plus] size-5"></span> Hinzufügen
+                    <span class="icon-[tabler--circle-plus] size-5"></span> Add
                 </button>
                 <nav class="tabs bg-base-200 rounded-field space-x-1 overflow-x-auto p-1 rtl:space-x-reverse flex-wrap"
                     aria-label="Tabs" role="tablist" aria-orientation="horizontal">
@@ -109,7 +109,7 @@
 
         <div class="p-4">
 
-            <div class="flex gap-3 items-center">
+            <div class="flex gap-3 items-center justify-center flex-wrap">
 
                 <div id="apex-doughnut-chart"></div>
                 <div class="grow">
@@ -119,7 +119,7 @@
             </div>
             <div class="flex gap-3 items-center justify-between">
                 <div class="text-center">
-                    <p class="text-sm font-normal">Aktuelles Vermögen</p>
+                    <p class="text-sm font-normal">Current Assets</p>
                     <div class="mt-1">
 
                         <p class="text-xl font-semibold"><span>1€ <span
@@ -138,25 +138,25 @@
                             <p class="text-lg font-semibold">0,03€</p>
                         </div>
                         <div class="flex flex-col">
-                            <p class="text-sm font-normal">Kursgewinn</p>
+                            <p class="text-sm font-normal">Capital Gain</p>
                             <div class="mt-1">
                                 <p class="text-lg font-semibold">-0,000446€</p>
                             </div>
                         </div>
                         <div class="flex flex-col">
-                            <p class="text-sm font-normal">Interner Zinsfuß</p>
+                            <p class="text-sm font-normal">Internal Rate of Return</p>
                             <div class="mt-1">
                                 <p class="text-lg font-semibold">0%</p>
                             </div>
                         </div>
                         <div class="flex flex-col">
-                            <p class="text-sm font-normal">Dividenden</p>
+                            <p class="text-sm font-normal">Dividends</p>
                             <div class="mt-1">
                                 <p class="text-lg font-semibold">0,00€</p>
                             </div>
                         </div>
                         <div class="flex flex-col">
-                            <p class="text-sm font-normal">Realisierte Gewinne</p>
+                            <p class="text-sm font-normal">Realized Gains</p>
                             <div class="mt-1">
                                 <p class="text-lg font-semibold">0,00€</p>
                             </div>
@@ -175,10 +175,10 @@
                 <thead class="text-left">
                     <tr>
                         <th class="whitespace-nowrap px-4 py-2 font-medium">Name</th>
-                        <th class="whitespace-nowrap px-4 py-2 font-medium">Anzahl</th>
-                        <th class="whitespace-nowrap px-4 py-2 font-medium">Gesamtwert</th>
-                        <th class="whitespace-nowrap px-4 py-2 font-medium">Änderung</th>
-                        <th class="whitespace-nowrap px-4 py-2 font-medium">Allokation</th>
+                        <th class="whitespace-nowrap px-4 py-2 font-medium">Quantity</th>
+                        <th class="whitespace-nowrap px-4 py-2 font-medium">Total Value</th>
+                        <th class="whitespace-nowrap px-4 py-2 font-medium">Change</th>
+                        <th class="whitespace-nowrap px-4 py-2 font-medium">Allocation</th>
                     </tr>
                 </thead>
 
@@ -214,10 +214,10 @@
                 <thead class="text-left">
                     <tr>
                         <th class="whitespace-nowrap px-4 py-2 font-medium">Name</th>
-                        <th class="whitespace-nowrap px-4 py-2 font-medium">Anzahl</th>
-                        <th class="whitespace-nowrap px-4 py-2 font-medium">Gesamtwert</th>
-                        <th class="whitespace-nowrap px-4 py-2 font-medium">Änderung</th>
-                        <th class="whitespace-nowrap px-4 py-2 font-medium">Allokation</th>
+                        <th class="whitespace-nowrap px-4 py-2 font-medium">Quantity</th>
+                        <th class="whitespace-nowrap px-4 py-2 font-medium">Total Value</th>
+                        <th class="whitespace-nowrap px-4 py-2 font-medium">Change</th>
+                        <th class="whitespace-nowrap px-4 py-2 font-medium">Allocation</th>
                     </tr>
                 </thead>
 
