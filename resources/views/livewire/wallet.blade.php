@@ -8,7 +8,7 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             @foreach ($accounts as $account)
-                <a class="flex items-end justify-between rounded-lg border p-6" href="{{ route('account.edit', $account->id) }}">
+                <a class="flex items-end justify-between rounded-lg border border-base-content/10 p-6" href="{{ route('account.edit', $account->id) }}">
                     <div class="flex items-center gap-4">
                         <div class="relative inline-flex">
                             <div class="bg-neutral text-neutral-content w-10 rounded-full p-2">
