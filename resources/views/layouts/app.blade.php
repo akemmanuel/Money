@@ -17,8 +17,8 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased select-none">
-    <nav class="flex p-2 justify-between gap-4 border border-base-content/10 ">
+<body class="font-sans antialiased select-none h-screen max-h-screen flex flex-col">
+    <nav class="fixed top-0 left-0 right-0 flex p-2 justify-between gap-4 border border-base-content/10 bg-base-100">
         <div class="navbar-start">
             <div class="dropdown relative inline-flex [--auto-close:inside] [--offset:9]">
                 <button id="dropdown-name" type="button"
@@ -26,7 +26,6 @@
                     aria-expanded="false" aria-controls="default-sidebar" data-overlay="#default-sidebar">
                     <span class="icon-[tabler--menu-2] size-5"></span>
                 </button>
-
             </div>
         </div>
         <div class="navbar-center flex items-center">
@@ -201,16 +200,17 @@
         </div>
     </nav>
 
-    <aside id="default-sidebar"
-    class="overlay [--auto-close:sm] sm:shadow-none overlay-open:translate-x-0 drawer drawer-start hidden max-w-64 sm:absolute sm:z-0 sm:flex sm:translate-x-0 border border-base-content/10 " role="dialog" tabindex="-1">
-        <div class="border-b border-base-content/10 p-3 flex items-center justify-between">
-            <h1 class="font-semibold text-2xl">Money</h1>
-            <button type="button" class="btn btn-text sm:hidden" aria-label="Close"
-            data-overlay="#default-sidebar">
-            <span class="icon-[tabler--x] size-4"></span>
-            </button>
-        </div>
-        <div class="grow justify-start pb-6">
+    <div class="flex flex-1 overflow-hidden mt-14">
+        <aside id="default-sidebar"
+            class="overlay [--auto-close:sm] sm:shadow-none overlay-open:translate-x-0 drawer drawer-start hidden max-w-64 sm:absolute sm:z-0 sm:flex sm:translate-x-0 border border-base-content/10 overflow-y-auto" role="dialog" tabindex="-1">
+            <div class="border-b border-base-content/10 p-3 flex items-center justify-between">
+                <h1 class="font-semibold text-2xl">Money</h1>
+                <button type="button" class="btn btn-text sm:hidden" aria-label="Close"
+                    data-overlay="#default-sidebar">
+                    <span class="icon-[tabler--x] size-4"></span>
+                </button>
+            </div>
+            <div class="grow justify-start pb-6">
             <ul class="space-y-1">
                 <li>
                     <a href="{{ route('dashboard') }}" wire:navigate class="menu-item">
@@ -295,19 +295,21 @@
             </div> --}}
         </div>
     </aside>
-    <main class="flex flex-col sm:ml-64">
+    
+    <main class="flex-1 sm:ml-64 overflow-y-auto">
         {{ $slot }}
     </main>
+</div>
 
-    <!-- Page Content -->
-    @stack('modals')
-    <script>
-        window.HSStaticMethods.autoInit()
-        addEventListener('livewired:navigated', () => {
-            themeChange(true);
-        });
-    </script>
-    @livewireScripts
+<!-- Page Content -->
+@stack('modals')
+<script>
+    window.HSStaticMethods.autoInit()
+    addEventListener('livewired:navigated', () => {
+        themeChange(true);
+    });
+</script>
+@livewireScripts
 </body>
 
 </html>
