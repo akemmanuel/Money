@@ -23,7 +23,7 @@
     "dependencies": {
         "@tsparticles/confetti": "^3.8.1",
         "alpinejs": "^3.14.8",
-        "apexcharts": "^4.4.0",
+        "apexcharts": "^4.5.0",
         "confetti-js": "^0.0.18",
         "lodash": "^4.17.21"
     }
