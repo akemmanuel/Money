@@ -18,7 +18,7 @@
 </head>
 
 <body class="font-sans antialiased select-none h-screen max-h-screen flex flex-col">
-    <nav class="top-0 left-0 right-0 flex p-2 justify-between gap-4 border border-base-content/10 bg-base-100">
+    <nav class="top-0 left-0 right-0 flex p-2 justify-between gap-4 border-b border-base-content/10 bg-base-100">
         <div class="navbar-start">
             <div class="dropdown relative inline-flex [--auto-close:inside] [--offset:9]">
                 <button id="dropdown-name" type="button"
@@ -112,11 +112,10 @@
                         @foreach ($notifications as $notification)
                             <a class="flex items-center gap-2 p-2 justify-center hover:bg-base-content/10 active:bg-base-content/20"
                                 href="#">
-                                <div class="avatar">
-                                    <div class="bg-neutral text-white w-10 rounded-full p-2">
-                                        <span class="{{ $notification['icon'] }} size-full"></span>
-                                    </div>
-                                </div>
+<div class="relative inline-flex">
+                                <div class="bg-neutral text-neutral-content w-10 rounded-full p-2">
+                                    <span class="{{ $notification['icon'] }} size-full"></span>
+                                </div></div>
                                 <div class="w-60">
                                     <h6 class="truncate text-base">{{ $notification['title'] }}</h6>
                                     <small class="/50 text-wrap">{{ $notification['message'] }}</small>
@@ -202,7 +201,7 @@
 
     <div class="flex flex-1 overflow-hidden">
         <aside id="default-sidebar"
-            class="overlay [--auto-close:sm] sm:shadow-none overlay-open:translate-x-0 drawer drawer-start hidden max-w-64 sm:absolute sm:z-0 sm:flex sm:translate-x-0 border border-base-content/10 overflow-y-auto" role="dialog" tabindex="-1">
+            class="overlay [--auto-close:sm] sm:shadow-none overlay-open:translate-x-0 drawer drawer-start hidden max-w-64 sm:absolute sm:z-0 sm:flex sm:translate-x-0 border-e border-base-content/10 overflow-y-auto" role="dialog" tabindex="-1">
             <div class="border-b border-base-content/10 p-3 flex items-center justify-between">
                 <h1 class="font-semibold text-2xl">Money</h1>
                 <button type="button" class="btn btn-text sm:hidden" aria-label="Close"
