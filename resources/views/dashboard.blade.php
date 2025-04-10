@@ -163,10 +163,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="grow">
+                {{-- <div class="grow">
                     <div id="apex-column-bar-chart" class="w-full"></div>
 
-                </div>
+                </div> --}}
             </div>
         </div>
         <h1 class="text-2xl font-semibold">Holdings</h1>

@@ -43,4 +43,10 @@ class Wallet extends Component
             return $this->convert($account->balance, $account->currency, $account->type_of_currency);
         });
     }
+
+    public function placeholder(array $params = [])
+    {
+        return view('placeholder.skeleton', $params);
+
+    }
 }
