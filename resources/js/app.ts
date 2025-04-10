@@ -1,97 +1,99 @@
-import './bootstrap';
-import "flyonui/flyonui"
+import { themeChange } from 'theme-change'
+window.addEventListener("livewire:navigated", () => {
 
+themeChange();
+})
+themeChange();
+
+import './bootstrap';
+import "flyonui/flyonui";
+import "flyonui/dist/input-number"
 declare global {
     interface Window {
         ApexCharts: typeof ApexCharts;
     }
 }
+window.ApexCharts = ApexCharts;
 
 
 
 import ApexCharts from 'apexcharts';
-import {
-    buildChart,
-    buildTooltip
-} from "flyonui/dist/helper-apexcharts";
-import 'lodash/lodash.js';
+import {buildChart, buildTooltip} from "flyonui/dist/helper-apexcharts";
+import 'lodash';
 import 'apexcharts/dist/apexcharts.js';
-import 'apexcharts/dist/apexcharts.css';
+// import 'apexcharts/dist/apexcharts.css';
 
 
 window.addEventListener("livewire:navigated", () => {
     ;
     (function () {
-        buildChart("#apex-doughnut-chart", mode => ({
-            chart: {
-                height: 300,
-                type: "donut"
-            },
-            plotOptions: {
-                pie: {
-                    donut: {
-                        size: "70%",
-                        labels: {
-                            show: true,
-                            name: {
-                                fontSize: "2rem"
-                            },
-                            value: {
-                                fontSize: "1.5rem",
-                                color: 'var(--color-base-content)',
-                                formatter: function (val) {
-                                    return parseInt(val, 10) + "$"
-                                }
-                            },
-                            total: {
-                                show: true,
-                                fontSize: "1rem",
-                                color: 'var(--color-primary)',
-                                label: "Total",
-                                formatter: function (w) {
-                                    return "2000$"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            series: [1500, 233, 1000, 50],
-            labels: ["Crypto", "Immobilien", "Cash", "Aktien"],
-            legend: {
-                show: true,
-                position: "bottom",
-                markers: {
-                    offsetX: -3
-                },
+        buildChart('#apex-doughnut-chart', mode => ({
+          chart: {
+            height: 300,
+            type: 'donut'
+          },
+          plotOptions: {
+            pie: {
+              donut: {
+                size: '70%',
                 labels: {
-                    useSeriesColors: true
-                }
-            },
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                show: false,
-                curve: "straight"
-            },
-            colors: ['var(--color-primary)', 'var(--color-success)', 'var(--color-error)', 'var(--color-warning)'],
-            states: {
-                hover: {
-                    filter: {
-                        type: "none"
+                  show: true,
+                  name: {
+                    fontSize: '2rem'
+                  },
+                  value: {
+                    fontSize: '1.5rem',
+                    color: 'var(--color-base-content)',
+                    formatter: function (val) {
+                      return parseInt(val, 10) + '%'
                     }
+                  },
+                  total: {
+                    show: true,
+                    fontSize: '1rem',
+                    label: 'Operational',
+                    color: 'var(--color-primary)',
+                    formatter: function (w) {
+                      return '42%'
+                    }
+                  }
                 }
-            },
-            tooltip: {
-                enabled: true
+              }
             }
+          },
+          series: [42, 7, 25, 25],
+          labels: ['Operational', 'Networking', 'Hiring', 'R&D'],
+          legend: {
+            show: true,
+            position: 'bottom',
+            markers: { offsetX: -3 },
+            labels: {
+              useSeriesColors: true
+            }
+          },
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            show: false,
+            curve: 'straight'
+          },
+          colors: ['var(--color-primary)', 'var(--color-success)', 'var(--color-error)', 'var(--color-warning)'],
+          states: {
+            hover: {
+              filter: {
+                type: 'none'
+              }
+            }
+          },
+          tooltip: {
+            enabled: true
+          }
         }))
-    })()
+      })()
 })
 
 
-window.ApexCharts = ApexCharts;
 document.addEventListener('livewire:navigated', () => {
   ;(function () {
     buildChart('#apex-curved-area-charts', mode => ({
