@@ -1,6 +1,6 @@
 @import "flyonui/variants.css";
 @import "flyonui/src/vendor/apexcharts.css";
-
+@import "apexcharts/dist/apexcharts.css";
 @import "tailwindcss";
 
 @plugin "flyonui" {
@@ -8,8 +8,8 @@
 }
 @source "./node_modules/flyonui/dist/index.js";
 
-
-@source '../../node_modules/apexcharts/**/*.js';
+@source "flyonui/dist/index.js";
+@source 'apexcharts/**/*.js';
 
 @plugin "@iconify/tailwind4";
 
@@ -41,4 +41,8 @@
 
 .btn {
     @apply shadow-none!;
+}
+
+.btn-soft {
+  @apply transition-none;
 }

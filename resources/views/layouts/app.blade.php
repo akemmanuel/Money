@@ -132,7 +132,7 @@
             </div>
 
             <label class="swap swap-rotate btn btn-sm btn-text size-10">
-                <input type="checkbox" value="dark" class="theme-controller" />
+                <input type="checkbox" value="dark" class="theme-controller" data-toggle-theme="dark,light"/>
                 <span class="swap-off icon-[tabler--sun] size-7"></span>
                 <span class="swap-on icon-[tabler--moon] size-7"></span>
               </label>
@@ -202,7 +202,7 @@
 
     <div class="flex flex-1 overflow-hidden">
         <aside id="default-sidebar"
-            class="overlay [--auto-close:sm] sm:shadow-none overlay-open:translate-x-0 drawer drawer-start hidden max-w-64 sm:absolute sm:z-0 sm:flex sm:translate-x-0 border-e border-base-content/10 overflow-y-auto" role="dialog" tabindex="-1">
+            class="sm:transition-none overlay [--auto-close:sm] sm:shadow-none overlay-open:translate-x-0 drawer drawer-start hidden max-w-64 sm:absolute sm:z-0 sm:flex sm:translate-x-0 border-e border-base-content/10 overflow-y-auto" role="dialog" tabindex="-1">
             <div class="border-b border-base-content/10 p-3 flex items-center justify-between">
                 <h1 class="font-semibold text-2xl">Money</h1>
                 <button type="button" class="btn btn-text sm:hidden" aria-label="Close"
