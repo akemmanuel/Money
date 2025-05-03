@@ -14,9 +14,12 @@ Route::middleware([
     Route::get('/dashboard/settings', function () {
         return view('dashboard.settings');
     })->name('settings');
-    Route::get('/dashboard/wallet', function () {
-        return view('dashboard.bitcoin');
-    })->name('wallet');
+    Route::get('/dashboard/portfolio', function () {
+        return view('dashboard.portfolio');
+    })->name('portfolio');
+    Route::get('/dashboard/depot/create', function () {
+        return view('dashboard.portfolio.create.depot');
+    })->name('create_depot');
     Route::get('/dashboard/wallet/edit/{id}', function ($id) {
         return view('dashboard.wallet.edit', ['id' => $id]);
     })->name('account.edit');
@@ -64,8 +67,8 @@ Route::middleware([
     });
 
     Route::prefix('dashboard/create')->group(function () {
-        Route::get('/bitcoin', function () {
-            return view('dashboard.create.bitcoin-account');
+        Route::get('/asset', function () {
+            return view('dashboard.create.asset');
         })->name('create_bitcoin_account');
         Route::get('/bank', function () {
             return view('dashboard.create.bank-account');

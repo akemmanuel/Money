@@ -1,5 +1,5 @@
 <x-app-layout>
     <div>
-        @livewire('create.bitcoin-account')
+        @livewire('create.depot')
     </div>
 </x-app-layout>

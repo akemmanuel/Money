@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use phpseclib3\Crypt\DES;
 
-class Account extends Model
+class Asset extends Model
 {
     protected $fillable = [
-        'user_id',
+        'depot_id',
         'name',
         'description',
         'balance',
@@ -18,8 +19,8 @@ class Account extends Model
     {
         return $this->hasMany(Transaction::class);
     }
-    public function user()
+    public function depot()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Depot::class);
     }
 }

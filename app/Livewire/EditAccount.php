@@ -15,12 +15,29 @@ class EditAccount extends Component
     public $transactionName;
     public $transactionAmount;
     public $transactionDescription;
+    public $depots = [];
+    public $depot;
 
     public function mount($id)
     {
-        $this->account = Auth::user()->accounts()->find($id);
-        $this->transactions = $this->account->transactions()->orderBy('created_at', 'asc')->get();
+        $this->depots = Auth::user()->depots;
+
+        $this->account = Auth::user()->depots->load('assets')->pluck('assets')->flatten()->firstWhere('id', $id);
+        if ($this->account) {
+            $this->transactions = $this->account->transactions()->orderBy('created_at', 'asc')->get();
+        } else {
+            abort(404, 'Account not found.');
+        }
     }
+    public function updateDepot()
+    {
+        if (!$this->account) {
+            abort(404, 'Account not found.');
+        }
+        $this->account->update(['depot_id' => $this->depot]);
+        session()->flash('message', 'Depot updated successfully.');
+    }
+
     public function render()
     {
         return view('livewire.edit-account');
@@ -64,7 +81,7 @@ class EditAccount extends Component
     {
         $this->account->delete();
         session()->flash('message', 'Account deleted successfully.');
-        return redirect()->route('wallet');
+        return redirect()->route('portfolio');
     }
     public function convert($balance, $currency, $type)
     {

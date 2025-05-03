@@ -46,3 +46,7 @@
 .btn-soft {
   @apply transition-none;
 }
+
+.skeleton-animated {
+  @apply transition-none;
+}

@@ -52,7 +52,19 @@
             <span class="font-semibold">Type of Currency:</span> {{ $account->type_of_currency }}
         </p>
     </div>
-
+    <div class="mt-3">
+        <select
+            class="select"
+            required
+            wire:model="depot"
+            wire:change="updateDepot"
+        >
+            <option value="">Change depot</option>
+            @foreach ($depots as $depot)
+                <option value="{{ $depot->id }}">{{ $depot->name }}</option>
+            @endforeach
+        </select>
+    </div>
     <div>
         <form wire:submit.prevent="submitTransaction">
             <h1 class="text-2xl font-bold mt-6 mb-4">Add Transaction</h1>
@@ -67,7 +79,7 @@
                     required
                 />
                 <input
-                    class="join-item btn checked:!bg-green-800 btn-soft"
+                    class="join-item btn checked:!bg-success btn-soft"
                     type="radio"
                     name="transactionType"
                     value="increase"
@@ -106,7 +118,7 @@
             <input
                 class="input input-bordered w-full"
                 type="number"
-                step="0.000000000000000000001"
+                step="0.00000000001"
                 placeholder="Transaction Amount in {{ $account->currency }}"
                 wire:model="transactionAmount"
                 required

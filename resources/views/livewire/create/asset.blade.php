@@ -1,7 +1,7 @@
 <div class="p-3">
     <div class="flex justify-between items-center mb-2">
         <div>
-            <h1 class="text-2xl font-semibold">Add account</h1>
+            <h1 class="text-2xl font-semibold">Add asset</h1>
         </div>
     </div>
     @if (session()->has('message'))
@@ -9,7 +9,7 @@
             {{ session('message') }}
         </div>
     @endif
-    <div class="" data-theme="mytheme">
+    <div>
         <form wire:submit.prevent="create">
             <div>
                 <div class="grow">
@@ -36,10 +36,42 @@
                         wire:model="description"
                         maxlength="255"
                     ></textarea>
-                    @error('name')
+                    @error('description')
                         <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
                     @enderror
                 </div>
+                {{-- <select
+                            class="select join-item"
+                            wire:model="depot"
+                            required
+                        >
+                            <option value="" disabled selected>Select depot</option>
+                            @foreach ($depots as $depot)
+                                <option value="{{ $depot->id }}">{{ $depot->name }}</option>
+                            @endforeach
+
+                        </select> --}}
+
+                        <div>
+                            <select
+                              data-select='{
+                              "placeholder": "Select depot",
+                              "toggleTag": "<button type=\"button\" aria-expanded=\"false\"></button>",
+                              "toggleClasses": "advance-select-toggle select-disabled:pointer-events-none select-disabled:opacity-40",
+                              "dropdownClasses": "advance-select-menu",
+                              "optionClasses": "truncate advance-select-option selected:select-active",
+                              "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"icon-[tabler--check] shrink-0 size-4 text-primary hidden selected:block \"></span></div>",
+                              "extraMarkup": "<span class=\"icon-[tabler--caret-up-down] shrink-0 size-4 text-base-content absolute top-1/2 end-3 -translate-y-1/2 \"></span>"
+                              }'
+                              {{-- class="hidden" --}}
+                                wire:model="depot"
+                            >
+                            <option value="">Select depot</option>
+                            @foreach ($depots as $depot)
+                                <option value="{{ $depot->id }}">{{ $depot->name }}</option>
+                            @endforeach
+                            </select>
+                          </div>
                 <div class="grow">
                     <label class="label label-text font-medium" for="balance">Current Balance</label>
                     <div class="join">

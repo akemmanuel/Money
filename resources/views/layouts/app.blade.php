@@ -147,7 +147,11 @@
                     aria-orientation="vertical" aria-labelledby="dropdown-scrollable">
                     <div class="flex justify-center border-b-2 border-base-content/10 p-2">
                         <li class="flex gap-2">
-                            <div class="w-10 h-10 bg-base-300 flex justify-center items-center rounded-full text-white">
+                            <div class="w-10 h-10 bg-base-300 flex justify-center items-center rounded-full text-white indicator">
+                                <div class="indicator-item indicator-top bg-primary size-5 rounded-full p-0.5">
+                                    <span class="icon-[tabler--sparkles] size-full"></span>
+                                   
+                                  </div>
                                 <span>{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</span>
                             </div>
                             <div>
@@ -219,9 +223,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('wallet') }}" wire:navigate class="menu-item font-semibold hover:bg-primary">
+                    <a href="{{ route('portfolio') }}" wire:navigate class="menu-item font-semibold hover:bg-primary">
                         <span class="icon-[tabler--wallet] size-5"></span>
-                        Wallet
+                        Portfolio
                         {{-- <span class="badge badge-neutral p-0 pe-1 gap-0!"><span class="icon-[tabler--flame] size-4"></span>New</span> --}}
                     </a>
                 </li>

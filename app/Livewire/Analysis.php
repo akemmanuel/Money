@@ -19,8 +19,8 @@ class Analysis extends Component
         return view('livewire.analysis');
     }
 
-    public function placeholder(array $params = [])
-    {
-        return view('placeholder.skeleton', $params);
-    }
+    // public function placeholder(array $params = [])
+    // {
+    //     return view('placeholder.skeleton', $params);
+    // }
 }

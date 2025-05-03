@@ -9,18 +9,18 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
-class Wallet extends Component
+class Portfolio extends Component
 {
-    public $accounts = [];
+    public $depots = [];
 
     public function mount()
     {
-        $this->accounts = Auth::user()->accounts;
+        $this->depots = Auth::user()->depots;
     }
 
     public function render()
     {
-        return view('livewire.wallet');
+        return view('livewire.portfolio');
     }
 
     public function convert($balance, $currency, $type)
@@ -39,8 +39,10 @@ class Wallet extends Component
 
     public function getTotalValue()
     {
-        return $this->accounts->sum(function($account) {
+        return $this->depots->sum(function ($depot) {
+            return $depot->assets->sum(function ($account) {
             return $this->convert($account->balance, $account->currency, $account->type_of_currency);
+            });
         });
     }
 
