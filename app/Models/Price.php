@@ -93,7 +93,8 @@ class Price extends Model
             return $price->usd;
         }
         try {
-            $response = file_get_contents("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol={$currency}&apikey=FK1HFM2IIH4BRBDL");
+            $key = env('ALPHA_VANTAGE_API_KEY');
+            $response = file_get_contents("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol={$currency}&apikey={$key}");
         } catch (Exception $e) {
             return "Error";
         }
