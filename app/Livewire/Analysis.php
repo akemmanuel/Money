@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Analysis extends Component
 {
+
     public $notifications;
     public $depots = [];
     public $analysisResult;
@@ -24,7 +25,7 @@ class Analysis extends Component
     public function mount()
     {
         $this->notifications = Notification::all();
-        $this->depots = Auth::user()->depots;
+        $this->depots = Auth::user()->depots()->with('assets')->get();
         $depot_string = '';
         foreach ($this->depots as $depot) {
             $depot_string .= $depot->name . ' ';
@@ -40,19 +41,6 @@ class Analysis extends Component
         return view('livewire.analysis');
     }
 
-    public function convert($balance, $currency, $type)
-    {
-        $currency_user =  Auth::user()->display_currency;
-        if ($currency_user == $currency) {
-            return $balance;
-        }
-        $price = new Price();
-        $priceUsd = $price->getPriceUsd($currency, $type) * $balance;
-        $fiat = new Fiat();
-        $end = $fiat->usdTo($currency_user) * $priceUsd;
-
-        return $end;
-    }
     public function getTotalValue()
     {
         return $this->depots->sum(function ($depot) {
@@ -69,13 +57,15 @@ class Analysis extends Component
                     temperature: 0.5,
                     responseMimeType: ResponseMimeType::APPLICATION_JSON,
                     responseSchema: new Schema(
-                            type: DataType::OBJECT,
-                            properties: [
-                                'summary' => new Schema(type: DataType::STRING),
-                                'recommendations' => new Schema(type: DataType::ARRAY, items: new Schema(type: DataType::STRING)),
-                                'quality' => new Schema(type: DataType::STRING, enum: ['weak', 'ok', 'good', 'strong', 'excellent']),
-                            ],
-                            required: ['summary', 'recommendations', 'quality'],
+                        type: DataType::OBJECT,
+                        properties: [
+                            'summary' => new Schema(type: DataType::STRING),
+                            'recommendations' => new Schema(type: DataType::ARRAY, items: new Schema(type: DataType::STRING)),
+                            'diversification' => new Schema(type: DataType::NUMBER),
+                            'risk' => new Schema(type: DataType::STRING, enum: ['low', 'medium', 'high']),
+                            'quality' => new Schema(type: DataType::STRING, enum: ['F', 'D', 'C', 'B', 'A']),
+                        ],
+                        required: ['summary', 'recommendations', 'diversification', 'risk', 'quality'],
                     )
                 )
             )
@@ -83,10 +73,19 @@ class Analysis extends Component
 
         $this->analysisResult = $result->json();
     }
-    // public function placeholder(array $params = [])
-    // {
-    //     return view('placeholder.skeleton', $params);
-    // }
+    public function convert($balance, $currency, $type)
+    {
+        $currency_user =  Auth::user()->display_currency;
+        if ($currency_user == $currency) {
+            return $balance;
+        }
+        $price = new Price();
+        $priceUsd = $price->getPriceUsd($currency, $type) * $balance;
+        $fiat = new Fiat();
+        $end = $fiat->usdTo($currency_user) * $priceUsd;
+
+        return $end;
+    }
 }
 
 
