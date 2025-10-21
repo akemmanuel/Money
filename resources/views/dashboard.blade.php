@@ -14,6 +14,30 @@
                 <h3 class="text-lg font-semibold">Welcome!</h3>
                 <p class="mt-2 text-gray-600">Welcome to your dashboard! Here you can manage your finances and track your investments.</p>
             </div>
+
+            <!-- Placeholder for Latest Transactions -->
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4 mb-4">
+                <h3 class="text-lg font-semibold">Latest Transactions</h3>
+                <ul class="mt-2 text-gray-600">
+                    <li>Transaction 1: Buy AAPL - $150.00</li>
+                    <li>Transaction 2: Sell TSLA - $800.00</li>
+                    <li>Transaction 3: Buy MSFT - $250.00</li>
+                </ul>
+            </div>
+
+            <!-- Placeholder for Portfolio Summary -->
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4 mb-4">
+                <h3 class="text-lg font-semibold">Portfolio Summary</h3>
+                <p class="mt-2 text-gray-600">Total Value: $10,000.00</p>
+                <p class="text-gray-600">Daily Change: +$150.00 (+1.5%)</p>
+            </div>
+
+            <!-- Placeholder for Market News Headline -->
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4 mb-4">
+                <h3 class="text-lg font-semibold">Market News Headline</h3>
+                <p class="mt-2 text-gray-600">Stocks rally on strong earnings reports.</p>
+            </div>
+
             <div class="flex items-center gap-3 flex-wrap">
                 <button class="btn btn-primary btn-soft btn-lg">
                     <span class="icon-[tabler--share] size-5"></span> Share
