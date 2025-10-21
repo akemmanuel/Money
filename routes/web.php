@@ -26,13 +26,9 @@ Route::middleware([
         return view('bonds');
     })->name('bonds');
 
-    Route::get('/real-estate', function () {
-        return view('real-estate');
-    })->name('real-estate');
+    Route::get('/real-estate', App\Livewire\RealEstate::class)->name('real-estate');
 
-    Route::get('/mutual-funds', function () {
-        return view('mutual-funds');
-    })->name('mutual-funds');
+    Route::get('/mutual-funds', App\Livewire\MutualFunds::class)->name('mutual-funds');
 
     Route::get('/forecasts', function () {
         return view('forecasts');
@@ -45,6 +41,8 @@ Route::middleware([
     Route::get('/learn', function () {
         return view('learn');
     })->name('learn');
+
+    Route::get('/ask-gemini', App\Livewire\AskGemini::class)->name('ask-gemini');
 });
 
 require __DIR__.'/socialstream.php';
