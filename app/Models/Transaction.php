@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
-    protected $fillable = ['account_id', 'type', 'title', 'description', 'amount'];
-    public function account()
+    protected $fillable = ['asset_id', 'type', 'title', 'description', 'amount'];
+    public function asset()
     {
-        return $this->belongsTo(Account::class);
+        return $this->belongsTo(Asset::class);
     }
 }

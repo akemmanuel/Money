@@ -8,5 +8,17 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-
+    optimizeDeps: {
+        exclude: ['ApexCharts']
+    },
+    build: {
+        rollupOptions: {
+            external: ['ApexCharts'],
+            output: {
+                globals: {
+                    ApexCharts: 'ApexCharts'
+                }
+            }
+        }
+    }
 });
