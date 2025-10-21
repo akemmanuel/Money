@@ -146,9 +146,7 @@
                         </div>
                     @endif
                 </div>
-            @endforeach
-        </div>
-    @else
+            @empty
         <div class="alert alert-soft alert-primary mt-8 text-center p-6 bg-blue-50 border border-blue-200 rounded-lg">
             <div class="flex flex-col items-center gap-4">
                 <span class="icon-[tabler--alert-triangle] size-8 text-blue-500"></span>
@@ -158,6 +156,6 @@
                     Create Your First Depot
                 </a>
             </div>
+            @endforelse
         </div>
-    @endif
 </div>
