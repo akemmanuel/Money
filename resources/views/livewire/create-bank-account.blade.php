@@ -15,13 +15,13 @@
         {{ session('error') }}
     </div>
 @endif
-<form wire:submit.prevent="create">
+<form wire:submit.prevent="create" x-data="{ name: @entangle('name').defer, nameError: '' }">
 
     <div>
         <label class="label label-text font-medium" for="name">Name des Kontos</label>
-        <input type="text" placeholder="Sparkasse Berlin" class="input" id="name" wire:model="name" />
+        <input type="text" placeholder="Sparkasse Berlin" class="input" id="name" wire:model="name" x-model="name" x-on:input="nameError = name.trim() === '' ? 'Name is required.' : ''" />
 
-        @error('name') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
+        <span x-show="nameError" x-text="nameError" class="text-red-500 text-sm mt-1"></span>
     </div>
     <div>
         <label class="label label-text font-medium" for="amount">Betrag</label>
