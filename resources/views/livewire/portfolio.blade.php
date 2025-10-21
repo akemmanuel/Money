@@ -152,10 +152,10 @@
         <div class="alert alert-soft alert-primary mt-8 text-center p-6 bg-blue-50 border border-blue-200 rounded-lg">
             <div class="flex flex-col items-center gap-4">
                 <span class="icon-[tabler--alert-triangle] size-8 text-blue-500"></span>
-                <h3 class="text-xl font-semibold text-blue-800">You still don't have bitcoin?</h3>
-                <p class="text-gray-600">Start building your portfolio by adding your first bitcoin account.</p>
-                <a href="{{ route('create_bitcoin_account') }}" class="btn btn-primary mt-4 px-6 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg">
-                    Add Bitcoin
+                <h3 class="text-xl font-semibold text-blue-800">Your portfolio is empty!</h3>
+                <p class="text-gray-600">Start building your financial overview by creating your first depot.</p>
+                <a href="{{ route('depots.create') }}" class="btn btn-primary mt-4 px-6 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg">
+                    Create Your First Depot
                 </a>
             </div>
         </div>
