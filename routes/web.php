@@ -21,6 +21,30 @@ Route::middleware([
     Route::get('/transactions/create', CreateTransaction::class)->name('transactions.create');
 
     Route::get('/settings', [App\Http\Controllers\UserProfileController::class, 'showSettingsForm'])->name('settings');
+
+    Route::get('/bonds', function () {
+        return view('bonds');
+    })->name('bonds');
+
+    Route::get('/real-estate', function () {
+        return view('real-estate');
+    })->name('real-estate');
+
+    Route::get('/mutual-funds', function () {
+        return view('mutual-funds');
+    })->name('mutual-funds');
+
+    Route::get('/forecasts', function () {
+        return view('forecasts');
+    })->name('forecasts');
+
+    Route::get('/analysis', function () {
+        return view('analysis');
+    })->name('analysis');
+
+    Route::get('/learn', function () {
+        return view('learn');
+    })->name('learn');
 });
 
 require __DIR__.'/socialstream.php';
