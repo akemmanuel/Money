@@ -27,16 +27,16 @@ class Portfolio extends Component
     public $selectedRange = '30days'; // Default to 30 days
     public $startDate;
     public $endDate;
+    public $editingDepotId = null;
+    public $editedDepotName = '';
 
     public function mount()
     {
         $user = Auth::user();
-        $this->depots = $user->depots;
+        $this->depots = $user->depots ?? collect();
         $this->totalValue = $this->getTotalValue($user);
 
-        $today = Carbon::today();
-
-        // Daily Change
+        // Calculate daily change
         $yesterday = Carbon::yesterday();
         $previousDayPortfolio = PortfolioHistory::where('user_id', $user->id)
             ->whereDate('date', $yesterday)
@@ -46,7 +46,7 @@ class Portfolio extends Component
         $this->dailyChange = $this->totalValue - $this->previousDayValue;
         $this->dailyPercentageChange = $this->previousDayValue != 0 ? ($this->dailyChange / $this->previousDayValue) * 100 : 0;
 
-        // Weekly Change
+        // Calculate weekly change
         $sevenDaysAgo = Carbon::today()->subDays(7);
         $sevenDaysAgoPortfolio = PortfolioHistory::where('user_id', $user->id)
             ->whereDate('date', $sevenDaysAgo)
@@ -55,7 +55,7 @@ class Portfolio extends Component
         $this->weeklyChange = $this->totalValue - $sevenDaysAgoValue;
         $this->weeklyPercentageChange = $sevenDaysAgoValue != 0 ? ($this->weeklyChange / $sevenDaysAgoValue) * 100 : 0;
 
-        // Monthly Change
+        // Calculate monthly change
         $thirtyDaysAgo = Carbon::today()->subDays(30);
         $thirtyDaysAgoPortfolio = PortfolioHistory::where('user_id', $user->id)
             ->whereDate('date', $thirtyDaysAgo)
@@ -68,6 +68,32 @@ class Portfolio extends Component
         $this->endDate = Carbon::now()->format('Y-m-d');
 
         $this->portfolioChart = $this->generatePortfolioChart();
+    }
+
+    public function editDepot($depotId, $depotName)
+    {
+        $this->editingDepotId = $depotId;
+        $this->editedDepotName = $depotName;
+    }
+
+    public function saveDepotName($depotId)
+    {
+        $this->validate(['editedDepotName' => 'required|string|max:100']);
+
+        $depot = Auth::user()->depots()->find($depotId);
+        if ($depot) {
+            $depot->update(['name' => $this->editedDepotName]);
+            session()->flash('message', 'Depot name updated successfully.');
+        }
+
+        $this->editingDepotId = null;
+        $this->editedDepotName = '';
+    }
+
+    public function cancelEdit()
+    {
+        $this->editingDepotId = null;
+        $this->editedDepotName = '';
     }
 
     public function updatedSelectedRange($value)
@@ -92,16 +118,9 @@ class Portfolio extends Component
 
     public function render()
     {
-        return view('livewire.portfolio', [
-            'totalValue' => $this->totalValue,
-            'dailyChange' => $this->dailyChange,
-            'dailyPercentageChange' => $this->dailyPercentageChange,
-            'weeklyChange' => $this->weeklyChange,
-            'weeklyPercentageChange' => $this->weeklyPercentageChange,
-            'monthlyChange' => $this->monthlyChange,
-            'monthlyPercentageChange' => $this->monthlyPercentageChange,
-            'portfolioChart' => $this->portfolioChart,
-        ]);
+        $depots = auth()->user()->depots;
+
+        return view('livewire.portfolio');
     }
 
     private function generatePortfolioChart()
