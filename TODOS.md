@@ -1,99 +1,26 @@
-### New Features and Improvements (One Day Implementation)
+## Features & Improvements (Implementable in one day)
 
-**1. Enhanced Investment Section with Placeholder Pages:**
+### Portfolio Management & Display
+*   **Daily Portfolio Snapshot Automation:** Implement a scheduled task that runs once a day (e.g., at midnight) to record the user's current total portfolio value into the `portfolio_histories` table. This is crucial for enabling historical performance tracking and resolving the current bug related to missing `portfolio_histories` data. NOTE: Ai fixed
+*   **Portfolio Chart Time Range Selector:** Add a simple dropdown or buttons to the portfolio page allowing users to select different time ranges for the portfolio value chart (e.g., 7 days, 30 days, 3 months, 1 year, All Time). This will improve the usability and insights derived from the chart. NOTE: Ai fixed
+*   **Currency Conversion Rate Caching:** For the `convert` function, cache the `usdTo` conversion rate for the user's `display_currency` for a short period (e.g., 5-10 minutes). This will reduce redundant external API calls or database lookups when rendering multiple assets in the same display currency on a single page, improving page load times. NOTE: Ai fixed
+*   **Basic Asset Categories for Bonds/Real Estate/Mutual Funds:** For the existing `/bonds`, `/real-estate`, and `/mutual-funds` routes, add a simple form to manually input the value of such assets. This allows users to include more diverse investments in their total portfolio calculation without complex integration. NOTE: Ai fixed
 
-*   **Bonds Page (`routes/web.php`, `./resources/views/bonds.blade.php`):**
-    *   Create a simple `bonds.blade.php` view.
-    *   Add a route `Route::get('/bonds', function () { return view('bonds'); })->name('bonds');`
-    *   **Improvement:** Display static content with a "Coming Soon" message or basic information about bonds.
-    *   **Future Enhancement:** Integrate with a financial API to display real-time bond data.
-*   **Real Estate Page (`routes/web.php`, `./resources/views/real-estate.blade.php`):**
-    *   Create a simple `real-estate.blade.php` view.
-    *   Add a route `Route::get('/real-estate', function () { return view('real-estate'); })->name('real-estate');`
-    *   **Improvement:** Display static content with a "Coming Soon" message or basic information about real estate investments.
-    *   **Future Enhancement:** Integrate with real estate data providers for property listings and market trends.
-*   **Mutual Funds Page (`routes/web.php`, `./resources/views/mutual-funds.blade.php`):**
-    *   Create a simple `mutual-funds.blade.php` view.
-    *   Add a route `Route::get('/mutual-funds', function () { return view('mutual-funds'); })->name('mutual-funds');`
-    *   **Improvement:** Display static content with a "Coming Soon" message or basic information about mutual funds.
-    *   **Future Enhancement:** Integrate with financial APIs for mutual fund performance and details.
-NOTE: Ai fixed
+### User Experience & Information
+*   **Google Gemini for Quick Financial Definitions/News:** Integrate a basic input field on the dashboard or a dedicated "Ask Gemini" page. Users can type in a finance-related term (e.g., "What is a stock split?") or ask for a quick market summary, and Gemini can provide a concise answer. NOTE: Ai fixed
+*   **Simple "Learn" Content Placeholders:** Populate the `/learn` page with basic static content, such as definitions of common financial terms, simple investment tips, or links to external educational resources. This adds immediate value for new users. NOTE: Ai fixed
 
-**2. Basic "Forecasts" Section:**
+### System & Performance
+*   **Optimized Portfolio History Query:** Implement a basic limit on the number of records fetched for the initial portfolio chart display (e.g., the last 30 days by default). This can be paired with the "Portfolio Chart Time Range Selector" feature for more specific queries. NOTE: Ai fixed
 
-*   **Forecasts Page (`routes/web.php`, `./resources/views/forecasts.blade.php`):**
-    *   Create a simple `forecasts.blade.php` view.
-    *   Add a route `Route::get('/forecasts', function () { return view('forecasts'); })->name('forecasts');`
-    *   **Improvement:** Display a static message like "Future market forecasts will appear here."
-    *   **Future Enhancement:** Implement simple predictive models or integrate with third-party forecasting services.
-NOTE: Ai fixed
+## Bugs
 
-**3. Basic "Analysis" Section:**
-
-*   **Analysis Page (`routes/web.php`, `./resources/views/analysis.blade.php`):**
-    *   Create a simple `analysis.blade.php` view.
-    *   Add a route `Route::get('/analysis', function () { return view('analysis'); })->name('analysis');`
-    *   **Improvement:** Display a static message like "Detailed portfolio analysis will be available here."
-    *   **Future Enhancement:** Develop charts and graphs to visualize user portfolio data, performance, and risk metrics.
-NOTE: Ai fixed
-
-**4. "Learn" Section with Dummy Content:**
-
-*   **Learn Page (`routes/web.php`, `./resources/views/learn.blade.php`):**
-    *   Create a simple `learn.blade.php` view.
-    *   Add a route `Route::get('/learn', function () { return view('learn'); })->name('learn');`
-    *   **Improvement:** Include a few dummy articles or links to external financial education resources.
-    *   **Future Enhancement:** Build a knowledge base with articles, tutorials, and a glossary of financial terms.
-NOTE: Ai fixed
-
-**5. Dashboard Overview Widgets:**
-
-*   **Improvement (Dashboard - `dashboard.blade.php`):**
-    *   Add placeholder widgets to the dashboard for:
-        *   "Latest Transactions" (list last 3-5 transactions).
-        *   "Portfolio Summary" (show total value, daily change).
-        *   "Market News Headline" (static news headline).
-    *   These can be hardcoded for a one-day implementation.
-    *   **Future Enhancement:** Dynamically populate these widgets with actual user data and real-time market information.
-NOTE: Ai fixed
-
----
-
-### Bugs
-
-**1. Route Not Defined Exceptions:**
-
-*   **Title:** Route [bonds] not defined.
-*   **Body:** The error `Symfony\Component\Routing\Exception\RouteNotFoundException: Route [bonds] not defined.` indicates that the application is trying to navigate to a route named `bonds` which is not registered in `routes/web.php`. This will also apply to `real-estate`, `mutual-funds`, `forecasts`, `analysis`, and `learn` as they are referenced in `resources/views/layouts/app.blade.php` but don't have corresponding routes.
-*   **Fix:**
-    *   For `bonds`, `real-estate`, `mutual-funds`, `forecasts`, `analysis`, and `learn` routes, add the following to `routes/web.php` within the authenticated middleware group:
-
-    
-```php
-    Route::get('/bonds', function () {
-        return view('bonds');
-    })->name('bonds');
-
-    Route::get('/real-estate', function () {
-        return view('real-estate');
-    })->name('real-estate');
-
-    Route::get('/mutual-funds', function () {
-        return view('mutual-funds');
-    })->name('mutual-funds');
-
-    Route::get('/forecasts', function () {
-        return view('forecasts');
-    })->name('forecasts');
-
-    Route::get('/analysis', function () {
-        return view('analysis');
-    })->name('analysis');
-
-    Route::get('/learn', function () {
-        return view('learn');
-    })->name('learn');
-    ```
-
-    *   Create empty `.blade.php` files for each of these new views in `resources/views/` (e.g., `resources/views/bonds.blade.php`, `resources/views/real-estate.blade.php`, etc.) to prevent view not found errors.
-NOTE: Ai fixed
+### `SQLSTATE[HY000]: General error: 1 no such table: portfolio_histories`
+*   **Description:** The application is attempting to query the `portfolio_histories` table, but the database reports that this table does not exist. This directly impacts the calculation of daily, weekly, and monthly portfolio changes, and the generation of the portfolio chart.
+*   **Location:** This error occurs in `app/Livewire/Portfolio.php` at line 40 (and subsequent lines where `PortfolioHistory` is accessed).
+*   **Likely Cause:**
+    1.  The migration `2025_05_28_create_portfolio_histories_table.php` has not been run or completed successfully.
+    2.  The `database.sqlite` file being used by the application is not the one expected, or it has been recreated/cleared without running migrations.
+*   **Proposed Solution:**
+    1.  **Run Migrations:** Execute `php artisan migrate` in the project's root directory to ensure all pending database migrations are applied, specifically the one that creates the `portfolio_histories` table.
+    2.  **Verify Database Connection:** Double-check the `DB_CONNECTION` and `DB_DATABASE` settings in the `.env` file to confirm that the application is connecting to the correct SQLite database file. NOTE: Ai fixed
