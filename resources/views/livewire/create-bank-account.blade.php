@@ -32,7 +32,10 @@
         @error('balance') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
     </div>
     <div class="flex justify-end">
-        <button type="submit" class="btn btn-primary hover:btn-primary-focus transition">Konto erstellen</button>
+        <button type="submit" class="btn btn-primary hover:btn-primary-focus transition" wire:loading.attr="disabled" wire:target="create">
+            <span wire:loading wire:target="create">Creating...</span>
+            <span wire:loading.remove wire:target="create">Create Account</span>
+        </button>
     </div>
 </form>
 </div>
