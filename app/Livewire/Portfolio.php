@@ -35,6 +35,7 @@ class Portfolio extends Component
         $user = Auth::user();
         $this->depots = $user->depots ?? collect();
         $this->totalValue = $this->getTotalValue($user);
+        Log::info('Total Value in mount: ' . $this->totalValue);
 
         // Calculate daily change
         $yesterday = Carbon::yesterday();
@@ -120,7 +121,22 @@ class Portfolio extends Component
     {
         $depots = auth()->user()->depots;
 
-        return view('livewire.portfolio');
+        return view('livewire.portfolio', [
+            'totalValue' => $this->totalValue,
+            'dailyChange' => $this->dailyChange,
+            'dailyPercentageChange' => $this->dailyPercentageChange,
+            'weeklyChange' => $this->weeklyChange,
+            'weeklyPercentageChange' => $this->weeklyPercentageChange,
+            'monthlyChange' => $this->monthlyChange,
+            'monthlyPercentageChange' => $this->monthlyPercentageChange,
+            'portfolioChart' => $this->portfolioChart,
+            'selectedRange' => $this->selectedRange,
+            'startDate' => $this->startDate,
+            'endDate' => $this->endDate,
+            'editingDepotId' => $this->editingDepotId,
+            'editedDepotName' => $this->editedDepotName,
+            'depots' => $this->depots,
+        ]);
     }
 
     private function generatePortfolioChart()
