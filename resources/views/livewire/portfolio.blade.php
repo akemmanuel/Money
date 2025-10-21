@@ -3,7 +3,38 @@
         <div class="mt-6 text-center">
             <h2 class="text-3xl font-bold">Total Portfolio Value</h2>
             <div class="text-4xl font-extrabold text-green-500 mt-2">
-                {{ number_format($this->getTotalValue(), 2) }} {{ Auth::user()->display_currency }}
+                {{ number_format($totalValue, 2) }} {{ Auth::user()->display_currency }}
+            </div>
+            <div class="flex justify-center gap-4 mt-4">
+                <div class="text-center">
+                    <p class="text-lg font-medium">Daily Change</p>
+                    <p class="text-xl font-bold @if($dailyChange > 0) text-green-500 @elseif($dailyChange < 0) text-red-500 @else text-gray-500 @endif">
+                        {{ number_format($dailyChange, 2) }} ({{ number_format($dailyPercentageChange, 2) }}%)
+                    </p>
+                </div>
+                <div class="text-center">
+                    <p class="text-lg font-medium">Weekly Change</p>
+                    <p class="text-xl font-bold @if($weeklyChange > 0) text-green-500 @elseif($weeklyChange < 0) text-red-500 @else text-gray-500 @endif">
+                        {{ number_format($weeklyChange, 2) }} ({{ number_format($weeklyPercentageChange, 2) }}%)
+                    </p>
+                </div>
+                <div class="text-center">
+                    <p class="text-lg font-medium">Monthly Change</p>
+                    <p class="text-xl font-bold @if($monthlyChange > 0) text-green-500 @elseif($monthlyChange < 0) text-red-500 @else text-gray-500 @endif">
+                        {{ number_format($monthlyChange, 2) }} ({{ number_format($monthlyPercentageChange, 2) }}%)
+                    </p>
+                </div>
+            </div>
+            <div class="mt-6">
+                <a href="{{ route('transactions.create') }}" class="btn btn-primary px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-lg">
+                    Add New Transaction
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <div class="shadow-lg rounded-lg p-6">
+                {!! $portfolioChart->render() !!}
             </div>
         </div>
 
