@@ -1,3 +1,11 @@
-./Standardize and improve user-friendliness of validation and error messages. NOTE: Ai fixed
-./Implement loading states for asynchronous operations in key areas. NOTE: Ai fixed
-./Enhance empty states for new depots or when no assets are present in the portfolio. NOTE: Ai fixed
+Here's a list of new features and improvements that can be implemented in one day:
+
+1.  **Implement Dark Mode Toggle:** NOTE: Ai fixed
+
+2.  **Implement Client-Side Form Validation Feedback with Alpine.js:** NOTE: Ai fixed
+
+3.  **Implement Native Image Lazy Loading:** NOTE: Ai fixed
+
+4.  **Integrate Basic Google Analytics Tracking:** NOTE: Ai fixed
+
+5.  **Create a Basic Health Check Endpoint:** NOTE: Ai fixed
