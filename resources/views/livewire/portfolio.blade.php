@@ -33,6 +33,15 @@
         </div>
 
         <div class="mt-8">
+            <div class="flex justify-end mb-4">
+                <select wire:model="selectedRange" class="form-select rounded-md shadow-sm">
+                    <option value="7days">7 Days</option>
+                    <option value="30days">30 Days</option>
+                    <option value="3months">3 Months</option>
+                    <option value="1year">1 Year</option>
+                    <option value="all">All Time</option>
+                </select>
+            </div>
             <div class="shadow-lg rounded-lg p-6">
                 {!! $portfolioChart->render() !!}
             </div>

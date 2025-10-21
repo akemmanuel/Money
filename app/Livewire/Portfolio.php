@@ -1,7 +1,4 @@
-<?php
-
-namespace App\Livewire;
-
+use App\Livewire\Portfolio;
 use App\Models\CryptoPrices;
 use App\Models\Fiat;
 use App\Models\PortfolioHistory;
@@ -11,9 +8,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
+use App\Traits\CalculatesPortfolioValue;
 
 class Portfolio extends Component
 {
+    use CalculatesPortfolioValue;
+
     public $depots = [];
     public $totalValue;
     public $previousDayValue;
@@ -24,13 +24,14 @@ class Portfolio extends Component
     public $monthlyChange;
     public $monthlyPercentageChange;
     public $portfolioChart;
+    public $selectedRange = '30days'; // Default to 30 days
 
     public function mount()
     {
-        $this->depots = Auth::user()->depots;
-        $this->totalValue = $this->getTotalValue();
-
         $user = Auth::user();
+        $this->depots = $user->depots;
+        $this->totalValue = $this->getTotalValue($user);
+
         $today = Carbon::today();
 
         // Daily Change
@@ -64,6 +65,12 @@ class Portfolio extends Component
         $this->portfolioChart = $this->generatePortfolioChart();
     }
 
+    public function updatedSelectedRange($value)
+    {
+        $this->selectedRange = $value;
+        $this->portfolioChart = $this->generatePortfolioChart();
+    }
+
     public function render()
     {
         return view('livewire.portfolio', [
@@ -81,9 +88,28 @@ class Portfolio extends Component
     private function generatePortfolioChart()
     {
         $user = Auth::user();
-        $history = PortfolioHistory::where('user_id', $user->id)
-            ->orderBy('date', 'asc')
-            ->get();
+        $historyQuery = PortfolioHistory::where('user_id', $user->id);
+
+        switch ($this->selectedRange) {
+            case '7days':
+                $historyQuery->where('date', '>=', Carbon::now()->subDays(7));
+                break;
+            case '30days':
+                $historyQuery->where('date', '>=', Carbon::now()->subDays(30));
+                break;
+            case '3months':
+                $historyQuery->where('date', '>=', Carbon::now()->subMonths(3));
+                break;
+            case '1year':
+                $historyQuery->where('date', '>=', Carbon::now()->subYear());
+                break;
+            case 'all':
+            default:
+                // No date filter needed for 'all'
+                break;
+        }
+
+        $history = $historyQuery->orderBy('date', 'asc')->get();
 
         $dates = $history->map(fn($item) => $item->date->format('Y-m-d'))->toArray();
         $values = $history->map(fn($item) => $item->value)->toArray();
@@ -98,29 +124,6 @@ class Portfolio extends Component
                 'name' => 'Value',
                 'data' => $values
             ]]);
-    }
-
-    public function convert($balance, $currency, $type)
-    {
-        $currency_user =  Auth::user()->display_currency;
-        if ($currency_user == $currency) {
-            return $balance;
-        }
-        $price = new Price();
-        $priceUsd = $price->getPriceUsd($currency, $type) * $balance;
-        $fiat = new Fiat();
-        $end = $fiat->usdTo($currency_user) * $priceUsd;
-
-        return $end;
-    }
-
-    public function getTotalValue()
-    {
-        return $this->depots->sum(function ($depot) {
-            return $depot->assets->sum(function ($account) {
-            return $this->convert($account->balance, $account->currency, $account->type_of_currency);
-            });
-        });
     }
 
     public function placeholder(array $params = [])
