@@ -25,6 +25,8 @@ class Portfolio extends Component
     public $monthlyPercentageChange;
     public $portfolioChart;
     public $selectedRange = '30days'; // Default to 30 days
+    public $startDate;
+    public $endDate;
 
     public function mount()
     {
@@ -62,12 +64,29 @@ class Portfolio extends Component
         $this->monthlyChange = $this->totalValue - $thirtyDaysAgoValue;
         $this->monthlyPercentageChange = $thirtyDaysAgoValue != 0 ? ($this->monthlyChange / $thirtyDaysAgoValue) * 100 : 0;
 
+        $this->startDate = Carbon::now()->subDays(30)->format('Y-m-d');
+        $this->endDate = Carbon::now()->format('Y-m-d');
+
         $this->portfolioChart = $this->generatePortfolioChart();
     }
 
     public function updatedSelectedRange($value)
     {
         $this->selectedRange = $value;
+        $this->startDate = null;
+        $this->endDate = null;
+        $this->portfolioChart = $this->generatePortfolioChart();
+    }
+
+    public function updatedStartDate($value)
+    {
+        $this->selectedRange = 'custom';
+        $this->portfolioChart = $this->generatePortfolioChart();
+    }
+
+    public function updatedEndDate($value)
+    {
+        $this->selectedRange = 'custom';
         $this->portfolioChart = $this->generatePortfolioChart();
     }
 
@@ -90,23 +109,27 @@ class Portfolio extends Component
         $user = Auth::user();
         $historyQuery = PortfolioHistory::where('user_id', $user->id);
 
-        switch ($this->selectedRange) {
-            case '7days':
-                $historyQuery->where('date', '>=', Carbon::now()->subDays(7));
-                break;
-            case '30days':
-                $historyQuery->where('date', '>=', Carbon::now()->subDays(30));
-                break;
-            case '3months':
-                $historyQuery->where('date', '>=', Carbon::now()->subMonths(3));
-                break;
-            case '1year':
-                $historyQuery->where('date', '>=', Carbon::now()->subYear());
-                break;
-            case 'all':
-            default:
-                // No date filter needed for 'all'
-                break;
+        if ($this->selectedRange === 'custom' && $this->startDate && $this->endDate) {
+            $historyQuery->whereBetween('date', [$this->startDate, $this->endDate]);
+        } else {
+            switch ($this->selectedRange) {
+                case '7days':
+                    $historyQuery->where('date', '>=', Carbon::now()->subDays(7));
+                    break;
+                case '30days':
+                    $historyQuery->where('date', '>=', Carbon::now()->subDays(30));
+                    break;
+                case '3months':
+                    $historyQuery->where('date', '>=', Carbon::now()->subMonths(3));
+                    break;
+                case '1year':
+                    $historyQuery->where('date', '>=', Carbon::now()->subYear());
+                    break;
+                case 'all':
+                default:
+                    // No date filter needed for 'all'
+                    break;
+            }
         }
 
         $history = $historyQuery->orderBy('date', 'asc')->get();

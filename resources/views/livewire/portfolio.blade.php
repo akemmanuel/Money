@@ -40,8 +40,16 @@
                     <option value="3months">3 Months</option>
                     <option value="1year">1 Year</option>
                     <option value="all">All Time</option>
+                    <option value="custom">Custom Range</option>
                 </select>
             </div>
+
+            @if ($selectedRange === 'custom')
+                <div class="flex justify-end mb-4 space-x-2">
+                    <input type="date" wire:model="startDate" class="form-input rounded-md shadow-sm" />
+                    <input type="date" wire:model="endDate" class="form-input rounded-md shadow-sm" />
+                </div>
+            @endif
             <div class="shadow-lg rounded-lg p-6">
                 {!! $portfolioChart->render() !!}
             </div>
