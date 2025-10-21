@@ -15,6 +15,15 @@
 
     <!-- Styles -->
     @livewireStyles
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_TRACKING_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'YOUR_GA_TRACKING_ID');
+    </script>
 </head>
 
 <body class="font-sans antialiased select-none h-screen max-h-screen flex flex-col">
