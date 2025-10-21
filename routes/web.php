@@ -19,6 +19,8 @@ Route::middleware([
 
     Route::get('/portfolio', Portfolio::class)->name('portfolio');
     Route::get('/transactions/create', CreateTransaction::class)->name('transactions.create');
+
+    Route::get('/settings', [App\Http\Controllers\UserProfileController::class, 'showSettingsForm'])->name('settings');
 });
 
 require __DIR__.'/socialstream.php';
