@@ -90,7 +90,7 @@
                         </h3>
                     @endif
                     @if ($depot->description)
-                        <p class="text-sm text-gray-500 mb-4">{{ $depot->description }}</p>
+                        <p class="text-sm text-gray-500">{{ $depot->description }}</p>
                     @endif
                     <div class="text-lg font-medium mb-4">
                         Total Balance: 
@@ -107,13 +107,21 @@
                                         <div class="relative inline-flex">
                                             <div class="bg-neutral text-neutral-content w-10 rounded-full p-2">
                                                 @if ($asset->type_of_currency === 'fiats')
-                                                    <span class="icon-[tabler--cash-banknote] size-full" title="Fiat Account"></span>
+                                                    <div class="tooltip" data-tip="Fiat Account">
+                                                        <span class="icon-[tabler--cash-banknote] size-full"></span>
+                                                    </div>
                                                 @elseif ($asset->type_of_currency === 'crypto')
-                                                    <span class="icon-[tabler--currency-bitcoin] size-full" title="Crypto Asset"></span>
+                                                    <div class="tooltip" data-tip="Crypto Asset">
+                                                        <span class="icon-[tabler--currency-bitcoin] size-full"></span>
+                                                    </div>
                                                 @elseif ($asset->type_of_currency === 'stocks')
-                                                    <span class="icon-[tabler--trending-up] size-full" title="Stock Asset"></span>
+                                                    <div class="tooltip" data-tip="Stock Asset">
+                                                        <span class="icon-[tabler--trending-up] size-full"></span>
+                                                    </div>
                                                 @elseif ($asset->type_of_currency === 'commodities')
-                                                    <span class="icon-[tabler--drop-circle] size-full" title="Commodity Asset"></span>
+                                                    <div class="tooltip" data-tip="Commodity Asset">
+                                                        <span class="icon-[tabler--drop-circle] size-full"></span>
+                                                    </div>
                                                 @endif
                                             </div>
                                         </div>
