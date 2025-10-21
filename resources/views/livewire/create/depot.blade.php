@@ -5,8 +5,15 @@
         </div>
     </div>
     @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
+        <div class="mb-4 p-4 rounded-md text-white bg-green-500 font-bold flex justify-between items-center">
+            <span>{{ session('message') }}</span>
+            <button type="button" class="text-white" onclick="this.parentElement.style.display='none'">&times;</button>
+        </div>
+    @endif
+    @if (session()->has('error'))
+        <div class="mb-4 p-4 rounded-md text-white bg-red-500 font-bold flex justify-between items-center">
+            <span>{{ session('error') }}</span>
+            <button type="button" class="text-white" onclick="this.parentElement.style.display='none'">&times;</button>
         </div>
     @endif
     <div>

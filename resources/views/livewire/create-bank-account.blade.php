@@ -6,28 +6,33 @@
 
     </div>
     @if (session()->has('message'))
-    <div class="alert alert-success">
+    <div class="mb-4 p-4 rounded-md text-white bg-green-500">
         {{ session('message') }}
+    </div>
+@endif
+@if (session()->has('error'))
+    <div class="mb-4 p-4 rounded-md text-white bg-red-500">
+        {{ session('error') }}
     </div>
 @endif
 <form wire:submit.prevent="create">
 
     <div>
-        <label class="label label-text" for="name">Name des Kontos</label>
+        <label class="label label-text font-medium" for="name">Name des Kontos</label>
         <input type="text" placeholder="Sparkasse Berlin" class="input" id="name" wire:model="name" />
 
-        @error('name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+        @error('name') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
     </div>
     <div>
-        <label class="label label-text" for="amount">Betrag</label>
+        <label class="label label-text font-medium" for="amount">Betrag</label>
         <input type="number" placeholder="100" class="input" id="balance" wire:model="balance" step="0.01" />
         <span class="label">
             <span class="label-text-alt">Please enter the amount</span>
         </span>
-        @error('balance') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+        @error('balance') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
     </div>
     <div class="flex justify-end">
-        <button type="submit" class="btn btn-primary">Konto erstellen</button>
+        <button type="submit" class="btn btn-primary hover:btn-primary-focus transition">Konto erstellen</button>
     </div>
 </form>
 </div>
