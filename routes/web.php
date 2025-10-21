@@ -13,12 +13,14 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
-    Route::get('/portfolio', Portfolio::class)->name('portfolio');
-    Route::get('/transactions/create', CreateTransaction::class)->name('transactions.create');
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
+     
+        Route::get('/portfolio', function () {
+            return view('livewire.portfolio');
+        })->name('portfolio');
+        Route::get('/transactions/create', CreateTransaction::class)->name('transactions.create');
 
     Route::get('/settings', [App\Http\Controllers\UserProfileController::class, 'showSettingsForm'])->name('settings');
 
