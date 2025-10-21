@@ -38,6 +38,8 @@
                 <p class="mt-2 text-gray-600">Stocks rally on strong earnings reports.</p>
             </div>
 
+            <livewire:gemini-portfolio-insights />
+
             <div class="flex items-center gap-3 flex-wrap">
                 <button class="btn btn-primary btn-soft btn-lg">
                     <span class="icon-[tabler--share] size-5"></span> Share

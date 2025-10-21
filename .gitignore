@@ -23,3 +23,5 @@ yarn-error.log
 /.zed
 bun.lock
 composer.lock
+a.out
+server.log
