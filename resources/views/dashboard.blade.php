@@ -10,6 +10,10 @@
                 <p class="font-semibold/80">Good day, {{ Auth::user()->name }}</p>
                 <h1 class="text-2xl font-semibold mb-2">Dashboard</h1>
             </div>
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4 mb-4">
+                <h3 class="text-lg font-semibold">Welcome!</h3>
+                <p class="mt-2 text-gray-600">Welcome to your dashboard! Here you can manage your finances and track your investments.</p>
+            </div>
             <div class="flex items-center gap-3 flex-wrap">
                 <button class="btn btn-primary btn-soft btn-lg">
                     <span class="icon-[tabler--share] size-5"></span> Share
