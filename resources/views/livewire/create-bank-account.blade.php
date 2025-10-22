@@ -15,7 +15,7 @@
         {{ session('error') }}
     </div>
 @endif
-<form wire:submit.prevent="create" x-data="{ name: @entangle('name').defer, nameError: '' }">
+<form wire:submit.prevent="create" x-data="{ name: @entangle('name').defer, nameError: '', balance: @entangle('balance').defer, balanceError: '' }">
 
     <div>
         <label class="label label-text font-medium" for="name">Name des Kontos</label>
@@ -25,11 +25,11 @@
     </div>
     <div>
         <label class="label label-text font-medium" for="amount">Betrag</label>
-        <input type="number" placeholder="100" class="input" id="balance" wire:model="balance" step="0.01" />
+        <input type="number" placeholder="100" class="input" id="balance" wire:model="balance" x-model="balance" x-on:input="balanceError = balance === '' || isNaN(balance) ? 'Balance must be a number.' : ''" step="0.01" />
         <span class="label">
             <span class="label-text-alt">Please enter the amount</span>
         </span>
-        @error('balance') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
+        <span x-show="balanceError" x-text="balanceError" class="text-red-500 text-sm mt-1"></span>
     </div>
     <div class="flex justify-end">
         <button type="submit" class="btn btn-primary hover:btn-primary-focus transition" wire:loading.attr="disabled" wire:target="create">

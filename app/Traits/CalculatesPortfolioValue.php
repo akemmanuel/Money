@@ -29,8 +29,9 @@ trait CalculatesPortfolioValue
         return $end;
     }
 
-    public function getTotalValue($user)
+    public function calculateTotalValue()
     {
+        $user = Auth::user();
         $displayCurrency = $user->display_currency;
         return $user->depots->sum(function ($depot) use ($user, $displayCurrency) {
             return $depot->assets->sum(function ($account) use ($user, $displayCurrency) {
@@ -38,5 +39,86 @@ trait CalculatesPortfolioValue
                 return $value;
             });
         });
+    }
+
+    public function calculateDailyChange()
+    {
+        $user = Auth::user();
+        $today = Carbon::today();
+        $yesterday = Carbon::yesterday();
+
+        $currentValue = $this->calculateTotalValue();
+        $previousDayValue = $user->portfolioHistories()->whereDate('date', $yesterday)->value('value') ?? 0;
+
+        return $currentValue - $previousDayValue;
+    }
+
+    public function calculateDailyPercentageChange()
+    {
+        $user = Auth::user();
+        $yesterday = Carbon::yesterday();
+
+        $currentValue = $this->calculateTotalValue();
+        $previousDayValue = $user->portfolioHistories()->whereDate('date', $yesterday)->value('value') ?? 0;
+
+        if ($previousDayValue == 0) {
+            return 0;
+        }
+
+        return (($currentValue - $previousDayValue) / $previousDayValue) * 100;
+    }
+
+    public function calculateWeeklyChange()
+    {
+        $user = Auth::user();
+        $today = Carbon::today();
+        $oneWeekAgo = Carbon::today()->subWeek();
+
+        $currentValue = $this->calculateTotalValue();
+        $previousWeekValue = $user->portfolioHistories()->whereDate('date', $oneWeekAgo)->value('value') ?? 0;
+
+        return $currentValue - $previousWeekValue;
+    }
+
+    public function calculateWeeklyPercentageChange()
+    {
+        $user = Auth::user();
+        $oneWeekAgo = Carbon::today()->subWeek();
+
+        $currentValue = $this->calculateTotalValue();
+        $previousWeekValue = $user->portfolioHistories()->whereDate('date', $oneWeekAgo)->value('value') ?? 0;
+
+        if ($previousWeekValue == 0) {
+            return 0;
+        }
+
+        return (($currentValue - $previousWeekValue) / $previousWeekValue) * 100;
+    }
+
+    public function calculateMonthlyChange()
+    {
+        $user = Auth::user();
+        $today = Carbon::today();
+        $oneMonthAgo = Carbon::today()->subMonth();
+
+        $currentValue = $this->calculateTotalValue();
+        $previousMonthValue = $user->portfolioHistories()->whereDate('date', $oneMonthAgo)->value('value') ?? 0;
+
+        return $currentValue - $previousMonthValue;
+    }
+
+    public function calculateMonthlyPercentageChange()
+    {
+        $user = Auth::user();
+        $oneMonthAgo = Carbon::today()->subMonth();
+
+        $currentValue = $this->calculateTotalValue();
+        $previousMonthValue = $user->portfolioHistories()->whereDate('date', $oneMonthAgo)->value('value') ?? 0;
+
+        if ($previousMonthValue == 0) {
+            return 0;
+        }
+
+        return (($currentValue - $previousMonthValue) / $previousMonthValue) * 100;
     }
 }

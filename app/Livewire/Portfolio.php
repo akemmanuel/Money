@@ -34,87 +34,12 @@ class Portfolio extends Component
     {
         $user = Auth::user();
         $this->depots = $user->depots ?? collect();
-        $this->totalValue = $this->getTotalValue($user);
-        Log::info('Total Value in mount: ' . $this->totalValue);
-
+        $this->totalValue = $this->calculateTotalValue();
+        $this->dailyChange = $this->calculateDailyChange();
+        $this->dailyPercentageChange = $this->calculateDailyPercentageChange();
+        $this->weeklyChange = $this->calculateWeeklyChange();
+        $this->weeklyPercentageChange = $this->calculateWeeklyPercentageChange();
         // Calculate daily change
-        $yesterday = Carbon::yesterday();
-        $previousDayPortfolio = PortfolioHistory::where('user_id', $user->id)
-            ->whereDate('date', $yesterday)
-            ->first();
-
-        $this->previousDayValue = $previousDayPortfolio ? $previousDayPortfolio->value : 0;
-        $this->dailyChange = $this->totalValue - $this->previousDayValue;
-        $this->dailyPercentageChange = $this->previousDayValue != 0 ? ($this->dailyChange / $this->previousDayValue) * 100 : 0;
-
-        // Calculate weekly change
-        $sevenDaysAgo = Carbon::today()->subDays(7);
-        $sevenDaysAgoPortfolio = PortfolioHistory::where('user_id', $user->id)
-            ->whereDate('date', $sevenDaysAgo)
-            ->first();
-        $sevenDaysAgoValue = $sevenDaysAgoPortfolio ? $sevenDaysAgoPortfolio->value : 0;
-        $this->weeklyChange = $this->totalValue - $sevenDaysAgoValue;
-        $this->weeklyPercentageChange = $sevenDaysAgoValue != 0 ? ($this->weeklyChange / $sevenDaysAgoValue) * 100 : 0;
-
-        // Calculate monthly change
-        $thirtyDaysAgo = Carbon::today()->subDays(30);
-        $thirtyDaysAgoPortfolio = PortfolioHistory::where('user_id', $user->id)
-            ->whereDate('date', $thirtyDaysAgo)
-            ->first();
-        $thirtyDaysAgoValue = $thirtyDaysAgoPortfolio ? $thirtyDaysAgoPortfolio->value : 0;
-        $this->monthlyChange = $this->totalValue - $thirtyDaysAgoValue;
-        $this->monthlyPercentageChange = $thirtyDaysAgoValue != 0 ? ($this->monthlyChange / $thirtyDaysAgoValue) * 100 : 0;
-
-        $this->startDate = Carbon::now()->subDays(30)->format('Y-m-d');
-        $this->endDate = Carbon::now()->format('Y-m-d');
-
-        $this->portfolioChart = $this->generatePortfolioChart();
-    }
-
-    public function editDepot($depotId, $depotName)
-    {
-        $this->editingDepotId = $depotId;
-        $this->editedDepotName = $depotName;
-    }
-
-    public function saveDepotName($depotId)
-    {
-        $this->validate(['editedDepotName' => 'required|string|max:100']);
-
-        $depot = Auth::user()->depots()->find($depotId);
-        if ($depot) {
-            $depot->update(['name' => $this->editedDepotName]);
-            session()->flash('message', 'Depot name updated successfully.');
-        }
-
-        $this->editingDepotId = null;
-        $this->editedDepotName = '';
-    }
-
-    public function cancelEdit()
-    {
-        $this->editingDepotId = null;
-        $this->editedDepotName = '';
-    }
-
-    public function updatedSelectedRange($value)
-    {
-        $this->selectedRange = $value;
-        $this->startDate = null;
-        $this->endDate = null;
-        $this->portfolioChart = $this->generatePortfolioChart();
-    }
-
-    public function updatedStartDate($value)
-    {
-        $this->selectedRange = 'custom';
-        $this->portfolioChart = $this->generatePortfolioChart();
-    }
-
-    public function updatedEndDate($value)
-    {
-        $this->selectedRange = 'custom';
-        $this->portfolioChart = $this->generatePortfolioChart();
     }
 
     public function render()
@@ -122,20 +47,12 @@ class Portfolio extends Component
         $depots = auth()->user()->depots;
 
         return view('livewire.portfolio', [
+            'depots' => $depots,
             'totalValue' => $this->totalValue,
             'dailyChange' => $this->dailyChange,
             'dailyPercentageChange' => $this->dailyPercentageChange,
             'weeklyChange' => $this->weeklyChange,
             'weeklyPercentageChange' => $this->weeklyPercentageChange,
-            'monthlyChange' => $this->monthlyChange,
-            'monthlyPercentageChange' => $this->monthlyPercentageChange,
-            'portfolioChart' => $this->portfolioChart,
-            'selectedRange' => $this->selectedRange,
-            'startDate' => $this->startDate,
-            'endDate' => $this->endDate,
-            'editingDepotId' => $this->editingDepotId,
-            'editedDepotName' => $this->editedDepotName,
-            'depots' => $this->depots,
         ]);
     }
 

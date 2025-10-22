@@ -9,7 +9,7 @@
             </div>
         </div>
         <p class="mb-3">Noch keine Rohstoffe hinterlegt</p>
-        <img src="{{ Vite::asset('resources/images/commodities.svg') }}"/>
+        <img src="{{ Vite::asset('resources/images/commodities.svg') }}" loading="lazy"/>
 
         @livewire('bank-account')
     </div>
