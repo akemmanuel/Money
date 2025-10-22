@@ -15,14 +15,14 @@ class Portfolio extends Component
     use CalculatesPortfolioValue;
 
     public $depots = [];
-    public $totalValue;
+    public $totalValue = 0;
     public $previousDayValue;
-    public $dailyChange;
-    public $dailyPercentageChange;
-    public $weeklyChange;
-    public $weeklyPercentageChange;
-    public $monthlyChange;
-    public $monthlyPercentageChange;
+    public $dailyChange = 0;
+    public $dailyPercentageChange = 0;
+    public $weeklyChange = 0;
+    public $weeklyPercentageChange = 0;
+    public $monthlyChange = 0;
+    public $monthlyPercentageChange = 0;
     public $portfolioChart;
     public $selectedRange = '30days'; // Default to 30 days
     public $startDate;
@@ -39,7 +39,8 @@ class Portfolio extends Component
         $this->dailyPercentageChange = $this->calculateDailyPercentageChange();
         $this->weeklyChange = $this->calculateWeeklyChange();
         $this->weeklyPercentageChange = $this->calculateWeeklyPercentageChange();
-        // Calculate daily change
+        $this->monthlyChange = $this->calculateMonthlyChange();
+        $this->monthlyPercentageChange = $this->calculateMonthlyPercentageChange();
     }
 
     public function render()
