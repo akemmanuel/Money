@@ -1,4 +1,3 @@
-use App\Livewire\Portfolio;
 use App\Models\CryptoPrices;
 use App\Models\Fiat;
 use App\Models\PortfolioHistory;
@@ -42,6 +41,7 @@ class Portfolio extends Component
         $this->weeklyPercentageChange = $this->calculateWeeklyPercentageChange();
         $this->monthlyChange = $this->calculateMonthlyChange();
         $this->monthlyPercentageChange = $this->calculateMonthlyPercentageChange();
+        $this->portfolioChart = $this->generatePortfolioChart();
     }
 
     public function render()
@@ -55,6 +55,7 @@ class Portfolio extends Component
             'dailyPercentageChange' => $this->dailyPercentageChange,
             'weeklyChange' => $this->weeklyChange,
             'weeklyPercentageChange' => $this->weeklyPercentageChange,
+            'portfolioChart' => $this->portfolioChart,
         ]);
     }
 
@@ -133,5 +134,20 @@ class Portfolio extends Component
     {
         $this->editingDepotId = null;
         $this->editedDepotName = '';
+    }
+
+    public function updatedSelectedRange()
+    {
+        $this->portfolioChart = $this->generatePortfolioChart();
+    }
+
+    public function updatedStartDate()
+    {
+        $this->portfolioChart = $this->generatePortfolioChart();
+    }
+
+    public function updatedEndDate()
+    {
+        $this->portfolioChart = $this->generatePortfolioChart();
     }
 }

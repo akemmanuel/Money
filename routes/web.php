@@ -17,9 +17,7 @@ Route::middleware([
             return view('dashboard');
         })->name('dashboard');
      
-        Route::get('/portfolio', function () {
-            return view('livewire.portfolio');
-        })->name('portfolio');
+        Route::get('/portfolio', Portfolio::class)->name('portfolio');
         Route::get('/transactions/create', CreateTransaction::class)->name('transactions.create');
 
     Route::get('/depots/create', App\Livewire\Create\Depot::class)->name('depots.create');
