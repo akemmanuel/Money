@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Models\Fiat;
 use App\Models\Price;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
