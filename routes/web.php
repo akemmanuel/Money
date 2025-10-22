@@ -22,6 +22,8 @@ Route::middleware([
         })->name('portfolio');
         Route::get('/transactions/create', CreateTransaction::class)->name('transactions.create');
 
+    Route::get('/depots/create', App\Livewire\Create\Depot::class)->name('depots.create');
+
     Route::get('/settings', [App\Http\Controllers\UserProfileController::class, 'showSettingsForm'])->name('settings');
 
     Route::get('/bonds', function () {
