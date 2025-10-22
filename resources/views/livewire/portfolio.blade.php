@@ -1,4 +1,13 @@
-<div class="container mx-auto p-6">
+<div class="container mx-auto p-6" wire:loading.class="opacity-50" wire:target="selectedRange, startDate, endDate, saveDepotName, editDepot">
+        <div wire:loading wire:target="selectedRange, startDate, endDate, saveDepotName, editDepot" class="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center z-50">
+            <div class="bg-white p-4 rounded-lg shadow-lg flex items-center">
+                <svg class="animate-spin h-8 w-8 text-blue-500 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span class="text-lg font-medium">Updating...</span>
+            </div>
+        </div>
         <div class="mt-6 text-center">
             <h2 class="text-3xl font-bold">Total Portfolio Value</h2>
             <div class="text-4xl font-extrabold text-green-500 mt-2">
@@ -25,10 +34,10 @@
                 </div>
             </div>
             <div class="mt-6 flex justify-center gap-4">
-                <a href="{{ route('transactions.create') }}" class="btn btn-primary px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-lg">
+                <a href="{{ route('transactions.create') }}" class="btn btn-primary px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-lg" wire:loading.class="opacity-50" wire:loading.attr="disabled">
                     Add New Transaction
                 </a>
-                <a href="{{ route('depots.create') }}" class="btn btn-secondary px-6 py-3 text-white bg-gray-600 hover:bg-gray-700 rounded-lg">
+                <a href="{{ route('depots.create') }}" class="btn btn-secondary px-6 py-3 text-white bg-gray-600 hover:bg-gray-700 rounded-lg" wire:loading.class="opacity-50" wire:loading.attr="disabled">
                     Create New Depot
                 </a>
             </div>
@@ -36,7 +45,7 @@
 
         <div class="mt-8">
             <div class="flex justify-end mb-4">
-                <select wire:model="selectedRange" class="form-select rounded-md shadow-sm">
+                <select wire:model="selectedRange" class="form-select rounded-md shadow-sm" wire:loading.attr="disabled">
                     <option value="7days">7 Days</option>
                     <option value="30days">30 Days</option>
                     <option value="3months">3 Months</option>
@@ -44,12 +53,24 @@
                     <option value="all">All Time</option>
                     <option value="custom">Custom Range</option>
                 </select>
+                <div wire:loading wire:target="selectedRange" class="ml-2 flex items-center">
+                    <svg class="animate-spin h-5 w-5 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </div>
             </div>
 
             @if ($selectedRange === 'custom')
                 <div class="flex justify-end mb-4 space-x-2">
-                    <input type="date" wire:model="startDate" class="form-input rounded-md shadow-sm" />
-                    <input type="date" wire:model="endDate" class="form-input rounded-md shadow-sm" />
+                    <input type="date" wire:model="startDate" class="form-input rounded-md shadow-sm" wire:loading.attr="disabled" />
+                    <input type="date" wire:model="endDate" class="form-input rounded-md shadow-sm" wire:loading.attr="disabled" />
+                    <div wire:loading wire:target="startDate, endDate" class="flex items-center">
+                        <svg class="animate-spin h-5 w-5 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </div>
                 </div>
             @endif
             <div class="shadow-lg rounded-lg p-6">
@@ -76,16 +97,27 @@
                 <div class="shadow-lg rounded-lg p-6">
                     @if ($editingDepotId === $depot->id)
                         <div class="flex items-center gap-2">
-                            <input type="text" wire:model.defer="editedDepotName" class="input input-sm" />
-                            <button wire:click="saveDepotName({{ $depot->id }})" class="btn btn-sm btn-primary">Save</button>
-                            <button wire:click="cancelEdit" class="btn btn-sm btn-ghost">Cancel</button>
+                            <input type="text" wire:model.defer="editedDepotName" class="input input-sm" wire:loading.attr="disabled" wire:target="saveDepotName" />
+                            <button wire:click="saveDepotName({{ $depot->id }})" class="btn btn-sm btn-primary" wire:loading.attr="disabled" wire:target="saveDepotName">
+                                <span wire:loading.remove wire:target="saveDepotName">Save</span>
+                                <span wire:loading wire:target="saveDepotName">Saving...</span>
+                            </button>
+                            <button wire:click="cancelEdit" class="btn btn-sm btn-ghost" wire:loading.attr="disabled" wire:target="saveDepotName">Cancel</button>
                         </div>
                         @error('editedDepotName') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                     @else
                         <h3 class="text-xl font-semibold truncate flex items-center justify-between">
                             {{ $depot->name }}
-                            <button wire:click="editDepot({{ $depot->id }}, '{{ $depot->name }}')" class="btn btn-ghost btn-sm">
-                                <span class="icon-[tabler--edit] size-5"></span>
+                            <button wire:click="editDepot({{ $depot->id }}, '{{ $depot->name }}')" class="btn btn-ghost btn-sm" wire:loading.attr="disabled" wire:target="editDepot">
+                                <span wire:loading.remove wire:target="editDepot">
+                                    <span class="icon-[tabler--edit] size-5"></span>
+                                </span>
+                                <span wire:loading wire:target="editDepot">
+                                    <svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                </span>
                             </button>
                         </h3>
                     @endif
@@ -158,4 +190,5 @@
             </div>
             @endforelse
         </div>
+    </div>
 </div>

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 use App\Traits\CalculatesPortfolioValue;
+use Illuminate\Validation\Rule;
 
 class Portfolio extends Component
 {
@@ -105,6 +106,32 @@ class Portfolio extends Component
     public function placeholder(array $params = [])
     {
         return view('placeholder.skeleton', $params);
+    }
 
+    public function editDepot($depotId, $depotName)
+    {
+        $this->editingDepotId = $depotId;
+        $this->editedDepotName = $depotName;
+    }
+
+    public function saveDepotName($depotId)
+    {
+        $this->validate([
+            'editedDepotName' => 'required|string|max:255|unique:depots,name,'.$depotId.',id,user_id,'.Auth::id(),
+        ]);
+
+        $depot = Auth::user()->depots()->find($depotId);
+        if ($depot) {
+            $depot->update(['name' => $this->editedDepotName]);
+        }
+
+        $this->editingDepotId = null;
+        $this->editedDepotName = '';
+    }
+
+    public function cancelEdit()
+    {
+        $this->editingDepotId = null;
+        $this->editedDepotName = '';
     }
 }
