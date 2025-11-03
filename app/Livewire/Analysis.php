@@ -61,11 +61,11 @@ class Analysis extends Component
                         properties: [
                             'summary' => new Schema(type: DataType::STRING),
                             'recommendations' => new Schema(type: DataType::ARRAY, items: new Schema(type: DataType::STRING)),
-                            'diversification' => new Schema(type: DataType::NUMBER),
+                            'diversificationpercentage' => new Schema(type: DataType::NUMBER),
                             'risk' => new Schema(type: DataType::STRING, enum: ['low', 'medium', 'high']),
-                            'quality' => new Schema(type: DataType::STRING, enum: ['F', 'D', 'C', 'B', 'A']),
+                            'qualitypercentage' => new Schema(type: DataType::NUMBER),
                         ],
-                        required: ['summary', 'recommendations', 'diversification', 'risk', 'quality'],
+                        required: ['summary', 'recommendations', 'diversificationpercentage', 'risk', 'qualitypercentage'],
                     )
                 )
             )

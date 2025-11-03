@@ -36,18 +36,20 @@
         @if($analysisResult)
             <div class="mt-4">
                 <div class="flex items-center gap-4">
-                    <div class="flex flex-col gap-1">
-                        <span class="progress-label">{{ $analysisResult->quality }}</span>
+                    <span class="text-2xl font-bold">Quality</span>
+                    <div class="flex w-full flex-col gap-1">
+                        <span class="progress-label">{{ $analysisResult->qualitypercentage }}</span>
                         <div class="progress h-4" role="progressbar" aria-label="Portfolio Quality"
-                             aria-valuenow="{{ $analysisResult->quality }}" aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar w-[20%]"></div>
+                             aria-valuenow="{{ $analysisResult->qualitypercentage }}" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar" style="width: {{ round($analysisResult->qualitypercentage) }}%"></div>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-1">
-                        <span class="progress-label">{{ $analysisResult->diversification }}</span>
+                    <span class="text-2xl font-bold">Diversification</span>
+                    <div class="flex w-full flex-col gap-1">
+                        <span class="progress-label">{{ $analysisResult->diversificationpercentage }}</span>
                         <div class="progress h-4" role="progressbar" aria-label="Diversification"
-                             aria-valuenow="{{ $analysisResult->diversification }}" aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar w-[{{ $analysisResult->diversification * 100 }}%]"></div>
+                             aria-valuenow="{{ $analysisResult->diversificationpercentage }}" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar" style="width: {{ round($analysisResult->diversificationpercentage) }}%"></div>
                         </div>
                     </div>
                 </div>

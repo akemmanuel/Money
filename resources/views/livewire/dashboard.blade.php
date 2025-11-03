@@ -138,7 +138,7 @@
         </div>
     </div>
     @foreach ($depots as $depot)
-        <h1 class="text-2xl font-semibold">{{ $depot->name }}</h1>
+        <h1 class="text-2xl font-semibold mt-2">{{ $depot->name }}</h1>
         <div class="overflow-x-auto rounded-lg border border-base-content/25">
             <table class="min-w-full divide-y-2 divide-base-content/25">
                 <thead class="text-left">
