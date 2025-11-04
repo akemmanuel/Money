@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -12,13 +12,23 @@ import {
   Bitcoin, 
   Activity,
   PlusCircle,
-  Share2
+  Share2,
+  History
 } from 'lucide-react';
-import { getDepots, getAssets } from '@/lib/storage';
+import { getDepots, getAssets, getTransactions } from '@/lib/storage';
 import { convertCurrency } from '@/lib/api';
 import { getUserSettings } from '@/lib/storage';
-import { Asset, Depot } from '@/types';
+import { Asset, Depot, Transaction } from '@/types';
 import Link from 'next/link';
+
+// Chart components
+import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts';
+import {
+  type ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from '@/components/ui/chart';
 
 interface AssetWithValues extends Asset {
   convertedValue: number;
@@ -27,12 +37,21 @@ interface AssetWithValues extends Asset {
   isPositive: boolean;
 }
 
+const chartConfig = {
+  value: {
+    label: "Portfolio Value",
+    color: "var(--chart-1)",
+  },
+} satisfies ChartConfig;
+
 export default function Dashboard() {
   const [depots, setDepots] = useState<Depot[]>([]);
   const [assets, setAssets] = useState<AssetWithValues[]>([]);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [totalValue, setTotalValue] = useState<number>(0);
   const [displayCurrency, setDisplayCurrency] = useState<string>('USD');
   const [timeRange, setTimeRange] = useState<string>('1W');
+  const [historicalData, setHistoricalData] = useState<{ date: string; value: number }[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   const loadData = async () => {
@@ -40,9 +59,11 @@ export default function Dashboard() {
       // Load data from localStorage
       const loadedDepots = getDepots();
       const loadedAssets = getAssets();
+      const loadedTransactions = getTransactions();
       const userSettings = getUserSettings();
       
       setDepots(loadedDepots);
+      setTransactions(loadedTransactions);
       setDisplayCurrency(userSettings.displayCurrency);
       
       // Calculate converted values for assets
@@ -58,7 +79,8 @@ export default function Dashboard() {
         );
         
         // Generate mock change data
-        const changePercentage = (Math.random() - 0.5) * 10; // Random change between -5% and 5%
+        const randomValue = Math.random();
+        const changePercentage = (randomValue - 0.5) * 10; // Random change between -5% and 5%
         const isPositive = changePercentage >= 0;
         const changeValue = convertedValue * (changePercentage / 100);
         
@@ -75,11 +97,67 @@ export default function Dashboard() {
       
       setAssets(assetsWithValues);
       setTotalValue(total);
+      
+      // Generate historical data
+      const history = generateHistoricalData(total, timeRange);
+      setHistoricalData(history);
+      
       setLoading(false);
     } catch (error) {
       console.error('Error loading data:', error);
       setLoading(false);
     }
+  };
+
+  const generateHistoricalData = (currentValue: number, range: string): { date: string; value: number }[] => {
+    const data = [];
+    let days = 7; // Default to 1 week
+    
+    switch (range) {
+      case '1W':
+        days = 7;
+        break;
+      case '1M':
+        days = 30;
+        break;
+      case 'YTD':
+        const startOfYear = new Date(new Date().getFullYear(), 0, 1);
+        days = Math.ceil((new Date().getTime() - startOfYear.getTime()) / (1000 * 60 * 60 * 24));
+        break;
+      case '1Y':
+        days = 365;
+        break;
+      case '3Y':
+        days = 365 * 3;
+        break;
+      case '5Y':
+        days = 365 * 5;
+        break;
+      case 'MAX':
+        days = 365 * 5; // Max 5 years for demo
+        break;
+    }
+    
+    // Generate mock historical data with some randomness
+    let value = currentValue;
+    for (let i = days; i >= 0; i--) {
+      const date = new Date();
+      date.setDate(date.getDate() - i);
+      
+      // Add some random fluctuation (-2% to +2%)
+      const fluctuation = (Math.random() - 0.5) * 0.04;
+      value = value * (1 + fluctuation);
+      
+      // Ensure value doesn't go too negative
+      value = Math.max(value, currentValue * 0.5);
+      
+      data.push({
+        date: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+        value: parseFloat(value.toFixed(2))
+      });
+    }
+    
+    return data;
   };
 
   useEffect(() => {
@@ -96,7 +174,12 @@ export default function Dashboard() {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [loadData]);
+
+  useEffect(() => {
+    const history = generateHistoricalData(totalValue, timeRange);
+    setHistoricalData(history);
+  }, [timeRange, totalValue]);
 
   const handleTimeRangeChange = (value: string) => {
     setTimeRange(value);
@@ -137,6 +220,12 @@ export default function Dashboard() {
             <Button variant="outline" size="lg" className="rounded-full">
               <Share2 className="mr-2 h-4 w-4" />
               Share
+            </Button>
+            <Button asChild size="lg" className="rounded-full">
+              <Link href="/transactions/create">
+                <History className="mr-2 h-4 w-4" />
+                Add Transaction
+              </Link>
             </Button>
             <Button asChild size="lg" className="rounded-full">
               <Link href="/assets/create">
@@ -218,17 +307,57 @@ export default function Dashboard() {
 
         {/* Portfolio Overview */}
         <div className="mb-8">
-          <h2 className="text-2xl font-bold mb-4">Portfolio Overview</h2>
-          <Card className="overflow-hidden">
-            <CardContent className="p-6">
-              <div className="h-64 flex items-center justify-center bg-gradient-to-br from-primary/5 to-secondary/10 rounded-lg">
-                <div className="text-center">
-                  <Activity className="h-12 w-12 text-muted-foreground mx-auto mb-3" />
-                  <p className="text-muted-foreground font-medium">Portfolio Performance</p>
-                  <p className="text-sm text-muted-foreground mt-1">Visualization coming soon</p>
+          <Card>
+            <CardHeader>
+              <CardTitle>Portfolio Overview</CardTitle>
+              <CardDescription>
+                Showing portfolio value over time
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ChartContainer config={chartConfig} className="h-[300px] w-full">
+                <AreaChart
+                  accessibilityLayer
+                  data={historicalData}
+                  margin={{
+                    left: 12,
+                    right: 12,
+                  }}
+                >
+                  <CartesianGrid vertical={false} />
+                  <XAxis
+                    dataKey="date"
+                    tickLine={false}
+                    axisLine={false}
+                    tickMargin={8}
+                    tickFormatter={(value) => value.slice(0, 3)}
+                  />
+                  <ChartTooltip
+                    cursor={false}
+                    content={<ChartTooltipContent indicator="line" />}
+                  />
+                  <Area
+                    dataKey="value"
+                    type="natural"
+                    fill="var(--color-value)"
+                    fillOpacity={0.4}
+                    stroke="var(--color-value)"
+                  />
+                </AreaChart>
+              </ChartContainer>
+            </CardContent>
+            <CardFooter>
+              <div className="flex w-full items-start gap-2 text-sm">
+                <div className="grid gap-2">
+                  <div className="flex items-center gap-2 leading-none font-medium">
+                    Portfolio value trend <TrendingUp className="h-4 w-4" />
+                  </div>
+                  <div className="text-muted-foreground flex items-center gap-2 leading-none">
+                    Historical data
+                  </div>
                 </div>
               </div>
-            </CardContent>
+            </CardFooter>
           </Card>
         </div>
 
@@ -315,7 +444,86 @@ export default function Dashboard() {
               </Card>
             </div>
           );
-        })}
+})}
+        
+        {/* Transaction History */}
+          <div className="mb-8">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-2xl font-bold">Recent Transactions</h2>
+              <Button asChild variant="outline" size="sm">
+                <Link href="/transactions/create">
+                  <PlusCircle className="mr-2 h-4 w-4" />
+                  Add Transaction
+                </Link>
+              </Button>
+            </div>
+            
+            {transactions.length === 0 ? (
+              <Card className="p-8 text-center">
+                <History className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                <h3 className="text-lg font-medium mb-2">No transactions yet</h3>
+                <p className="text-muted-foreground mb-4">Record your first transaction to get started</p>
+                <Button asChild>
+                  <Link href="/transactions/create">Add Transaction</Link>
+                </Button>
+              </Card>
+            ) : (
+              <Card>
+                <CardContent className="p-0">
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="text-left p-4 font-medium text-muted-foreground">Date</th>
+                          <th className="text-left p-4 font-medium text-muted-foreground">Description</th>
+                          <th className="text-left p-4 font-medium text-muted-foreground">Type</th>
+                          <th className="text-right p-4 font-medium text-muted-foreground">Amount</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {[...transactions]
+                          .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+                          .slice(0, 5)
+                          .map((transaction) => {
+                            // Find the associated asset
+                            const asset = assets.find(a => a.id === transaction.accountId);
+                            
+                            return (
+                              <tr key={transaction.id} className="border-b last:border-b-0 hover:bg-muted/50 transition-colors">
+                                <td className="p-4">
+                                  {new Date(transaction.createdAt).toLocaleDateString()}
+                                </td>
+                                <td className="p-4">
+                                  <div className="font-medium">{transaction.title}</div>
+                                  {asset && (
+                                    <div className="text-sm text-muted-foreground">{asset.name}</div>
+                                  )}
+                                  {transaction.description && (
+                                    <div className="text-sm text-muted-foreground mt-1">{transaction.description}</div>
+                                  )}
+                                </td>
+                                <td className="p-4">
+                                  <Badge variant={
+                                    transaction.type === 'buy' || transaction.type === 'deposit' || transaction.type === 'dividend' 
+                                      ? 'default' 
+                                      : 'destructive'
+                                  }>
+                                    {transaction.type.charAt(0).toUpperCase() + transaction.type.slice(1)}
+                                  </Badge>
+                                </td>
+                                <td className="p-4 text-right font-medium">
+                                  {transaction.amount > 0 ? '+' : ''}{transaction.amount.toLocaleString()} {asset?.currency || ''}
+                                </td>
+                              </tr>
+                            );
+                          })}
+                      </tbody>
+                    </table>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </div>
       </main>
     </div>
   );
