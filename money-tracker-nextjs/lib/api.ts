@@ -2,7 +2,7 @@ import { Price } from '@/types';
 
 // Cache for price data to avoid repeated API calls
 const priceCache = new Map<string, { price: Price; timestamp: number }>();
-const CACHE_DURATION = 20 * 60 * 1000; // 20 minutes
+const CACHE_DURATION = 60 * 60 * 1000; // 60 minutes - longer cache for stability
 
 // Helper function to clean currency codes
 const cleanCurrencyCode = (currency: string): string => {

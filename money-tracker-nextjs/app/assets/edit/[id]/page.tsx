@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/select';
 import { getAssets, updateAsset, getDepots } from '@/lib/storage';
 import { useRouter, useParams } from 'next/navigation';
-import { Asset, Depot } from '@/types';
+import { Depot } from '@/types';
 
 export default function EditAsset() {
   const router = useRouter();
@@ -127,7 +127,7 @@ export default function EditAsset() {
             <div className="text-red-500 text-5xl mb-4">⚠️</div>
             <h2 className="text-2xl font-bold mb-2">Asset Not Found</h2>
             <p className="text-muted-foreground mb-6">
-              The asset you're looking for doesn't exist or has been deleted.
+              The asset you&apos;re looking for doesn&apos;t exist or has been deleted.
             </p>
             <Button onClick={() => router.push('/assets')} className="rounded-full">
               Back to Assets
