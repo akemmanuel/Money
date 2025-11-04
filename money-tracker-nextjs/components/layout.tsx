@@ -5,6 +5,7 @@ import {
   PieChart, 
   Wallet, 
   Settings,
+  Building,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -27,6 +28,7 @@ const navigationItems = [
   { name: 'Dashboard', href: '/', icon: LayoutDashboard },
   { name: 'Portfolio', href: '/portfolio', icon: PieChart },
   { name: 'Assets', href: '/assets', icon: Wallet },
+  { name: 'Depots', href: '/depots', icon: Building },
   { name: 'Settings', href: '/settings', icon: Settings },
 ];
 

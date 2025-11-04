@@ -25,6 +25,7 @@ interface AssetWithValues extends Asset {
 
 export default function Assets() {
   const [assets, setAssets] = useState<AssetWithValues[]>([]);
+  const [depots, setDepots] = useState<any[]>([]);
   const [displayCurrency, setDisplayCurrency] = useState<string>('USD');
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -36,6 +37,7 @@ export default function Assets() {
       const userSettings = getUserSettings();
       
       setDisplayCurrency(userSettings.displayCurrency);
+      setDepots(loadedDepots);
       
       // Create depot lookup
       const depotMap: Record<string, string> = {};
@@ -145,7 +147,19 @@ export default function Assets() {
         </Button>
       </div>
 
-      {assets.length === 0 ? (
+      {depots.length === 0 ? (
+        <Card className="text-center py-12">
+          <CardContent>
+            <h3 className="text-lg font-semibold mb-2">No depots found</h3>
+            <p className="text-muted-foreground mb-4">
+              You need to create a depot first before adding assets.
+            </p>
+            <Button asChild className="rounded-full">
+              <Link href="/depots/create">Create Depot</Link>
+            </Button>
+          </CardContent>
+        </Card>
+      ) : assets.length === 0 ? (
         <div className="text-center py-12">
           <div className="mx-auto h-24 w-24 rounded-full bg-gradient-to-br from-primary/10 to-secondary/20 flex items-center justify-center mb-6">
             <Wallet className="h-12 w-12 text-primary" />
